@@ -6,10 +6,10 @@
         <h1 class="hero-title">小程序研究院</h1>
         <p class="hero-description">专业的小程序开发研究与资源平台</p>
         <div class="hero-actions">
-          <el-button type="primary" size="large" class="hero-button" @click="navigateTo('/docs/zh/')">
+          <el-button type="primary" size="large" class="hero-button" @click="navigateTo('/zh/')">
             开始学习
           </el-button>
-          <el-button size="large" class="hero-button" @click="navigateTo('/showcase/')">
+          <el-button size="large" class="hero-button" @click="navigateTo('/zh/showcase/')">
             查看案例
           </el-button>
         </div>
@@ -140,7 +140,7 @@
         <el-step title="构建应用" description="开发并发布您的第一个小程序" />
       </el-steps>
       <div class="quickstart-actions">
-        <el-button type="primary" @click="navigateTo('/docs/zh/getting-started')">
+        <el-button type="primary" @click="navigateTo('/zh/getting-started')">
           开始学习
           <el-icon class="el-icon--right"><ArrowRight /></el-icon>
         </el-button>
@@ -217,7 +217,7 @@ const platforms = [
     color: 'linear-gradient(135deg, #07c160 0%, #10b981 100%)',
     users: '10亿+ 用户',
     scene: '社交、电商、生活服务',
-    link: '/docs/zh/wechat/'
+    link: '/zh/platforms/wechat'
   },
   {
     icon: '🔵',
@@ -225,7 +225,7 @@ const platforms = [
     color: 'linear-gradient(135deg, #1677ff 0%, #0ea5e9 100%)',
     users: '7亿+ 用户',
     scene: '金融、商业、政务',
-    link: '/docs/zh/alipay/'
+    link: '/zh/platforms/alipay'
   },
   {
     icon: '🟡',
@@ -233,7 +233,7 @@ const platforms = [
     color: 'linear-gradient(135deg, #315efb 0%, #4f46e5 100%)',
     users: '5亿+ 用户',
     scene: '搜索、信息、AI应用',
-    link: '/docs/zh/baidu/'
+    link: '/zh/platforms/baidu'
   },
   {
     icon: '🔴',
@@ -241,7 +241,7 @@ const platforms = [
     color: 'linear-gradient(135deg, #fe2c55 0%, #f43f5e 100%)',
     users: '6亿+ 用户',
     scene: '内容、娱乐、电商',
-    link: '/docs/zh/bytedance/'
+    link: '/zh/platforms/bytedance'
   },
   {
     icon: '🟠',
@@ -249,7 +249,7 @@ const platforms = [
     color: 'linear-gradient(135deg, #12b7f5 0%, #0ea5e9 100%)',
     users: '8亿+ 用户',
     scene: '社交、游戏、娱乐',
-    link: '/docs/zh/qq/'
+    link: '/zh/platforms/qq'
   },
   {
     icon: '🟣',
@@ -257,7 +257,7 @@ const platforms = [
     color: 'linear-gradient(135deg, #fe4f70 0%, #f43f5e 100%)',
     users: '3亿+ 用户',
     scene: '短视频、直播、电商',
-    link: '/docs/zh/kuaishou/'
+    link: '/zh/platforms/kuaishou'
   }
 ]
 
@@ -266,25 +266,25 @@ const frameworks = [
     logo: '🚀',
     name: 'Taro',
     description: '京东开源，React语法，一套代码多端运行',
-    link: '/docs/zh/frameworks/taro/'
+    link: '/zh/frameworks/taro'
   },
   {
     logo: '⚡',
     name: 'uni-app',
     description: 'DCloud开发，Vue语法，覆盖H5/App/小程序',
-    link: '/docs/zh/frameworks/uniapp/'
+    link: '/zh/frameworks/uni-app'
   },
   {
     logo: '🔥',
     name: 'Remax',
     description: '阿里开源，使用React开发小程序',
-    link: '/docs/zh/frameworks/remax/'
+    link: '/zh/frameworks/remax'
   },
   {
     logo: '💫',
     name: 'Chameleon',
     description: '滴滴开源，一套代码运行多端',
-    link: '/docs/zh/frameworks/chameleon/'
+    link: '/zh/frameworks/chameleon'
   }
 ]
 

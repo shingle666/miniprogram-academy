@@ -1,5 +1,29 @@
 {
   "name": "miniprogram-academy",
+  "version": "1.0.1",
+  "description": "小程序研究院 - 专业的小程序开发研究与资源平台",
+  "homepage": "https://mp.ac.cn",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shingle666/miniprogram-academy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shingle666/miniprogram-academy/issues"
+  },
+  "keywords": [
+    "miniprogram",
+    "wechat",
+    "alipay",
+    "baidu",
+    "bytedance",
+    "documentation",
+    "tutorial",
+    "小程序",
+    "微信小程序",
+    "支付宝小程序"
+  ],
+  "author": "小程序研究院",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {

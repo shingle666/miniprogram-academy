@@ -88,7 +88,7 @@ export default defineConfig({
           ]
         },
         editLink: {
-          pattern: 'https://github.com/miniprogram-academy/docs/edit/main/docs/:path',
+          pattern: 'https://github.com/shingle666/miniprogram-academy/edit/main/docs/:path',
           text: '在 GitHub 上编辑此页'
         },
         lastUpdated: {
@@ -99,8 +99,8 @@ export default defineConfig({
           }
         },
         footer: {
-          message: '基于 VitePress 构建',
-          copyright: 'Copyright © 2024 小程序研究院 (mp.ac.cn)'
+          message: '让小程序开发更简单',
+          copyright: 'Copyright © 2025 小程序研究院 (mp.ac.cn)'
         }
       }
     },
@@ -186,7 +186,7 @@ export default defineConfig({
           ]
         },
         editLink: {
-          pattern: 'https://github.com/miniprogram-academy/docs/edit/main/docs/:path',
+          pattern: 'https://github.com/shingle666/miniprogram-academy/edit/main/docs/:path',
           text: 'Edit this page on GitHub'
         },
         lastUpdated: {
@@ -197,7 +197,7 @@ export default defineConfig({
           }
         },
         footer: {
-          message: '小程序研究院',
+          message: 'Making Mini-Program Development Easier',
           copyright: 'Copyright © 2025 MiniProgram Academy (mp.ac.cn)'
         }
       }
@@ -219,7 +219,7 @@ export default defineConfig({
     siteTitle: '小程序研究院',
     
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/miniprogram-academy' },
+      { icon: 'github', link: 'https://github.com/shingle666/miniprogram-academy' },
     ],
 
     search: {

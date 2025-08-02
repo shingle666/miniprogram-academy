@@ -277,10 +277,9 @@ mp.ac.cn/
 
 - **🌐 官方网站**: [https://mp.ac.cn](https://mp.ac.cn)
 - **📧 联系邮箱**: [contact@mp.ac.cn](mailto:contact@mp.ac.cn)
-- **🐙 GitHub**: [miniprogram-academy](https://github.com/miniprogram-academy)
+- **🐙 GitHub**: [shingle666/miniprogram-academy](https://github.com/shingle666/miniprogram-academy)
 - **💬 开发者社区**: 加入我们的技术交流群
-- **📱 微信群**: 添加管理员微信 `mp-admin`
-- **🎯 QQ群**: `123456789`
+- **📱 微信群**: 添加管理员微信 `tan-zhen-xing`
 
 ## 🔗 快速链接
 
