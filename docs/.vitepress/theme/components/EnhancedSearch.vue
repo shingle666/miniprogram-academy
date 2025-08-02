@@ -32,21 +32,37 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useStore } from 'vuex'
-import { useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vitepress'
 import { Search } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 
-const store = useStore()
 const router = useRouter()
 
 const searchQuery = ref('')
 const showSuggestions = ref(false)
 const searchTimeout = ref(null)
+const loading = ref(false)
+const suggestions = ref([])
 
-const loading = computed(() => store.state.loading)
-const suggestions = computed(() => store.state.searchResults)
+// 模拟搜索数据
+const searchData = [
+  { id: 1, title: '第一个小程序', type: 'doc', url: '/docs/zh/first-app' },
+  { id: 2, title: '项目结构', type: 'doc', url: '/docs/zh/project-structure' },
+  { id: 3, title: '配置详解', type: 'doc', url: '/docs/zh/configuration' },
+  { id: 4, title: '页面开发', type: 'doc', url: '/docs/zh/page-development' },
+  { id: 5, title: '组件开发', type: 'doc', url: '/docs/zh/component-development' },
+  { id: 6, title: 'API使用', type: 'doc', url: '/docs/zh/api-usage' },
+  { id: 7, title: '数据存储', type: 'doc', url: '/docs/zh/data-storage' },
+  { id: 8, title: '网络请求', type: 'doc', url: '/docs/zh/network-request' },
+  { id: 9, title: '性能优化', type: 'doc', url: '/docs/zh/performance' },
+  { id: 10, title: '代码审核', type: 'doc', url: '/docs/zh/code-review' },
+  { id: 11, title: '发布部署', type: 'doc', url: '/docs/zh/deployment' },
+  { id: 12, title: '版本控制', type: 'doc', url: '/docs/zh/version-control' },
+  { id: 13, title: '案例展示', type: 'showcase', url: '/docs/zh/showcase/' },
+  { id: 14, title: '开发工具', type: 'tool', url: '/docs/zh/tools/' },
+  { id: 15, title: '社区交流', type: 'community', url: '/docs/zh/community/' }
+]
 
 const handleSearch = (value) => {
   if (searchTimeout.value) {
@@ -54,33 +70,41 @@ const handleSearch = (value) => {
   }
   
   if (value.length < 2) {
-    store.commit('SET_SEARCH_RESULTS', [])
+    suggestions.value = []
     return
   }
   
+  loading.value = true
   searchTimeout.value = setTimeout(() => {
-    store.dispatch('searchContent', value)
+    // 模拟搜索
+    const results = searchData.filter(item => 
+      item.title.toLowerCase().includes(value.toLowerCase())
+    )
+    suggestions.value = results.slice(0, 8) // 限制显示8个结果
+    loading.value = false
   }, 300)
 }
 
 const performSearch = () => {
   if (searchQuery.value.trim()) {
-    store.dispatch('searchContent', searchQuery.value)
+    handleSearch(searchQuery.value)
     showSuggestions.value = true
   }
 }
 
 const selectSuggestion = (item) => {
-  router.push(item.url)
-  showSuggestions.value = false
-  searchQuery.value = ''
-  
-  // 添加到收藏建议
-  ElMessage({
-    message: `已跳转到 ${item.title}`,
-    type: 'success',
-    duration: 2000
-  })
+  if (typeof window !== 'undefined') {
+    router.go(item.url)
+    showSuggestions.value = false
+    searchQuery.value = ''
+    
+    // 显示跳转消息
+    ElMessage({
+      message: `已跳转到 ${item.title}`,
+      type: 'success',
+      duration: 2000
+    })
+  }
 }
 
 const handleBlur = () => {
@@ -102,12 +126,17 @@ const getTypeLabel = (type) => {
 
 onMounted(() => {
   // 键盘快捷键支持
-  document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-      e.preventDefault()
-      document.querySelector('.search-input input')?.focus()
-    }
-  })
+  if (typeof window !== 'undefined') {
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault()
+        const searchInput = document.querySelector('.search-input input')
+        if (searchInput) {
+          searchInput.focus()
+        }
+      }
+    })
+  }
 })
 </script>
 

@@ -5,25 +5,6 @@
         <notification-center />
       </template>
       
-      <template #nav-bar-content-before>
-        <!-- <div class="language-switch">
-          <el-dropdown trigger="click" @command="switchLanguage">
-            <span class="language-dropdown-link">
-              {{ currentLanguageLabel }}
-              <el-icon class="el-icon--right">
-                <arrow-down />
-              </el-icon>
-            </span>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item command="zh">中文</el-dropdown-item>
-                <el-dropdown-item command="en">English</el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-        </div> -->
-      </template>
-      
       <template #nav-bar-content-after>
         <div class="theme-toggle">
           <el-switch
@@ -54,11 +35,10 @@
           
           <el-button
             class="feedback-button"
-            icon="ChatDotRound"
             text
             @click="showFeedbackDialog = true"
           >
-            反馈建议
+            💬 反馈建议
           </el-button>
         </div>
       </template>
@@ -119,9 +99,7 @@ import {
   Moon,
   Sunny,
   Star,
-  StarFilled,
-  ArrowDown,
-  ChatDotRound
+  StarFilled
 } from '@element-plus/icons-vue'
 
 import EnhancedSearch from './EnhancedSearch.vue'

@@ -150,7 +150,7 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
+import { useRouter } from 'vitepress'
 import {
   Document,
   Collection,
@@ -171,7 +171,10 @@ import {
 const router = useRouter()
 
 const navigateTo = (path) => {
-  router.go(path)
+  if (typeof window !== 'undefined') {
+    // 在浏览器环境中使用 VitePress 路由
+    router.go(path)
+  }
 }
 
 const features = [
