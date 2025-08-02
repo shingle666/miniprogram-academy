@@ -1,0 +1,51 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景渐变 -->
+  <rect width="400" height="300" fill="url(#heroGradient)"/>
+  
+  <!-- 手机框架 -->
+  <rect x="150" y="50" width="100" height="180" rx="15" fill="white" stroke="#e5e7eb" stroke-width="2"/>
+  <rect x="160" y="70" width="80" height="140" rx="8" fill="#f8fafc"/>
+  
+  <!-- 小程序界面元素 -->
+  <rect x="165" y="80" width="70" height="8" rx="4" fill="#3b82f6"/>
+  <rect x="165" y="95" width="50" height="6" rx="3" fill="#94a3b8"/>
+  <rect x="165" y="105" width="60" height="6" rx="3" fill="#94a3b8"/>
+  
+  <!-- 卡片元素 -->
+  <rect x="165" y="120" width="70" height="25" rx="6" fill="white" stroke="#e5e7eb"/>
+  <rect x="165" y="150" width="70" height="25" rx="6" fill="white" stroke="#e5e7eb"/>
+  <rect x="165" y="180" width="70" height="25" rx="6" fill="white" stroke="#e5e7eb"/>
+  
+  <!-- 装饰性代码元素 -->
+  <g transform="translate(50, 80)">
+    <rect width="80" height="60" rx="8" fill="white" opacity="0.9" stroke="#e5e7eb"/>
+    <text x="10" y="20" font-family="monospace" font-size="8" fill="#3b82f6">&lt;view&gt;</text>
+    <text x="10" y="35" font-family="monospace" font-size="8" fill="#059669">  小程序</text>
+    <text x="10" y="50" font-family="monospace" font-size="8" fill="#3b82f6">&lt;/view&gt;</text>
+  </g>
+  
+  <g transform="translate(270, 120)">
+    <rect width="80" height="60" rx="8" fill="white" opacity="0.9" stroke="#e5e7eb"/>
+    <text x="10" y="20" font-family="monospace" font-size="8" fill="#dc2626">Page({</text>
+    <text x="10" y="35" font-family="monospace" font-size="8" fill="#7c3aed">  data: {}</text>
+    <text x="10" y="50" font-family="monospace" font-size="8" fill="#dc2626">})</text>
+  </g>
+  
+  <!-- 连接线 -->
+  <path d="M130 110 Q140 110 150 120" stroke="#3b82f6" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M250 140 Q260 140 270 150" stroke="#3b82f6" stroke-width="2" fill="none" opacity="0.6"/>
+  
+  <!-- 装饰圆点 -->
+  <circle cx="80" cy="50" r="4" fill="#3b82f6" opacity="0.6"/>
+  <circle cx="320" cy="80" r="4" fill="#10b981" opacity="0.6"/>
+  <circle cx="100" cy="220" r="4" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="300" cy="240" r="4" fill="#ef4444" opacity="0.6"/>
+  
+  <!-- 渐变定义 -->
+  <defs>
+    <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0f2fe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

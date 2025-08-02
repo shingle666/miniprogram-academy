@@ -1,0 +1,331 @@
+/* Element Plus 主题定制 */
+:root {
+  --el-color-primary: #3b82f6;
+  --el-color-primary-light-3: #7c3aed;
+  --el-color-primary-light-5: #a855f7;
+  --el-color-primary-light-7: #c084fc;
+  --el-color-primary-light-8: #d8b4fe;
+  --el-color-primary-light-9: #e9d5ff;
+  --el-color-primary-dark-2: #1e40af;
+  --el-border-radius-base: 8px;
+  --el-border-radius-small: 6px;
+  --el-border-radius-round: 20px;
+}
+
+/* 暗色主题适配 */
+.dark {
+  --el-color-primary: #60a5fa;
+  --el-bg-color: #1a1a1a;
+  --el-bg-color-page: #0f0f0f;
+  --el-text-color-primary: #e5e7eb;
+  --el-text-color-regular: #d1d5db;
+  --el-border-color: #374151;
+}
+
+/* 全局样式优化 */
+.VPDoc .container {
+  max-width: 1200px;
+}
+
+/* 增强的搜索框 */
+.enhanced-search {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-suggestion-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--vp-c-border);
+  transition: background-color 0.2s;
+}
+
+.search-suggestion-item:hover {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.search-suggestion-item:last-child {
+  border-bottom: none;
+}
+
+/* 增强的卡片组件 */
+.enhanced-card {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.enhanced-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--el-color-primary);
+}
+
+.enhanced-card.featured {
+  border-color: var(--el-color-primary);
+  background: linear-gradient(135deg, var(--el-color-primary-light-9) 0%, var(--vp-c-bg) 100%);
+}
+
+/* 交互式按钮 */
+.interactive-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--el-color-primary) 0%, var(--el-color-primary-light-3) 100%);
+  color: white;
+  border: none;
+  border-radius: var(--el-border-radius-base);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.interactive-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  color: white;
+}
+
+.interactive-button.secondary {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  border: 1px solid var(--vp-c-border);
+}
+
+.interactive-button.secondary:hover {
+  background: var(--vp-c-bg-mute);
+  border-color: var(--el-color-primary);
+  color: var(--vp-c-text-1);
+}
+
+/* 加载动画 */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--el-color-primary-light-8);
+  border-radius: 50%;
+  border-top-color: var(--el-color-primary);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 通知样式 */
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+  max-width: 400px;
+}
+
+.notification-item {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease-out;
+}
+
+.notification-item.success {
+  border-left: 4px solid #10b981;
+}
+
+.notification-item.error {
+  border-left: 4px solid #ef4444;
+}
+
+.notification-item.warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.notification-item.info {
+  border-left: 4px solid var(--el-color-primary);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 收藏和最近浏览 */
+.favorites-panel {
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.favorites-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--vp-c-border);
+}
+
+.favorites-item:last-child {
+  border-bottom: none;
+}
+
+.favorites-item a {
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  flex: 1;
+}
+
+.favorites-item a:hover {
+  color: var(--el-color-primary);
+}
+
+.favorite-button {
+  background: none;
+  border: none;
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.favorite-button:hover {
+  color: var(--el-color-primary);
+  background: var(--vp-c-bg-mute);
+}
+
+.favorite-button.active {
+  color: #f59e0b;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .enhanced-search {
+    margin: 1rem 0;
+  }
+  
+  .search-input {
+    max-width: 100%;
+  }
+  
+  .notification-container {
+    left: 10px;
+    right: 10px;
+    max-width: none;
+  }
+  
+  .interactive-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 选择文本样式 */
+::selection {
+  background: var(--el-color-primary-light-8);
+  color: var(--el-color-primary-dark-2);
+}
+
+/* 焦点样式 */
+.el-input__wrapper:focus-within {
+  box-shadow: 0 0 0 2px var(--el-color-primary-light-8);
+}
+
+.el-button:focus {
+  outline: 2px solid var(--el-color-primary-light-8);
+  outline-offset: 2px;
+}
+
+/* 过渡动画 */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.slide-enter-from {
+  transform: translateX(-100%);
+}
+
+.slide-leave-to {
+  transform: translateX(100%);
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--vp-c-bg-soft);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-text-3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-text-2);
+}
+
+/* 深色模式下的滚动条 */
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #6b7280;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
