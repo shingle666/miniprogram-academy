@@ -1,339 +1,482 @@
-# Getting Started with Mini-Program Development
+# Environment Setup
 
-Welcome to the world of mini-program development! This guide will help you set up your development environment and create your first mini-program across different platforms.
+This guide will help you set up a complete mini program development environment, from tool installation to project creation.
 
-## 🎯 Choose Your Platform
+## 📋 Table of Contents
 
-Before diving into development, you need to decide which platform(s) you want to target. Each platform has its own ecosystem, user base, and strengths:
+- [Development Tools Installation](#development-tools-installation)
+- [Environment Configuration](#environment-configuration)
+- [Creating Your First Project](#creating-your-first-project)
+- [Developer Account Registration](#developer-account-registration)
+- [Common Issues](#common-issues)
 
-### Major Platforms Overview
+## 🛠️ Development Tools Installation
 
-| Platform | Users | Best For | Key Features |
-|----------|-------|----------|--------------|
-| **WeChat** | 1B+ | Social, E-commerce, Services | Mature ecosystem, rich APIs |
-| **Alipay** | 700M+ | Finance, Business, Government | Payment integration, B2B focus |
-| **Baidu** | 500M+ | Search, Information, AI | AI capabilities, search traffic |
-| **ByteDance** | 600M+ | Content, Entertainment | Algorithm recommendation |
-| **QQ** | 800M+ | Social, Gaming | Young demographics |
+### WeChat Developer Tools
 
-## 🛠️ Development Environment Setup
+WeChat Developer Tools is the official IDE for developing WeChat mini programs, providing code editing, debugging, preview, and upload functions.
 
-### Option 1: Platform-Specific Development
+#### Download and Installation
 
-#### WeChat Mini-Program
-1. **Download WeChat DevTools**
-   ```bash
-   # Visit: https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
-   ```
+1. Visit [WeChat Developer Tools Official Website](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
+2. Choose the version for your operating system:
+   - Windows 64-bit
+   - Windows 32-bit
+   - macOS
+   - Linux
 
-2. **Create New Project**
-   - Open WeChat DevTools
-   - Click "Create Project"
-   - Enter AppID (get from WeChat MP Admin)
-   - Choose project template
+3. Run the installer after download
+4. Follow the installation wizard to complete
 
-3. **Project Structure**
-   ```
-   my-wechat-miniprogram/
-   ├── app.js          # App logic
-   ├── app.json        # App configuration
-   ├── app.wxss        # Global styles
-   ├── pages/          # Page components
-   │   └── index/
-   │       ├── index.js
-   │       ├── index.json
-   │       ├── index.wxml
-   │       └── index.wxss
-   └── utils/          # Utility functions
-   ```
+#### First Launch
 
-#### Alipay Mini-Program
-1. **Download Alipay DevTools**
-   ```bash
-   # Visit: https://opendocs.alipay.com/mini/ide/download
-   ```
+1. Launch WeChat Developer Tools
+2. Scan QR code with WeChat to login
+3. Select "Mini Program" development mode
 
-2. **Key Differences from WeChat**
-   - Uses `.axml` instead of `.wxml`
-   - Uses `.acss` instead of `.wxss`
-   - Different API namespaces (`my.*` vs `wx.*`)
+### Code Editor
 
-### Option 2: Cross-Platform Development
+While WeChat Developer Tools has a built-in code editor, we recommend using a professional code editor for better development efficiency.
 
-#### Using Taro (React-based)
+#### Visual Studio Code
 
-1. **Install Taro CLI**
-   ```bash
-   npm install -g @tarojs/cli
-   ```
+VS Code is one of the most popular code editors with a rich plugin ecosystem.
 
-2. **Create New Project**
-   ```bash
-   taro init myApp
-   cd myApp
-   ```
+**Installation Steps:**
 
-3. **Install Dependencies**
-   ```bash
-   npm install
-   ```
+1. Visit [VS Code Official Website](https://code.visualstudio.com/)
+2. Download the version for your system
+3. Install and launch
 
-4. **Development Commands**
-   ```bash
-   # WeChat Mini-Program
-   npm run dev:weapp
-   
-   # Alipay Mini-Program
-   npm run dev:alipay
-   
-   # Baidu Smart Mini-Program
-   npm run dev:swan
-   
-   # ByteDance Mini-Program
-   npm run dev:tt
-   ```
+**Recommended Plugins:**
 
-#### Using uni-app (Vue-based)
-
-1. **Install HBuilderX** or use CLI
-   ```bash
-   npm install -g @vue/cli
-   vue create -p dcloudio/uni-preset-vue my-project
-   ```
-
-2. **Project Structure**
-   ```
-   my-uni-app/
-   ├── pages/          # Page components
-   ├── static/         # Static resources
-   ├── components/     # Custom components
-   ├── App.vue         # App entry
-   ├── main.js         # App initialization
-   ├── manifest.json   # App configuration
-   └── pages.json      # Page routing
-   ```
-
-3. **Development Commands**
-   ```bash
-   # WeChat Mini-Program
-   npm run dev:mp-weixin
-   
-   # Alipay Mini-Program
-   npm run dev:mp-alipay
-   
-   # Baidu Smart Mini-Program
-   npm run dev:mp-baidu
-   ```
-
-## 📱 Your First Mini-Program
-
-Let's create a simple "Hello World" mini-program that works across platforms.
-
-### Using Taro
-
-1. **Create Component**
-   ```jsx
-   // src/pages/index/index.jsx
-   import { Component } from 'react'
-   import { View, Text, Button } from '@tarojs/components'
-   import { showToast } from '@tarojs/taro'
-   import './index.scss'
-
-   export default class Index extends Component {
-     state = {
-       count: 0
-     }
-
-     handleClick = () => {
-       this.setState({
-         count: this.state.count + 1
-       })
-       showToast({
-         title: `Clicked ${this.state.count + 1} times!`,
-         icon: 'success'
-       })
-     }
-
-     render() {
-       return (
-         <View className='index'>
-           <Text className='title'>Hello MiniProgram!</Text>
-           <Text className='count'>Count: {this.state.count}</Text>
-           <Button onClick={this.handleClick}>Click Me</Button>
-         </View>
-       )
-     }
-   }
-   ```
-
-2. **Add Styles**
-   ```scss
-   // src/pages/index/index.scss
-   .index {
-     padding: 40px;
-     text-align: center;
-     
-     .title {
-       font-size: 36px;
-       color: #333;
-       margin-bottom: 20px;
-       display: block;
-     }
-     
-     .count {
-       font-size: 24px;
-       color: #666;
-       margin-bottom: 30px;
-       display: block;
-     }
-   }
-   ```
-
-### Using uni-app
-
-1. **Create Page**
-   ```vue
-   <!-- pages/index/index.vue -->
-   <template>
-     <view class="container">
-       <text class="title">Hello MiniProgram!</text>
-       <text class="count">Count: {{ count }}</text>
-       <button @click="handleClick">Click Me</button>
-     </view>
-   </template>
-
-   <script>
-   export default {
-     data() {
-       return {
-         count: 0
-       }
-     },
-     methods: {
-       handleClick() {
-         this.count++
-         uni.showToast({
-           title: `Clicked ${this.count} times!`,
-           icon: 'success'
-         })
-       }
-     }
-   }
-   </script>
-
-   <style>
-   .container {
-     padding: 40px;
-     text-align: center;
-   }
-   
-   .title {
-     font-size: 36px;
-     color: #333;
-     margin-bottom: 20px;
-     display: block;
-   }
-   
-   .count {
-     font-size: 24px;
-     color: #666;
-     margin-bottom: 30px;
-     display: block;
-   }
-   </style>
-   ```
-
-## 🚀 Build and Preview
-
-### Taro Project
 ```bash
-# Development mode
-npm run dev:weapp
-
-# Production build
-npm run build:weapp
+# Mini program development related plugins
+- minapp: Smart completion for mini program tags and attributes
+- wechat-snippet: WeChat mini program code assistant
+- wxapp-helper: Mini program development helper
+- Prettier: Code formatter
+- ESLint: Code linter
+- GitLens: Git enhancement tool
 ```
 
-### uni-app Project
-```bash
-# Development mode
-npm run dev:mp-weixin
+Plugin Installation:
+1. Open VS Code
+2. Press `Ctrl+Shift+X` (Windows/Linux) or `Cmd+Shift+X` (macOS)
+3. Search for plugin name and install
 
-# Production build
-npm run build:mp-weixin
+### Node.js Environment
+
+Node.js is server-side JavaScript, used for package management and build tools in mini program development.
+
+#### Install Node.js
+
+1. Visit [Node.js Official Website](https://nodejs.org/)
+2. Download LTS (Long Term Support) version
+3. Run the installer
+4. Verify installation:
+
+```bash
+# Check Node.js version
+node --version
+
+# Check npm version
+npm --version
 ```
 
-## 📋 Next Steps
+#### Configure npm
 
-Now that you have your first mini-program running, here's what to explore next:
+```bash
+# Set npm registry mirror (optional, improves download speed)
+npm config set registry https://registry.npmmirror.com
 
-### 1. **Learn Platform APIs**
-- **Navigation**: Page routing and parameter passing
-- **Storage**: Local data persistence
-- **Network**: HTTP requests and WebSocket
-- **Media**: Camera, audio, video capabilities
-- **Location**: GPS and map integration
+# View current configuration
+npm config list
+```
 
-### 2. **UI Components**
-- **Basic Components**: View, Text, Image, Button
-- **Form Components**: Input, Picker, Switch, Slider
-- **Navigation**: Navigator, TabBar
-- **Media**: Audio, Video, Camera
-- **Custom Components**: Reusable UI elements
+## ⚙️ Environment Configuration
 
-### 3. **Advanced Features**
-- **Cloud Functions**: Serverless backend
-- **Real-time Database**: Live data synchronization
-- **Payment Integration**: In-app purchases
-- **Social Features**: Sharing, user authentication
-- **Performance Optimization**: Code splitting, lazy loading
+### Git Version Control
 
-### 4. **Testing and Debugging**
-- **DevTools**: Debugging, performance analysis
-- **Real Device Testing**: iOS and Android testing
-- **Automated Testing**: Unit and integration tests
-- **Performance Monitoring**: Runtime performance tracking
+Git is an essential version control tool for code management and team collaboration.
 
-## 🔧 Development Tools
+#### Install Git
 
-### Essential Tools
-- **IDE**: Platform-specific development tools
-- **Version Control**: Git for source code management
-- **Package Manager**: npm/yarn for dependencies
-- **Linting**: ESLint for code quality
-- **Formatting**: Prettier for code formatting
+**Windows:**
+1. Visit [Git Official Website](https://git-scm.com/)
+2. Download Windows version
+3. Run installer, keep default settings
 
-### Recommended Extensions
-- **Syntax Highlighting**: Platform-specific language support
-- **Auto-completion**: IntelliSense for APIs
-- **Debugging**: Breakpoints and variable inspection
-- **Preview**: Real-time preview in simulator
+**macOS:**
+```bash
+# Install using Homebrew
+brew install git
 
-## 🤝 Community Resources
+# Or download official installer
+```
 
-- **Official Documentation**: Platform-specific guides
-- **GitHub Repositories**: Open-source examples
-- **Developer Forums**: Community Q&A
-- **Video Tutorials**: Step-by-step learning
-- **Conferences**: Industry events and talks
+**Linux:**
+```bash
+# Ubuntu/Debian
+sudo apt-get install git
 
-## 📞 Getting Help
+# CentOS/RHEL
+sudo yum install git
+```
 
-If you run into issues:
+#### Configure Git
 
-1. **Check Documentation**: Platform-specific docs
-2. **Search Community**: Existing solutions
-3. **Ask Questions**: Developer forums
-4. **Report Bugs**: GitHub issues
-5. **Contact Support**: Direct platform support
+```bash
+# Set username and email
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# Set default editor
+git config --global core.editor "code --wait"
+
+# View configuration
+git config --list
+```
+
+### Development Environment Optimization
+
+#### Terminal Tools
+
+**Windows:**
+- Windows Terminal (recommended)
+- PowerShell
+- Git Bash
+
+**macOS/Linux:**
+- iTerm2 (macOS recommended)
+- System default terminal
+
+#### Shell Configuration
+
+```bash
+# Install Oh My Zsh (macOS/Linux)
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Configure aliases
+echo 'alias ll="ls -la"' >> ~/.zshrc
+echo 'alias gs="git status"' >> ~/.zshrc
+echo 'alias ga="git add"' >> ~/.zshrc
+echo 'alias gc="git commit"' >> ~/.zshrc
+
+# Reload configuration
+source ~/.zshrc
+```
+
+## 🚀 Creating Your First Project
+
+### Using WeChat Developer Tools
+
+1. **Launch WeChat Developer Tools**
+2. **Click "+" to create new project**
+3. **Fill in project information:**
+   - Project Name: `my-first-miniprogram`
+   - Directory: Choose an empty folder
+   - AppID: Use test AppID or registered AppID
+   - Development Mode: Mini Program
+   - Backend Service: Don't use cloud service
+
+4. **Select template:**
+   - JavaScript Basic Template
+   - TypeScript Template
+   - Cloud Development Template
+
+5. **Click "Create" to finish**
+
+### Project Structure Explanation
+
+After creation, you'll see this directory structure:
+
+```
+my-first-miniprogram/
+├── pages/              # Pages folder
+│   ├── index/         # Home page
+│   │   ├── index.js   # Page logic
+│   │   ├── index.json # Page configuration
+│   │   ├── index.wxml # Page structure
+│   │   └── index.wxss # Page styles
+│   └── logs/          # Logs page
+├── utils/             # Utility functions
+│   └── util.js
+├── app.js            # App logic
+├── app.json          # App configuration
+├── app.wxss          # App styles
+├── project.config.json # Project configuration
+└── sitemap.json      # Sitemap
+```
+
+### Running the Project
+
+1. **Preview in WeChat Developer Tools**
+   - Project compiles automatically after creation
+   - View effects in simulator
+   - Use real device debugging for testing
+
+2. **Basic Operations:**
+   - `Ctrl+S`: Save and auto-compile
+   - `Ctrl+Shift+S`: Save all files
+   - `F5`: Refresh
+   - `F12`: Open debug tools
+
+## 👤 Developer Account Registration
+
+### WeChat Mini Program Account
+
+1. **Visit Registration Page**
+   - Open [WeChat Public Platform](https://mp.weixin.qq.com/)
+   - Click "Register Now"
+
+2. **Select Account Type**
+   - Choose "Mini Program"
+   - Fill in email and password
+   - Email activation
+
+3. **Information Registration**
+   - Entity Type: Individual/Enterprise/Government/Other Organization
+   - Fill in entity information
+   - Administrator verification
+
+4. **Get AppID**
+   - Login to mini program backend
+   - View AppID in "Development" -> "Development Settings"
+
+### Other Platform Accounts
+
+#### Alipay Mini Program
+
+1. Visit [Alipay Open Platform](https://open.alipay.com/)
+2. Register developer account
+3. Create mini program application
+4. Get AppID
+
+#### Baidu Smart Mini Program
+
+1. Visit [Baidu Smart Mini Program Platform](https://smartprogram.baidu.com/)
+2. Register developer account
+3. Create smart mini program
+4. Get App Key
+
+## 🔧 Development Tools Configuration
+
+### WeChat Developer Tools Settings
+
+#### Editor Settings
+
+1. **Open Settings**: `Settings` -> `Editor Settings`
+2. **Recommended Configuration:**
+
+```json
+{
+  "editor.fontSize": 14,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": true,
+  "editor.formatOnSave": true
+}
+```
+
+#### Project Settings
+
+1. **Open Project Settings**: `Settings` -> `Project Settings`
+2. **Recommended Configuration:**
+   - Enable ES6 to ES5 conversion
+   - Enable automatic style completion on upload
+   - Enable code compression on upload
+   - Enable code protection on upload
+
+### VS Code Configuration
+
+#### Workspace Settings
+
+Create `.vscode/settings.json` in project root:
+
+```json
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.associations": {
+    "*.wxml": "html",
+    "*.wxss": "css",
+    "*.wxs": "javascript"
+  },
+  "emmet.includeLanguages": {
+    "wxml": "html"
+  }
+}
+```
+
+#### Code Snippets
+
+Create `.vscode/snippets.json`:
+
+```json
+{
+  "Page": {
+    "prefix": "page",
+    "body": [
+      "Page({",
+      "  data: {",
+      "    $1",
+      "  },",
+      "",
+      "  onLoad: function (options) {",
+      "    $2",
+      "  }",
+      "})"
+    ],
+    "description": "Mini program page template"
+  },
+  "Component": {
+    "prefix": "component",
+    "body": [
+      "Component({",
+      "  properties: {",
+      "    $1",
+      "  },",
+      "",
+      "  data: {",
+      "    $2",
+      "  },",
+      "",
+      "  methods: {",
+      "    $3",
+      "  }",
+      "})"
+    ],
+    "description": "Mini program component template"
+  }
+}
+```
+
+## 🔍 Environment Verification
+
+### Verification Checklist
+
+Create a simple test project to verify environment setup:
+
+```javascript
+// app.js
+App({
+  onLaunch: function () {
+    console.log('Mini program launched successfully!')
+    
+    // Verify basic API
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log('System info:', res)
+      }
+    })
+  }
+})
+```
+
+```json
+// app.json
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Environment Test",
+    "navigationBarTextStyle": "black"
+  }
+}
+```
+
+```xml
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <text class="title">Environment Setup Successful!</text>
+  <button bindtap="testAPI">Test API</button>
+</view>
+```
+
+```javascript
+// pages/index/index.js
+Page({
+  data: {
+    message: 'Hello World!'
+  },
+  
+  testAPI: function() {
+    wx.showToast({
+      title: 'API call successful',
+      icon: 'success'
+    })
+  }
+})
+```
+
+### Testing Steps
+
+1. **Create test project**
+2. **Copy above code**
+3. **Run in simulator**
+4. **Test on real device**
+5. **Verify all functions work**
+
+## ❓ Common Issues
+
+### Issue 1: Developer Tools Won't Start
+**Solution:**
+- Check if WeChat is logged in
+- Restart WeChat Developer Tools
+- Clear cache and restart
+
+### Issue 2: Project Creation Failed
+**Solution:**
+- Ensure directory is empty
+- Check AppID format
+- Verify network connection
+
+### Issue 3: Code Not Auto-completing
+**Solution:**
+- Install recommended VS Code plugins
+- Check file associations
+- Restart editor
+
+### Issue 4: Simulator Display Issues
+**Solution:**
+- Check simulator settings
+- Try different device models
+- Update developer tools
+
+### Issue 5: Real Device Preview Not Working
+**Solution:**
+- Ensure phone and computer on same network
+- Check firewall settings
+- Restart developer tools
+
+## 🎯 Next Steps
+
+After environment setup:
+
+1. **Learn Basic Concepts**: Understand mini program architecture
+2. **Create First App**: Follow the first app tutorial
+3. **Explore Components**: Learn about built-in components
+4. **Study APIs**: Familiarize with mini program APIs
+5. **Join Community**: Participate in developer forums
+6. **Read Documentation**: Study official documentation
+
+### Useful Resources
+
+- [Official Documentation](https://developers.weixin.qq.com/miniprogram/dev/framework/)
+- [Component Reference](https://developers.weixin.qq.com/miniprogram/dev/component/)
+- [API Reference](https://developers.weixin.qq.com/miniprogram/dev/api/)
+- [Developer Community](https://developers.weixin.qq.com/community/minihome)
 
 ---
 
-Ready to build something amazing? Choose your platform and framework, then start coding! 🚀
-
-## 📚 What's Next?
-
-- [Framework Comparison](/docs/en/frameworks) - Choose the right tool
-- [Platform Guides](/docs/en/platforms) - Platform-specific development
-- [Best Practices](/docs/en/best-practices) - Industry standards
-- [Examples](/showcase) - Real-world implementations
+Your development environment is now ready! You can start building amazing mini programs with this solid foundation.

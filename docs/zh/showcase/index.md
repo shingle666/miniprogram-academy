@@ -115,9 +115,9 @@
 - **[电商购物](/showcase/ecommerce/)** - 购物、支付、物流相关案例
 - **[工具实用](/showcase/tools/)** - 生活工具、效率应用
 - **[教育学习](/showcase/education/)** - 在线教育、知识分享
-- **[社交娱乐](/showcase/social/)** - 社交、娱乐、游戏
-- **[医疗健康](/showcase/healthcare/)** - 健康管理、医疗服务
-- **[金融理财](/showcase/finance/)** - 理财、保险、银行服务
+- **[游戏娱乐](/showcase/games/)** - 游戏、娱乐应用
+- **[商务办公](/showcase/business/)** - 商务管理、办公工具
+- **[生活服务](/showcase/lifestyle/)** - 生活服务、便民应用
 
 ### 技术特色
 - **云开发案例** - 使用微信云开发的项目

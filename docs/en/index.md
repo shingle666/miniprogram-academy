@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 🚀 Get Started
-      link: /docs/en/
+      link: /en/getting-started
     - theme: alt
       text: 🎯 View Examples
       link: /en/showcase/
@@ -74,7 +74,7 @@ features:
       <span>1B+ Users</span>
       <span>Social & E-commerce</span>
     </div>
-    <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/" target="_blank" class="platform-link">Documentation →</a>
+    <a href="/en/platforms/wechat" class="platform-link">Learn More →</a>
   </div>
   
   <div class="platform-card alipay">
@@ -85,7 +85,7 @@ features:
       <span>700M+ Users</span>
       <span>Finance & Business</span>
     </div>
-    <a href="https://opendocs.alipay.com/mini/api" target="_blank" class="platform-link">Documentation →</a>
+    <a href="/en/platforms/alipay" class="platform-link">Learn More →</a>
   </div>
   
   <div class="platform-card baidu">
@@ -96,7 +96,7 @@ features:
       <span>500M+ Users</span>
       <span>Search & AI</span>
     </div>
-    <a href="https://smartprogram.baidu.com/docs/develop/tutorial/intro/" target="_blank" class="platform-link">Documentation →</a>
+    <a href="/en/platforms/baidu" class="platform-link">Learn More →</a>
   </div>
   
   <div class="platform-card douyin">
@@ -107,12 +107,18 @@ features:
       <span>600M+ Users</span>
       <span>Content & Entertainment</span>
     </div>
-    <a href="https://developer.open-douyin.com/docs/resource/zh-CN/mini-app/introduction/usage-guide" target="_blank" class="platform-link">Documentation →</a>
+    <a href="/en/platforms/bytedance" class="platform-link">Learn More →</a>
   </div>
 </div>
 
 <div class="more-platforms">
-  <p>Also supports <strong>QQ Mini-Program</strong>, <strong>Kuaishou Mini-Program</strong>, <strong>Feishu Mini-Program</strong>, <strong>JD Mini-Program</strong>, <strong>Xiaohongshu Mini-Program</strong> and more</p>
+  <p>Also supports 
+    <a href="/en/platforms/qq"><strong>QQ Mini-Program</strong></a>, 
+    <a href="/en/platforms/kuaishou"><strong>Kuaishou Mini-Program</strong></a>, 
+    <strong>Feishu Mini-Program</strong>, 
+    <strong>JD Mini-Program</strong>, 
+    <strong>Xiaohongshu Mini-Program</strong> and more
+  </p>
 </div>
 
 ## 🛠️ Mainstream Development Frameworks
@@ -125,25 +131,25 @@ features:
         <div class="framework-logo">🚀</div>
         <h4>Taro</h4>
         <p>JD open-source, React syntax</p>
-        <a href="https://taro.zone/" target="_blank">Official Site</a>
+        <a href="/en/frameworks/taro">Learn More</a>
       </div>
       <div class="framework-card">
         <div class="framework-logo">⚡</div>
         <h4>uni-app</h4>
         <p>DCloud development, Vue syntax</p>
-        <a href="https://uniapp.dcloud.net.cn/" target="_blank">Official Site</a>
+        <a href="/en/frameworks/uni-app">Learn More</a>
       </div>
       <div class="framework-card">
         <div class="framework-logo">🔥</div>
         <h4>Remax</h4>
         <p>Alibaba open-source, React development</p>
-        <a href="https://github.com/remaxjs/remax" target="_blank">GitHub</a>
+        <a href="/en/frameworks/remax">Learn More</a>
       </div>
       <div class="framework-card">
         <div class="framework-logo">🌟</div>
-        <h4>Kbone</h4>
-        <p>WeChat official, Web technologies</p>
-        <a href="https://github.com/Tencent/kbone" target="_blank">GitHub</a>
+        <h4>Chameleon</h4>
+        <p>Didi open-source, cross-platform framework</p>
+        <a href="/en/frameworks/chameleon">Learn More</a>
       </div>
     </div>
   </div>
