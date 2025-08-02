@@ -197,8 +197,8 @@ export default defineConfig({
           }
         },
         footer: {
-          message: 'Built with VitePress',
-          copyright: 'Copyright © 2024 MiniProgram Academy (mp.ac.cn)'
+          message: '小程序研究院',
+          copyright: 'Copyright © 2025 MiniProgram Academy (mp.ac.cn)'
         }
       }
     }

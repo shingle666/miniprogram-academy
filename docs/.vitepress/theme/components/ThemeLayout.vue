@@ -6,7 +6,7 @@
       </template>
       
       <template #nav-bar-content-before>
-        <div class="language-switch">
+        <!-- <div class="language-switch">
           <el-dropdown trigger="click" @command="switchLanguage">
             <span class="language-dropdown-link">
               {{ currentLanguageLabel }}
@@ -21,7 +21,7 @@
               </el-dropdown-menu>
             </template>
           </el-dropdown>
-        </div>
+        </div> -->
       </template>
       
       <template #nav-bar-content-after>
