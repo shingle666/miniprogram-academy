@@ -205,8 +205,8 @@ export default defineConfig({
 
     // 页脚配置
     footer: {
-      message: '基于 MIT 许可发布',
-      copyright: 'Copyright © 2024 小程序研究院'
+      message: '连接多端，赋能创新',
+      copyright: 'Copyright © 2025 小程序研究院'
     },
 
     // 搜索配置
@@ -235,10 +235,10 @@ export default defineConfig({
     },
 
     // 编辑链接
-    editLink: {
+    /* editLink: {
       pattern: 'https://github.com/shingle666/miniprogram-academy/edit/main/docs/:path',
       text: '在 GitHub 上编辑此页面'
-    },
+    }, */
 
     // 最后更新时间
     lastUpdated: {
