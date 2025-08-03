@@ -32,6 +32,7 @@
     "serve": "vitepress serve docs"
   },
   "devDependencies": {
+    "sitemap": "^8.0.0",
     "vitepress": "^1.6.3",
     "vue": "^3.5.18"
   },

@@ -417,5 +417,40 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true
+  },
+  
+  // Sitemap 配置
+  sitemap: {
+    hostname: 'https://mp.ac.cn',
+    transformItems: (items) => {
+      // 自定义处理 sitemap 项目
+      return items.map(item => {
+        // 为中文页面添加更高的优先级
+        if (item.url.includes('/zh/')) {
+          return {
+            ...item,
+            changefreq: 'weekly',
+            priority: 0.8
+          }
+        }
+        // 为英文页面添加较低的优先级
+        if (item.url.includes('/en/')) {
+          return {
+            ...item,
+            changefreq: 'monthly',
+            priority: 0.5
+          }
+        }
+        // 为首页添加最高优先级
+        if (item.url === '/' || item.url === '/zh/' || item.url === '/en/') {
+          return {
+            ...item,
+            changefreq: 'daily',
+            priority: 1.0
+          }
+        }
+        return item
+      })
+    }
   }
 })
