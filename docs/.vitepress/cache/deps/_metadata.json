@@ -1,73 +1,67 @@
 {
-  "hash": "9fa4b2f2",
+  "hash": "4ed4e5fe",
   "configHash": "aa27515e",
-  "lockfileHash": "d079e75f",
-  "browserHash": "0cc2f3a6",
+  "lockfileHash": "03fb0e37",
+  "browserHash": "b964ac6d",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "3a937b30",
+      "fileHash": "3b8addb8",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "ad6b94d2",
+      "fileHash": "a6ab97f7",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/vitepress/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "f0f3e17b",
+      "fileHash": "c3254cd7",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../../node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "46d30816",
+      "fileHash": "c246d374",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
       "src": "../../../../node_modules/mark.js/src/vanilla.js",
       "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "af9c749e",
+      "fileHash": "31f6a0bb",
       "needsInterop": false
     },
     "vitepress > minisearch": {
       "src": "../../../../node_modules/minisearch/dist/es/index.js",
       "file": "vitepress___minisearch.js",
-      "fileHash": "bd3a0b2f",
+      "fileHash": "75a5bcd2",
       "needsInterop": false
     },
     "element-plus": {
       "src": "../../../../node_modules/element-plus/es/index.mjs",
       "file": "element-plus.js",
-      "fileHash": "20e00dd2",
+      "fileHash": "13a3aa5a",
       "needsInterop": false
     },
     "vuex": {
       "src": "../../../../node_modules/vuex/dist/vuex.esm-bundler.js",
       "file": "vuex.js",
-      "fileHash": "d3e68735",
+      "fileHash": "90afed23",
       "needsInterop": false
     },
     "axios": {
       "src": "../../../../node_modules/axios/index.js",
       "file": "axios.js",
-      "fileHash": "cce7ff87",
+      "fileHash": "c00be713",
       "needsInterop": false
     },
     "@element-plus/icons-vue": {
       "src": "../../../../node_modules/@element-plus/icons-vue/dist/index.js",
       "file": "@element-plus_icons-vue.js",
-      "fileHash": "f68adf89",
-      "needsInterop": false
-    },
-    "vue-router": {
-      "src": "../../../../node_modules/vue-router/dist/vue-router.mjs",
-      "file": "vue-router.js",
-      "fileHash": "09fa7bb2",
+      "fileHash": "e11a2a92",
       "needsInterop": false
     }
   },
