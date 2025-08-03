@@ -1,477 +1,869 @@
-# 开发环境
+# Development Environment
 
-搭建合适的开发环境是小程序开发的第一步。本指南将帮助你设置和配置小程序开发所需的工具和环境。
+Setting up an efficient development environment is crucial for productive mini program development. This guide covers essential tools, configurations, and best practices.
 
-## 开发者工具
+## Development Tools
 
-### 微信开发者工具
+### WeChat Developer Tools
 
-微信小程序开发需要使用官方提供的微信开发者工具。
+**Installation and Setup**
 
-#### 安装步骤
+1. **Download and Install**
+   - Download from [WeChat Developer Tools](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
+   - Install the appropriate version for your operating system
+   - Sign in with your WeChat account
 
-1. 访问[微信开发者工具下载页面](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
-2. 根据你的操作系统（Windows、macOS 或 Linux）下载相应版本
-3. 按照安装向导完成安装
+2. **Basic Configuration**
 
-#### 基本配置
-
-安装完成后，需要进行以下配置：
-
-1. **登录微信账号**：使用开发者微信账号扫码登录
-2. **创建/导入项目**：
-   - 项目名称：为你的项目取一个名称
-   - 目录：选择项目存储位置
-   - AppID：填入你的小程序 AppID（可以使用测试号）
-   - 开发模式：选择小程序开发
-   - 语言：JavaScript 或 TypeScript
-
-#### 开发者工具功能
-
-微信开发者工具提供了多种功能来辅助开发：
-
-- **编辑器**：内置代码编辑器，支持语法高亮和自动补全
-- **调试器**：包含 console、network、storage 等调试面板
-- **模拟器**：模拟小程序在手机上的运行效果
-- **项目管理**：管理多个小程序项目
-- **版本管理**：上传和管理小程序版本
-- **性能监控**：分析小程序性能指标
-
-### 支付宝开发者工具
-
-如果你开发支付宝小程序，需要使用支付宝开发者工具。
-
-#### 安装步骤
-
-1. 访问[支付宝开发者工具下载页面](https://opendocs.alipay.com/mini/ide/download)
-2. 下载适合你操作系统的版本
-3. 按照安装向导完成安装
-
-#### 基本配置
-
-安装完成后的配置步骤：
-
-1. **登录支付宝账号**：使用开发者支付宝账号登录
-2. **创建/导入项目**：
-   - 项目名称：为你的项目取一个名称
-   - 目录：选择项目存储位置
-   - AppID：填入你的小程序 AppID
-
-### 其他平台开发者工具
-
-其他小程序平台也有各自的开发者工具：
-
-- **百度智能小程序开发者工具**：[下载链接](https://smartprogram.baidu.com/docs/develop/devtools/history/)
-- **字节跳动小程序开发者工具**：[下载链接](https://microapp.bytedance.com/docs/zh-CN/mini-app/develop/developer-instrument/download/developer-instrument-update-and-download/)
-- **QQ 小程序开发者工具**：[下载链接](https://q.qq.com/wiki/tools/devtool/)
-- **快手小程序开发者工具**：[下载链接](https://mp.kuaishou.com/docs/develop/developerTools/downloadPath.html)
-
-## 编辑器和 IDE
-
-虽然各平台的开发者工具都内置了编辑器，但许多开发者更喜欢使用专业的编辑器或 IDE 进行开发。
-
-### Visual Studio Code
-
-VS Code 是一个流行的轻量级代码编辑器，非常适合小程序开发。
-
-#### 安装步骤
-
-1. 访问 [VS Code 官网](https://code.visualstudio.com/)
-2. 下载并安装适合你操作系统的版本
-
-#### 推荐扩展
-
-为小程序开发配置 VS Code：
-
-- **Miniprogram API**：提供微信小程序 API 的代码补全
-- **WXML - Language Service**：WXML 语法高亮和自动补全
-- **WXSS - Language Service**：WXSS 语法高亮
-- **wechat-snippet**：微信小程序代码片段
-- **ESLint**：代码质量检查
-- **Prettier**：代码格式化
-- **Path Intellisense**：路径自动补全
-
-#### 配置示例
-
-```json
-// settings.json
+```javascript
+// project.config.json - Project configuration
 {
-  "editor.tabSize": 2,
-  "editor.formatOnSave": true,
-  "prettier.singleQuote": true,
-  "prettier.semi": false,
-  "eslint.validate": ["javascript", "wxml"],
-  "files.associations": {
-    "*.wxml": "html",
-    "*.wxss": "css"
+  "description": "Mini Program Project",
+  "packOptions": {
+    "ignore": [
+      {
+        "type": "file",
+        "value": ".eslintrc.js"
+      },
+      {
+        "type": "folder",
+        "value": "node_modules"
+      }
+    ]
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "useIsolateContext": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "disableUseStrict": false,
+    "minifyWXML": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.19.4",
+  "appid": "your-app-id",
+  "projectname": "mini-program",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "scripts": {},
+  "staticServerOptions": {
+    "baseURL": "",
+    "servePath": ""
+  },
+  "isGameTourist": false,
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": []
+    }
   }
 }
 ```
 
-### WebStorm
+3. **Useful Features**
+   - **Simulator**: Test on different device sizes and orientations
+   - **Debugger**: Debug JavaScript, inspect elements, monitor network
+   - **Performance**: Analyze performance metrics and memory usage
+   - **Audits**: Automated code quality and performance checks
 
-WebStorm 是一个功能强大的 JavaScript IDE，也可以用于小程序开发。
+### Code Editor Setup
 
-#### 安装步骤
+**VS Code Configuration**
 
-1. 访问 [WebStorm 官网](https://www.jetbrains.com/webstorm/)
-2. 下载并安装适合你操作系统的版本
+1. **Essential Extensions**
 
-#### 配置小程序开发
+```json
+// .vscode/extensions.json
+{
+  "recommendations": [
+    "ms-vscode.vscode-wxml",
+    "qiu8310.minapp-vscode",
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "ms-vscode.vscode-json"
+  ]
+}
+```
 
-1. 安装 "WeChat Mini Program Support" 插件
-2. 配置文件关联：
-   - WXML 文件关联为 HTML
-   - WXSS 文件关联为 CSS
-   - JSON 文件使用默认关联
+2. **Workspace Settings**
 
-## Node.js 环境
+```json
+// .vscode/settings.json
+{
+  "files.associations": {
+    "*.wxml": "html",
+    "*.wxss": "css",
+    "*.wxs": "javascript"
+  },
+  "emmet.includeLanguages": {
+    "wxml": "html"
+  },
+  "minapp-vscode.disableAutoConfig": true,
+  "minapp-vscode.wxmlFormatter": "prettier",
+  "minapp-vscode.prettier": {
+    "parser": "html"
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/miniprogram_npm": true
+  }
+}
+```
 
-Node.js 是小程序开发的基础环境，特别是当你使用构建工具或框架时。
+3. **Code Snippets**
 
-### 安装 Node.js
+```json
+// .vscode/snippets.json
+{
+  "Page Template": {
+    "prefix": "page",
+    "body": [
+      "Page({",
+      "  data: {",
+      "    $1",
+      "  },",
+      "",
+      "  onLoad(options) {",
+      "    $2",
+      "  },",
+      "",
+      "  onReady() {",
+      "    $3",
+      "  },",
+      "",
+      "  onShow() {",
+      "    $4",
+      "  },",
+      "",
+      "  onHide() {",
+      "    $5",
+      "  },",
+      "",
+      "  onUnload() {",
+      "    $6",
+      "  }",
+      "})"
+    ],
+    "description": "Create a new page"
+  },
+  "Component Template": {
+    "prefix": "component",
+    "body": [
+      "Component({",
+      "  properties: {",
+      "    $1",
+      "  },",
+      "",
+      "  data: {",
+      "    $2",
+      "  },",
+      "",
+      "  methods: {",
+      "    $3",
+      "  },",
+      "",
+      "  lifetimes: {",
+      "    attached() {",
+      "      $4",
+      "    },",
+      "",
+      "    detached() {",
+      "      $5",
+      "    }",
+      "  }",
+      "})"
+    ],
+    "description": "Create a new component"
+  }
+}
+```
 
-#### 使用官方安装包
+## Build Tools and Workflow
 
-1. 访问 [Node.js 官网](https://nodejs.org/)
-2. 下载并安装 LTS（长期支持）版本
+### Package Management
 
-#### 使用 NVM（推荐）
+**npm Configuration**
 
-NVM（Node Version Manager）可以管理多个 Node.js 版本：
+```json
+// package.json
+{
+  "name": "mini-program",
+  "version": "1.0.0",
+  "description": "Mini Program Project",
+  "main": "app.js",
+  "scripts": {
+    "dev": "npm run build:npm",
+    "build": "npm run build:npm && npm run build:prod",
+    "build:npm": "npm install --production=false",
+    "build:prod": "node scripts/build.js",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "format": "prettier --write \"**/*.{js,json,wxml,wxss}\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "@vant/weapp": "^1.10.4",
+    "dayjs": "^1.11.7",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "eslint": "^8.36.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.5.0",
+    "prettier": "^2.8.4"
+  }
+}
+```
 
-**Linux/macOS**：
+### Code Quality Tools
+
+**ESLint Configuration**
+
+```javascript
+// .eslintrc.js
+module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+    node: true
+  },
+  extends: [
+    'standard'
+  ],
+  globals: {
+    wx: 'readonly',
+    App: 'readonly',
+    Page: 'readonly',
+    Component: 'readonly',
+    Behavior: 'readonly',
+    getApp: 'readonly',
+    getCurrentPages: 'readonly'
+  },
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module'
+  },
+  rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'space-before-function-paren': ['error', 'never'],
+    'comma-dangle': ['error', 'never']
+  }
+}
+```
+
+**Prettier Configuration**
+
+```json
+// .prettierrc
+{
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "tabWidth": 2,
+  "useTabs": false,
+  "printWidth": 100,
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "endOfLine": "lf"
+}
+```
+
+**Git Hooks with Husky**
+
+```json
+// package.json (additional scripts)
+{
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,wxml,wxss}": [
+      "prettier --write"
+    ]
+  }
+}
+```
+
 ```bash
-# 安装 NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+# .husky/pre-commit
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-# 安装 Node.js
-nvm install 16
-nvm use 16
+npx lint-staged
 ```
 
-**Windows**：
-使用 [nvm-windows](https://github.com/coreybutler/nvm-windows)
-
-### 包管理工具
-
-#### npm
-
-npm 是 Node.js 默认的包管理工具：
-
-```bash
-# 初始化项目
-npm init
-
-# 安装依赖
-npm install packageName
-
-# 安装开发依赖
-npm install packageName --save-dev
-
-# 全局安装
-npm install packageName -g
-```
-
-#### Yarn
-
-Yarn 是另一个流行的包管理工具：
-
-```bash
-# 安装 Yarn
-npm install -g yarn
-
-# 初始化项目
-yarn init
-
-# 安装依赖
-yarn add packageName
-
-# 安装开发依赖
-yarn add packageName --dev
-
-# 全局安装
-yarn global add packageName
-```
-
-#### pnpm
-
-pnpm 是一个快速、节省磁盘空间的包管理工具：
-
-```bash
-# 安装 pnpm
-npm install -g pnpm
-
-# 初始化项目
-pnpm init
-
-# 安装依赖
-pnpm add packageName
-
-# 安装开发依赖
-pnpm add packageName -D
-
-# 全局安装
-pnpm add -g packageName
-```
-
-## 跨平台开发框架
-
-使用跨平台开发框架可以提高开发效率，实现一次开发，多端部署。
-
-### Taro
-
-Taro 是一个开放式跨端跨框架解决方案。
-
-#### 安装和使用
-
-```bash
-# 安装 Taro CLI
-npm install -g @tarojs/cli
-
-# 创建项目
-taro init myApp
-
-# 开发微信小程序
-npm run dev:weapp
-
-# 开发支付宝小程序
-npm run dev:alipay
-
-# 构建微信小程序
-npm run build:weapp
-```
-
-### uni-app
-
-uni-app 是一个使用 Vue.js 开发所有前端应用的框架。
-
-#### 安装和使用
-
-```bash
-# 安装 Vue CLI
-npm install -g @vue/cli
-
-# 安装 uni-app CLI
-npm install -g @dcloudio/vue-cli-plugin-uni
-
-# 创建项目
-vue create -p dcloudio/uni-preset-vue myApp
-
-# 运行项目
-npm run dev:mp-weixin
-```
-
-### Remax
-
-Remax 是使用 React 开发小程序的框架。
-
-#### 安装和使用
-
-```bash
-# 创建项目
-npx create-remax-app myApp
-
-# 开发微信小程序
-npm run dev wechat
-
-# 构建微信小程序
-npm run build wechat
-```
-
-## 版本控制
-
-使用版本控制系统对小程序项目进行管理是良好的开发实践。
-
-### Git
-
-Git 是最流行的版本控制系统。
-
-#### 安装 Git
-
-- **Windows**：下载并安装 [Git for Windows](https://git-scm.com/download/win)
-- **macOS**：使用 Homebrew 安装 `brew install git`
-- **Linux**：使用包管理器安装，如 `apt install git`
-
-#### 基本配置
-
-```bash
-# 设置用户名和邮箱
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-
-# 初始化仓库
-git init
-
-# 添加文件
-git add .
-
-# 提交更改
-git commit -m "Initial commit"
-```
-
-#### .gitignore 文件
-
-为小程序项目创建适当的 .gitignore 文件：
-
-```
-# 依赖
-node_modules/
-miniprogram_npm/
-
-# 构建输出
-dist/
-
-# 开发者工具配置
-project.config.json
-
-# 编辑器配置
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# 系统文件
-.DS_Store
-Thumbs.db
-
-# 日志
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-```
-
-### 代码托管平台
-
-选择一个代码托管平台来存储和协作开发你的小程序项目：
-
-- **GitHub**：最流行的代码托管平台
-- **GitLab**：提供完整的 DevOps 工具链
-- **Bitbucket**：适合小团队，与 Atlassian 工具集成
-- **Gitee**：中国本地化的代码托管平台
-
-## 持续集成/持续部署 (CI/CD)
-
-为小程序项目设置 CI/CD 可以自动化构建、测试和部署过程。
-
-### GitHub Actions
-
-使用 GitHub Actions 为小程序设置 CI/CD 流程：
-
-```yaml
-# .github/workflows/build.yml
-name: Build Mini Program
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
+### Build Scripts
+
+**Custom Build Script**
+
+```javascript
+// scripts/build.js
+const fs = require('fs')
+const path = require('path')
+const { execSync } = require('child_process')
+
+class BuildTool {
+  constructor() {
+    this.rootDir = process.cwd()
+    this.distDir = path.join(this.rootDir, 'dist')
+  }
+
+  // Clean dist directory
+  clean() {
+    console.log('🧹 Cleaning dist directory...')
+    if (fs.existsSync(this.distDir)) {
+      fs.rmSync(this.distDir, { recursive: true })
+    }
+    fs.mkdirSync(this.distDir, { recursive: true })
+  }
+
+  // Copy source files
+  copyFiles() {
+    console.log('📁 Copying source files...')
+    const filesToCopy = [
+      'app.js',
+      'app.json',
+      'app.wxss',
+      'sitemap.json',
+      'pages',
+      'components',
+      'utils',
+      'images',
+      'miniprogram_npm'
+    ]
+
+    filesToCopy.forEach(file => {
+      const srcPath = path.join(this.rootDir, file)
+      const destPath = path.join(this.distDir, file)
+
+      if (fs.existsSync(srcPath)) {
+        this.copyRecursive(srcPath, destPath)
+      }
+    })
+  }
+
+  copyRecursive(src, dest) {
+    const stat = fs.statSync(src)
     
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '16.x'
+    if (stat.isDirectory()) {
+      fs.mkdirSync(dest, { recursive: true })
+      const files = fs.readdirSync(src)
+      
+      files.forEach(file => {
+        this.copyRecursive(
+          path.join(src, file),
+          path.join(dest, file)
+        )
+      })
+    } else {
+      fs.copyFileSync(src, dest)
+    }
+  }
+
+  // Minify files
+  minify() {
+    console.log('🗜️  Minifying files...')
+    // Add minification logic here
+    // You can use tools like UglifyJS, CleanCSS, etc.
+  }
+
+  // Generate build info
+  generateBuildInfo() {
+    console.log('📝 Generating build info...')
+    const buildInfo = {
+      version: require('../package.json').version,
+      buildTime: new Date().toISOString(),
+      gitCommit: this.getGitCommit(),
+      environment: process.env.NODE_ENV || 'production'
+    }
+
+    fs.writeFileSync(
+      path.join(this.distDir, 'build-info.json'),
+      JSON.stringify(buildInfo, null, 2)
+    )
+  }
+
+  getGitCommit() {
+    try {
+      return execSync('git rev-parse HEAD').toString().trim()
+    } catch (error) {
+      return 'unknown'
+    }
+  }
+
+  // Main build process
+  build() {
+    console.log('🚀 Starting build process...')
     
-    - name: Install dependencies
-      run: npm install
+    this.clean()
+    this.copyFiles()
+    this.minify()
+    this.generateBuildInfo()
     
-    - name: Lint
-      run: npm run lint
-    
-    - name: Build
-      run: npm run build:weapp
+    console.log('✅ Build completed successfully!')
+  }
+}
+
+// Run build
+const builder = new BuildTool()
+builder.build()
 ```
 
-### Jenkins
+## Environment Configuration
 
-Jenkins 是一个流行的开源自动化服务器，可用于小程序的 CI/CD：
+### Environment Variables
 
-1. 安装 Jenkins 服务器
-2. 配置 Node.js 环境
-3. 创建新的 Pipeline 任务
-4. 配置 Git 仓库连接
-5. 添加构建步骤：安装依赖、运行测试、构建小程序
+```javascript
+// config/env.js
+const environments = {
+  development: {
+    API_BASE_URL: 'https://dev-api.example.com',
+    DEBUG: true,
+    LOG_LEVEL: 'debug'
+  },
+  staging: {
+    API_BASE_URL: 'https://staging-api.example.com',
+    DEBUG: true,
+    LOG_LEVEL: 'info'
+  },
+  production: {
+    API_BASE_URL: 'https://api.example.com',
+    DEBUG: false,
+    LOG_LEVEL: 'error'
+  }
+}
 
-## 调试和测试工具
+const currentEnv = process.env.NODE_ENV || 'development'
+const config = environments[currentEnv]
 
-### 真机调试
-
-各平台开发者工具都支持真机调试：
-
-1. 在开发者工具中点击"预览"或"真机调试"
-2. 使用手机扫描生成的二维码
-3. 在真机上进行测试和调试
-
-### 自动化测试
-
-为小程序设置自动化测试：
-
-#### Jest
-
-Jest 是一个流行的 JavaScript 测试框架：
-
-```bash
-# 安装 Jest
-npm install --save-dev jest
-
-# 配置 Jest
+module.exports = config
 ```
+
+**Usage in Code**
+
+```javascript
+// utils/config.js
+const config = require('../config/env')
+
+class Config {
+  static get(key) {
+    return config[key]
+  }
+
+  static getApiUrl(endpoint) {
+    return `${config.API_BASE_URL}${endpoint}`
+  }
+
+  static isDebug() {
+    return config.DEBUG
+  }
+
+  static shouldLog(level) {
+    const levels = ['debug', 'info', 'warn', 'error']
+    const currentLevel = levels.indexOf(config.LOG_LEVEL)
+    const messageLevel = levels.indexOf(level)
+    
+    return messageLevel >= currentLevel
+  }
+}
+
+module.exports = Config
+```
+
+### Multi-Platform Configuration
+
+```javascript
+// utils/platform.js
+class PlatformConfig {
+  constructor() {
+    this.platform = this.detectPlatform()
+  }
+
+  detectPlatform() {
+    const systemInfo = wx.getSystemInfoSync()
+    
+    if (systemInfo.platform === 'ios') {
+      return 'ios'
+    } else if (systemInfo.platform === 'android') {
+      return 'android'
+    } else {
+      return 'unknown'
+    }
+  }
+
+  getConfig() {
+    const baseConfig = {
+      appName: 'Mini Program',
+      version: '1.0.0'
+    }
+
+    const platformConfigs = {
+      ios: {
+        ...baseConfig,
+        statusBarHeight: 44,
+        navigationBarHeight: 44
+      },
+      android: {
+        ...baseConfig,
+        statusBarHeight: 24,
+        navigationBarHeight: 48
+      },
+      unknown: {
+        ...baseConfig,
+        statusBarHeight: 24,
+        navigationBarHeight: 44
+      }
+    }
+
+    return platformConfigs[this.platform]
+  }
+
+  isPlatform(platform) {
+    return this.platform === platform
+  }
+}
+
+module.exports = new PlatformConfig()
+```
+
+## Testing Setup
+
+### Unit Testing with Jest
 
 ```javascript
 // jest.config.js
 module.exports = {
   testEnvironment: 'jsdom',
-  moduleFileExtensions: ['js', 'ts'],
-  transform: {
-    '^.+\\.(js|ts)$': 'babel-jest',
+  setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
+  testMatch: [
+    '<rootDir>/tests/**/*.test.js',
+    '<rootDir>/utils/**/*.test.js'
+  ],
+  collectCoverageFrom: [
+    'utils/**/*.js',
+    'pages/**/*.js',
+    'components/**/*.js',
+    '!**/node_modules/**',
+    '!**/miniprogram_npm/**'
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80
+    }
   },
-  testMatch: ['**/__tests__/**/*.(js|ts)', '**/?(*.)+(spec|test).(js|ts)'],
-};
+  globals: {
+    wx: {},
+    App: jest.fn(),
+    Page: jest.fn(),
+    Component: jest.fn(),
+    getApp: jest.fn(),
+    getCurrentPages: jest.fn()
+  }
+}
 ```
 
-#### miniprogram-simulate
-
-微信小程序组件测试工具：
-
-```bash
-# 安装
-npm install --save-dev miniprogram-simulate
-```
+**Test Setup**
 
 ```javascript
-// 测试示例
-const simulate = require('miniprogram-simulate');
+// tests/setup.js
+// Mock WeChat APIs
+global.wx = {
+  request: jest.fn(),
+  showToast: jest.fn(),
+  showModal: jest.fn(),
+  navigateTo: jest.fn(),
+  redirectTo: jest.fn(),
+  setStorageSync: jest.fn(),
+  getStorageSync: jest.fn(),
+  removeStorageSync: jest.fn(),
+  getSystemInfoSync: jest.fn(() => ({
+    platform: 'ios',
+    system: 'iOS 15.0',
+    windowWidth: 375,
+    windowHeight: 812
+  }))
+}
 
-test('component should work', () => {
-  const id = simulate.load('/path/to/component');
-  const comp = simulate.render(id, { prop: 'value' });
-  
-  // 测试逻辑
-  expect(comp.data.innerValue).toBe('expected value');
-});
+// Mock global functions
+global.getApp = jest.fn(() => ({
+  globalData: {}
+}))
+
+global.getCurrentPages = jest.fn(() => [])
 ```
 
-## 开发环境最佳实践
+**Example Test**
 
-1. **使用统一的开发环境**：确保团队成员使用相同版本的工具和依赖
-2. **自动化重复任务**：使用脚本和工具自动化构建、测试和部署
-3. **遵循代码规范**：使用 ESLint 和 Prettier 确保代码质量和一致性
-4. **定期更新依赖**：保持依赖包的更新，修复安全漏洞
-5. **使用环境变量**：区分开发、测试和生产环境
-6. **文档化开发流程**：记录环境设置和开发流程，方便新成员加入
+```javascript
+// utils/format.test.js
+const { formatPrice, formatDate } = require('./format')
 
-## 下一步
+describe('Format Utils', () => {
+  describe('formatPrice', () => {
+    test('should format price correctly', () => {
+      expect(formatPrice(1234.56)).toBe('¥1,234.56')
+      expect(formatPrice(0)).toBe('¥0.00')
+      expect(formatPrice(null)).toBe('¥0.00')
+    })
+  })
 
-现在你已经设置好了小程序开发环境，可以继续学习：
+  describe('formatDate', () => {
+    test('should format date correctly', () => {
+      const date = new Date('2023-03-15T10:30:00Z')
+      expect(formatDate(date, 'YYYY-MM-DD')).toBe('2023-03-15')
+    })
+  })
+})
+```
 
-- [项目结构](./project-structure.md)
-- [页面开发](./page-development.md)
-- [组件开发](./component-development.md)
+## Debugging and Development
+
+### Debug Configuration
+
+```javascript
+// utils/debug.js
+class Debug {
+  constructor() {
+    this.enabled = wx.getAccountInfoSync().miniProgram.envVersion !== 'release'
+  }
+
+  log(...args) {
+    if (this.enabled) {
+      console.log('[DEBUG]', ...args)
+    }
+  }
+
+  warn(...args) {
+    if (this.enabled) {
+      console.warn('[WARN]', ...args)
+    }
+  }
+
+  error(...args) {
+    console.error('[ERROR]', ...args)
+  }
+
+  time(label) {
+    if (this.enabled) {
+      console.time(label)
+    }
+  }
+
+  timeEnd(label) {
+    if (this.enabled) {
+      console.timeEnd(label)
+    }
+  }
+
+  group(label) {
+    if (this.enabled) {
+      console.group(label)
+    }
+  }
+
+  groupEnd() {
+    if (this.enabled) {
+      console.groupEnd()
+    }
+  }
+
+  table(data) {
+    if (this.enabled && console.table) {
+      console.table(data)
+    }
+  }
+}
+
+module.exports = new Debug()
+```
+
+### Development Utilities
+
+```javascript
+// utils/dev-tools.js
+class DevTools {
+  static showPageInfo() {
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 1]
+    
+    console.group('📄 Page Info')
+    console.log('Route:', currentPage.route)
+    console.log('Options:', currentPage.options)
+    console.log('Data:', currentPage.data)
+    console.groupEnd()
+  }
+
+  static showSystemInfo() {
+    const systemInfo = wx.getSystemInfoSync()
+    
+    console.group('📱 System Info')
+    console.table(systemInfo)
+    console.groupEnd()
+  }
+
+  static showNetworkInfo() {
+    wx.getNetworkType({
+      success: (res) => {
+        console.group('🌐 Network Info')
+        console.log('Network Type:', res.networkType)
+        console.log('Is Connected:', res.networkType !== 'none')
+        console.groupEnd()
+      }
+    })
+  }
+
+  static measurePerformance(name, fn) {
+    return async (...args) => {
+      const startTime = Date.now()
+      
+      try {
+        const result = await fn(...args)
+        const endTime = Date.now()
+        
+        console.log(`⏱️ ${name} took ${endTime - startTime}ms`)
+        return result
+      } catch (error) {
+        const endTime = Date.now()
+        console.error(`❌ ${name} failed after ${endTime - startTime}ms:`, error)
+        throw error
+      }
+    }
+  }
+}
+
+module.exports = DevTools
+```
+
+## Best Practices
+
+### Project Structure
+
+```
+mini-program/
+├── app.js                 # App entry point
+├── app.json              # App configuration
+├── app.wxss              # Global styles
+├── sitemap.json          # Sitemap configuration
+├── project.config.json   # Project configuration
+├── package.json          # Dependencies
+├── pages/                # Pages
+│   ├── index/
+│   │   ├── index.js
+│   │   ├── index.json
+│   │   ├── index.wxml
+│   │   └── index.wxss
+│   └── profile/
+├── components/           # Reusable components
+│   ├── common/
+│   └── business/
+├── utils/               # Utility functions
+│   ├── api.js
+│   ├── config.js
+│   ├── format.js
+│   └── storage.js
+├── images/              # Static images
+├── styles/              # Shared styles
+├── config/              # Configuration files
+├── scripts/             # Build scripts
+├── tests/               # Test files
+└── docs/                # Documentation
+```
+
+### Development Workflow
+
+1. **Setup Phase**
+   - Clone repository
+   - Install dependencies: `npm install`
+   - Configure development tools
+   - Set up environment variables
+
+2. **Development Phase**
+   - Start development: `npm run dev`
+   - Use hot reload for rapid development
+   - Write tests alongside features
+   - Use debugging tools effectively
+
+3. **Quality Assurance**
+   - Run linting: `npm run lint`
+   - Run tests: `npm test`
+   - Check code coverage
+   - Review code before committing
+
+4. **Build and Deploy**
+   - Build for production: `npm run build`
+   - Test in WeChat Developer Tools
+   - Upload to WeChat platform
+   - Monitor performance and errors
+
+A well-configured development environment significantly improves productivity and code quality. Invest time in setting up proper tooling and workflows for long-term benefits.

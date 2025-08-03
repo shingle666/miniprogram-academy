@@ -1,997 +1,1116 @@
-# 性能优化
+# Performance Optimization
 
-性能优化是小程序开发中的重要环节，良好的性能可以提升用户体验，增加用户留存率。本指南将介绍小程序性能优化的关键策略和最佳实践。
+Performance optimization is crucial for creating smooth and responsive mini programs. This guide covers key optimization strategies, techniques, and best practices.
 
-## 启动性能优化
+## Startup Performance
 
-### 减小代码包体积
-
-小程序有严格的代码包大小限制，减小包体积可以加快下载和启动速度：
-
-1. **代码压缩和混淆**
-   - 使用工具如 UglifyJS 压缩 JavaScript 代码
-   - 使用 CSSO 或 CleanCSS 压缩 CSS/WXSS 代码
-   - 移除未使用的代码和注释
-
-2. **分包加载**
-   - 将小程序拆分为主包和多个分包
-   - 主包只保留最核心的页面和功能
-   - 用户进入分包页面时才加载对应分包
-
-```json
-// app.json
-{
-  "pages": [
-    "pages/index/index",
-    "pages/user/user"
-  ],
-  "subpackages": [
-    {
-      "root": "packageA",
-      "pages": [
-        "pages/detail/detail",
-        "pages/list/list"
-      ]
-    },
-    {
-      "root": "packageB",
-      "pages": [
-        "pages/settings/settings",
-        "pages/about/about"
-      ]
-    }
-  ]
-}
-```
-
-3. **独立分包**
-   - 可单独下载使用，不依赖主包
-   - 适用于临时活动页面等相对独立的功能
-
-```json
-// app.json
-{
-  "pages": ["pages/index/index"],
-  "subpackages": [
-    {
-      "root": "independent",
-      "pages": [
-        "pages/activity/activity"
-      ],
-      "independent": true
-    }
-  ]
-}
-```
-
-4. **按需注入**
-   - 使用条件编译，只在特定平台引入代码
-   - 延迟加载非关键资源
-
-### 优化小程序启动流程
-
-1. **预加载分包**
-   - 在合适的时机预加载可能需要的分包
+### App Launch Optimization
 
 ```javascript
-// 在合适的时机预加载分包
-wx.preloadSubpackage({
-  name: 'packageA',
-  success: function() {
-    console.log('分包预加载成功');
-  },
-  fail: function() {
-    console.log('分包预加载失败');
-  }
-});
-```
-
-2. **首屏关键数据预拉取**
-   - 利用小程序启动参数预拉取数据
-   - 使用云开发数据预拉取能力
-
-```javascript
-// app.js
+// app.js - Optimize app startup
 App({
   onLaunch(options) {
-    // 获取预拉取的数据
-    const preloadData = wx.getPreloadData();
-    if (preloadData) {
-      this.globalData.preloadData = preloadData;
-    }
-  }
-});
-```
-
-3. **合理设置启动页面**
-   - 选择轻量级页面作为启动页
-   - 避免启动页有复杂计算和渲染
-
-## 渲染性能优化
-
-### 减少页面重绘和回流
-
-1. **合理使用 setData**
-   - 减少 setData 调用频率
-   - 减少单次 setData 数据量
-   - 避免频繁操作 setData
-
-```javascript
-// 不推荐
-this.setData({ value1: 'a' });
-this.setData({ value2: 'b' });
-this.setData({ value3: 'c' });
-
-// 推荐
-this.setData({
-  value1: 'a',
-  value2: 'b',
-  value3: 'c'
-});
-```
-
-```javascript
-// 不推荐：更新整个数组
-this.setData({
-  list: newList
-});
-
-// 推荐：只更新变化的元素
-this.setData({
-  'list[0].name': 'new name',
-  'list[0].value': 'new value'
-});
-```
-
-2. **使用 wx:if 和 hidden 的最佳实践**
-   - wx:if 适用于不频繁切换的内容（创建/销毁DOM）
-   - hidden 适用于频繁切换的内容（只改变显示状态）
-
-```html
-<!-- 不频繁切换的内容使用 wx:if -->
-<view wx:if="{{showDialog}}">
-  <!-- 复杂的对话框内容 -->
-</view>
-
-<!-- 频繁切换的内容使用 hidden -->
-<view hidden="{{!showTab}}">
-  <!-- 标签页内容 -->
-</view>
-```
-
-3. **避免频繁触发布局**
-   - 批量修改样式
-   - 使用 transform 代替改变位置的属性
-
-```javascript
-// 不推荐：频繁修改样式
-function animateElement() {
-  let left = 0;
-  const timer = setInterval(() => {
-    left += 2;
-    this.setData({
-      elementStyle: `left: ${left}px;`
-    });
-    if (left >= 100) clearInterval(timer);
-  }, 16);
-}
-
-// 推荐：使用 transform
-function animateElement() {
-  let offset = 0;
-  const timer = setInterval(() => {
-    offset += 2;
-    this.setData({
-      elementStyle: `transform: translateX(${offset}px);`
-    });
-    if (offset >= 100) clearInterval(timer);
-  }, 16);
-}
-```
-
-### 长列表优化
-
-1. **虚拟列表**
-   - 只渲染可视区域的列表项
-   - 滚动时动态创建和销毁列表项
-
-```javascript
-Page({
-  data: {
-    allItems: [], // 所有数据
-    visibleItems: [], // 可见数据
-    startIndex: 0,
-    endIndex: 20,
-    itemHeight: 50 // 每项高度
-  },
-  
-  onLoad() {
-    // 加载所有数据
-    const allItems = [];
-    for (let i = 0; i < 1000; i++) {
-      allItems.push({ id: i, name: `Item ${i}` });
-    }
+    // Minimize work in onLaunch
+    this.initEssentials()
     
-    // 初始化可见数据
-    const visibleItems = allItems.slice(this.data.startIndex, this.data.endIndex);
-    
-    this.setData({
-      allItems,
-      visibleItems,
-      listHeight: allItems.length * this.data.itemHeight
-    });
-  },
-  
-  onScroll(e) {
-    const scrollTop = e.detail.scrollTop;
-    const startIndex = Math.floor(scrollTop / this.data.itemHeight);
-    const endIndex = startIndex + Math.ceil(this.data.windowHeight / this.data.itemHeight);
-    
-    if (startIndex !== this.data.startIndex || endIndex !== this.data.endIndex) {
-      this.setData({
-        startIndex,
-        endIndex,
-        visibleItems: this.data.allItems.slice(startIndex, endIndex),
-        listOffset: startIndex * this.data.itemHeight
-      });
-    }
-  }
-});
-```
-
-```html
-<scroll-view 
-  style="height: 100vh;" 
-  scroll-y 
-  bindscroll="onScroll"
->
-  <view style="height: {{listHeight}}px; position: relative;">
-    <view 
-      wx:for="{{visibleItems}}" 
-      wx:key="id"
-      style="position: absolute; top: {{(startIndex + index) * itemHeight}}px; height: {{itemHeight}}px;"
-    >
-      {{item.name}}
-    </view>
-  </view>
-</scroll-view>
-```
-
-2. **分页加载**
-   - 初始只加载第一页数据
-   - 滚动到底部时加载下一页
-
-```javascript
-Page({
-  data: {
-    list: [],
-    page: 1,
-    pageSize: 20,
-    hasMore: true,
-    loading: false
-  },
-  
-  onLoad() {
-    this.loadData();
-  },
-  
-  loadData() {
-    if (this.data.loading || !this.data.hasMore) return;
-    
-    this.setData({ loading: true });
-    
-    // 模拟请求数据
+    // Defer non-critical initialization
     setTimeout(() => {
-      const newItems = [];
-      for (let i = 0; i < this.data.pageSize; i++) {
-        const index = (this.data.page - 1) * this.data.pageSize + i;
-        newItems.push({ id: index, name: `Item ${index}` });
+      this.initNonCritical()
+    }, 100)
+  },
+  
+  initEssentials() {
+    // Only essential initialization
+    this.globalData = {
+      userInfo: null,
+      systemInfo: wx.getSystemInfoSync()
+    }
+    
+    // Check login status
+    this.checkLoginStatus()
+  },
+  
+  initNonCritical() {
+    // Non-critical initialization
+    this.initAnalytics()
+    this.preloadResources()
+    this.setupGlobalListeners()
+  },
+  
+  checkLoginStatus() {
+    const token = wx.getStorageSync('token')
+    if (token) {
+      // Validate token in background
+      this.validateToken(token)
+    }
+  },
+  
+  async validateToken(token) {
+    try {
+      // Validate token without blocking UI
+      const isValid = await this.api.validateToken(token)
+      if (!isValid) {
+        wx.removeStorageSync('token')
       }
-      
-      // 判断是否还有更多数据
-      const hasMore = this.data.page < 5; // 假设总共有5页
-      
-      this.setData({
-        list: [...this.data.list, ...newItems],
-        page: this.data.page + 1,
-        hasMore,
-        loading: false
-      });
-    }, 500);
+    } catch (error) {
+      console.error('Token validation failed:', error)
+    }
   },
   
-  onReachBottom() {
-    this.loadData();
-  }
-});
-```
-
-```html
-<view>
-  <view wx:for="{{list}}" wx:key="id" class="list-item">
-    {{item.name}}
-  </view>
-  
-  <view class="loading" wx:if="{{loading}}">
-    加载中...
-  </view>
-  
-  <view class="no-more" wx:if="{{!hasMore && !loading}}">
-    没有更多数据了
-  </view>
-</view>
-```
-
-3. **骨架屏**
-   - 在数据加载前显示页面结构
-   - 减少用户等待的焦虑感
-
-```html
-<!-- 骨架屏组件 -->
-<template name="skeleton">
-  <view class="skeleton">
-    <view class="skeleton-header"></view>
-    <view class="skeleton-content">
-      <view class="skeleton-item" wx:for="{{[1,2,3,4,5]}}" wx:key="*this"></view>
-    </view>
-  </view>
-</template>
-
-<!-- 页面使用 -->
-<template is="skeleton" wx:if="{{loading}}"></template>
-<view wx:else>
-  <!-- 实际内容 -->
-</view>
-```
-
-```css
-.skeleton {
-  padding: 20rpx;
-}
-
-.skeleton-header {
-  height: 40rpx;
-  background: #f0f0f0;
-  margin-bottom: 20rpx;
-  border-radius: 4rpx;
-}
-
-.skeleton-item {
-  height: 80rpx;
-  background: #f0f0f0;
-  margin-bottom: 20rpx;
-  border-radius: 4rpx;
-}
-```
-
-## 网络性能优化
-
-### 请求优化
-
-1. **合并请求**
-   - 减少请求次数
-   - 使用批量接口
-
-```javascript
-// 不推荐：多个独立请求
-function loadData() {
-  wx.request({
-    url: 'https://api.example.com/user',
-    success: res => {
-      this.setData({ user: res.data });
-    }
-  });
-  
-  wx.request({
-    url: 'https://api.example.com/products',
-    success: res => {
-      this.setData({ products: res.data });
-    }
-  });
-}
-
-// 推荐：合并请求
-function loadData() {
-  wx.request({
-    url: 'https://api.example.com/batch',
-    data: {
-      requests: ['user', 'products']
-    },
-    success: res => {
-      this.setData({
-        user: res.data.user,
-        products: res.data.products
-      });
-    }
-  });
-}
-```
-
-2. **请求优先级**
-   - 优先加载关键数据
-   - 延迟加载非关键数据
-
-```javascript
-Page({
-  onLoad() {
-    // 优先加载关键数据
-    this.loadCriticalData();
+  preloadResources() {
+    // Preload critical images
+    const criticalImages = [
+      '/images/logo.png',
+      '/images/default-avatar.png'
+    ]
     
-    // 延迟加载非关键数据
-    setTimeout(() => {
-      this.loadNonCriticalData();
-    }, 2000);
-  },
-  
-  loadCriticalData() {
-    // 加载页面核心数据
-  },
-  
-  loadNonCriticalData() {
-    // 加载次要数据
+    criticalImages.forEach(src => {
+      wx.getImageInfo({ src })
+    })
   }
-});
+})
 ```
 
-3. **数据缓存**
-   - 缓存不常变化的数据
-   - 使用本地存储减少请求
+### Page Load Optimization
 
 ```javascript
-function fetchData(url, forceRefresh = false) {
-  return new Promise((resolve, reject) => {
-    // 缓存键
-    const cacheKey = `cache_${url}`;
-    // 缓存过期时间（毫秒）
-    const expireTime = 5 * 60 * 1000; // 5分钟
-    
-    // 检查是否有有效缓存
-    const cachedData = wx.getStorageSync(cacheKey);
-    if (!forceRefresh && cachedData && Date.now() - cachedData.timestamp < expireTime) {
-      resolve(cachedData.data);
-      return;
-    }
-    
-    // 没有有效缓存，发起请求
-    wx.request({
-      url,
-      success: res => {
-        // 缓存数据
-        wx.setStorageSync(cacheKey, {
-          data: res.data,
-          timestamp: Date.now()
-        });
-        resolve(res.data);
-      },
-      fail: err => {
-        // 请求失败，尝试使用过期缓存
-        if (cachedData) {
-          resolve(cachedData.data);
-        } else {
-          reject(err);
-        }
-      }
-    });
-  });
-}
-```
-
-### 预加载和预请求
-
-1. **页面预加载**
-   - 预测用户可能访问的页面
-   - 提前加载页面资源
-
-```javascript
-// 在用户可能跳转前预加载页面
-wx.preloadPage({
-  url: '/pages/detail/detail',
-  success: function() {
-    console.log('页面预加载成功');
-  },
-  fail: function() {
-    console.log('页面预加载失败');
-  }
-});
-```
-
-2. **数据预请求**
-   - 提前请求下一页可能需要的数据
-   - 用户操作时直接使用缓存数据
-
-```javascript
+// Optimize page loading
 Page({
   data: {
-    currentId: 1,
-    currentItem: null,
-    nextItem: null
+    loading: true,
+    items: [],
+    hasMore: true
   },
   
   onLoad(options) {
-    const id = parseInt(options.id) || 1;
-    this.setData({ currentId: id });
+    // Start loading immediately
+    this.loadInitialData()
     
-    // 加载当前数据
-    this.loadItemData(id).then(data => {
-      this.setData({ currentItem: data });
+    // Set up page optimizations
+    this.setupOptimizations()
+  },
+  
+  async loadInitialData() {
+    try {
+      // Load critical data first
+      const criticalData = await this.loadCriticalData()
       
-      // 预加载下一条数据
-      return this.loadItemData(id + 1);
-    }).then(data => {
-      this.setData({ nextItem: data });
-    });
-  },
-  
-  // 加载数据的方法
-  loadItemData(id) {
-    return new Promise((resolve) => {
-      wx.request({
-        url: `https://api.example.com/items/${id}`,
-        success: res => resolve(res.data)
-      });
-    });
-  },
-  
-  // 查看下一项
-  viewNextItem() {
-    const nextId = this.data.currentId + 1;
-    
-    // 直接使用预加载的数据
-    this.setData({
-      currentId: nextId,
-      currentItem: this.data.nextItem,
-      nextItem: null
-    });
-    
-    // 预加载下一条数据
-    this.loadItemData(nextId + 1).then(data => {
-      this.setData({ nextItem: data });
-    });
-  }
-});
-```
-
-## 图片优化
-
-### 图片加载策略
-
-1. **图片懒加载**
-   - 只加载可视区域内的图片
-   - 滚动时动态加载新图片
-
-```html
-<view wx:for="{{images}}" wx:key="id">
-  <image 
-    lazy-load 
-    src="{{item.show ? item.src : ''}}" 
-    data-index="{{index}}"
-    bindload="imageLoaded"
-  ></image>
-</view>
-```
-
-```javascript
-Page({
-  data: {
-    images: [
-      { id: 1, src: 'image1.jpg', show: false },
-      { id: 2, src: 'image2.jpg', show: false },
-      // ...更多图片
-    ]
-  },
-  
-  onPageScroll(e) {
-    // 根据滚动位置判断哪些图片应该显示
-    this.checkImagesVisibility();
-  },
-  
-  checkImagesVisibility() {
-    const query = wx.createSelectorQuery();
-    query.selectAll('image').boundingClientRect();
-    query.exec(res => {
-      const images = [...this.data.images];
-      const screenHeight = wx.getSystemInfoSync().windowHeight;
+      this.setData({
+        ...criticalData,
+        loading: false
+      })
       
-      res[0].forEach((rect, index) => {
-        // 判断图片是否在可视区域内或即将进入可视区域
-        if (rect.top < screenHeight + 300 && rect.bottom > -300) {
-          images[index].show = true;
-        }
-      });
+      // Load non-critical data after render
+      setTimeout(() => {
+        this.loadNonCriticalData()
+      }, 50)
       
-      this.setData({ images });
-    });
-  },
-  
-  imageLoaded(e) {
-    const index = e.currentTarget.dataset.index;
-    console.log(`图片 ${index} 加载完成`);
-  },
-  
-  onLoad() {
-    // 初始检查哪些图片可见
-    setTimeout(() => {
-      this.checkImagesVisibility();
-    }, 300);
-  }
-});
-```
-
-2. **图片预加载**
-   - 提前加载重要图片
-   - 使用小程序图片预加载 API
-
-```javascript
-// 预加载图片
-function preloadImages(urls) {
-  urls.forEach(url => {
-    wx.getImageInfo({
-      src: url,
-      success: () => console.log(`预加载图片成功: ${url}`),
-      fail: () => console.log(`预加载图片失败: ${url}`)
-    });
-  });
-}
-
-// 使用
-Page({
-  onLoad() {
-    // 预加载重要图片
-    preloadImages([
-      'https://example.com/banner1.jpg',
-      'https://example.com/banner2.jpg'
-    ]);
-  }
-});
-```
-
-### 图片资源优化
-
-1. **选择合适的图片格式**
-   - JPEG：适合照片和复杂图像
-   - PNG：适合需要透明度的图像
-   - WebP：更小的文件大小，但需要检查兼容性
-   - SVG：适合图标和简单图形
-
-2. **图片压缩**
-   - 使用工具压缩图片（如 TinyPNG）
-   - 根据实际显示尺寸调整图片大小
-
-3. **使用 CDN**
-   - 利用 CDN 加速图片加载
-   - 选择离用户近的节点
-
-```javascript
-// 配置 CDN 域名
-const CDN_BASE = 'https://cdn.example.com/images/';
-
-// 使用 CDN 路径
-function getImageUrl(path) {
-  return `${CDN_BASE}${path}`;
-}
-
-Page({
-  data: {
-    bannerImage: getImageUrl('banner.jpg'),
-    productImages: [
-      getImageUrl('product1.jpg'),
-      getImageUrl('product2.jpg')
-    ]
-  }
-});
-```
-
-## 存储优化
-
-### 合理使用本地存储
-
-1. **存储策略**
-   - 只存储必要的数据
-   - 定期清理过期数据
-   - 避免存储过大的数据
-
-```javascript
-// 存储管理工具
-const Storage = {
-  // 设置带过期时间的数据
-  set(key, data, expireSeconds) {
-    wx.setStorageSync(key, {
-      data,
-      expire: expireSeconds ? Date.now() + expireSeconds * 1000 : null
-    });
-  },
-  
-  // 获取数据，自动处理过期情况
-  get(key) {
-    const item = wx.getStorageSync(key);
-    if (!item) return null;
-    
-    // 检查是否过期
-    if (item.expire && Date.now() > item.expire) {
-      wx.removeStorageSync(key);
-      return null;
+    } catch (error) {
+      console.error('Failed to load initial data:', error)
+      this.setData({ loading: false })
     }
-    
-    return item.data;
   },
   
-  // 清理所有过期数据
-  clearExpired() {
-    const keys = wx.getStorageInfoSync().keys;
-    keys.forEach(key => {
-      this.get(key); // 会自动检查并清理过期数据
-    });
+  async loadCriticalData() {
+    // Load only essential data for first render
+    const [basicInfo, firstPageItems] = await Promise.all([
+      this.api.getBasicInfo(),
+      this.api.getItems({ page: 1, limit: 10 })
+    ])
+    
+    return {
+      basicInfo,
+      items: firstPageItems
+    }
+  },
+  
+  async loadNonCriticalData() {
+    // Load additional data that's not immediately visible
+    try {
+      const [userPreferences, recommendations] = await Promise.all([
+        this.api.getUserPreferences(),
+        this.api.getRecommendations()
+      ])
+      
+      this.setData({
+        userPreferences,
+        recommendations
+      })
+    } catch (error) {
+      console.error('Failed to load non-critical data:', error)
+    }
+  },
+  
+  setupOptimizations() {
+    // Enable pull-to-refresh
+    wx.enablePullDownRefresh()
+    
+    // Set up intersection observer for lazy loading
+    this.setupLazyLoading()
   }
-};
+})
+```
 
-// 使用示例
+## Rendering Performance
+
+### Efficient Data Updates
+
+```javascript
+// Optimize setData usage
 Page({
+  data: {
+    users: [],
+    selectedIds: [],
+    filters: {
+      status: 'active',
+      category: 'all'
+    }
+  },
+  
+  // ❌ Bad: Multiple setData calls
+  updateUsersBad(newUsers) {
+    this.setData({ users: newUsers })
+    this.setData({ loading: false })
+    this.setData({ lastUpdated: Date.now() })
+  },
+  
+  // ✅ Good: Single setData call
+  updateUsersGood(newUsers) {
+    this.setData({
+      users: newUsers,
+      loading: false,
+      lastUpdated: Date.now()
+    })
+  },
+  
+  // ✅ Good: Partial updates for large datasets
+  updateSingleUser(userId, userData) {
+    const userIndex = this.data.users.findIndex(u => u.id === userId)
+    if (userIndex !== -1) {
+      this.setData({
+        [`users[${userIndex}]`]: { ...this.data.users[userIndex], ...userData }
+      })
+    }
+  },
+  
+  // ✅ Good: Batch updates
+  batchUpdateUsers(updates) {
+    const setDataObject = {}
+    
+    updates.forEach(({ userId, data }) => {
+      const userIndex = this.data.users.findIndex(u => u.id === userId)
+      if (userIndex !== -1) {
+        Object.keys(data).forEach(key => {
+          setDataObject[`users[${userIndex}].${key}`] = data[key]
+        })
+      }
+    })
+    
+    this.setData(setDataObject)
+  },
+  
+  // ✅ Good: Optimize filter updates
+  updateFilter(key, value) {
+    this.setData({
+      [`filters.${key}`]: value
+    })
+    
+    // Debounce filter application
+    this.debouncedApplyFilters()
+  },
+  
   onLoad() {
-    // 清理过期数据
-    Storage.clearExpired();
-    
-    // 存储数据，设置1天过期
-    Storage.set('userInfo', { name: '张三' }, 86400);
-    
-    // 获取数据
-    const userInfo = Storage.get('userInfo');
-    console.log(userInfo);
+    // Create debounced function
+    this.debouncedApplyFilters = this.debounce(this.applyFilters, 300)
+  },
+  
+  debounce(func, wait) {
+    let timeout
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout)
+        func.apply(this, args)
+      }
+      clearTimeout(timeout)
+      timeout = setTimeout(later, wait)
+    }
   }
-});
+})
 ```
 
-2. **存储容量监控**
-   - 监控存储使用情况
-   - 超过阈值时清理不重要的数据
+### Virtual List Implementation
 
 ```javascript
-function checkStorageSize() {
-  const { currentSize, limitSize } = wx.getStorageInfoSync();
-  const usageRate = currentSize / limitSize;
-  
-  console.log(`存储使用率: ${(usageRate * 100).toFixed(2)}%`);
-  
-  // 如果使用率超过80%，清理部分数据
-  if (usageRate > 0.8) {
-    clearLowPriorityData();
-  }
-}
-
-function clearLowPriorityData() {
-  // 清理优先级低的缓存数据
-  const lowPriorityKeys = ['tempImages', 'searchHistory', 'viewedProducts'];
-  
-  lowPriorityKeys.forEach(key => {
-    wx.removeStorageSync(key);
-  });
-  
-  console.log('已清理低优先级数据');
-}
-```
-
-## 小程序框架优化
-
-### 使用 WXS 提升性能
-
-WXS 可以在视图层直接运行，避免了逻辑层和视图层的通信开销：
-
-```html
-<!-- 使用 WXS 格式化价格 -->
-<wxs module="format">
-function formatPrice(price) {
-  return '¥' + parseFloat(price).toFixed(2);
-}
-
-module.exports = {
-  price: formatPrice
-};
-</wxs>
-
-<view>商品价格: {{format.price(product.price)}}</view>
-```
-
-### 使用 Component 构造器
-
-组件化开发可以提高代码复用性和性能：
-
-```javascript
-// 自定义组件
+// Virtual list for large datasets
 Component({
   properties: {
     items: {
       type: Array,
       value: []
+    },
+    itemHeight: {
+      type: Number,
+      value: 100
+    },
+    visibleCount: {
+      type: Number,
+      value: 10
     }
   },
   
   data: {
-    activeIndex: -1
+    scrollTop: 0,
+    visibleItems: [],
+    startIndex: 0,
+    endIndex: 0,
+    totalHeight: 0
+  },
+  
+  observers: {
+    'items, itemHeight, visibleCount': function(items, itemHeight, visibleCount) {
+      this.updateVirtualList()
+    }
   },
   
   methods: {
-    selectItem(e) {
-      const index = e.currentTarget.dataset.index;
-      this.setData({ activeIndex: index });
-      this.triggerEvent('select', { index, item: this.data.items[index] });
+    updateVirtualList() {
+      const { items, itemHeight, visibleCount } = this.properties
+      const { scrollTop } = this.data
+      
+      const startIndex = Math.floor(scrollTop / itemHeight)
+      const endIndex = Math.min(startIndex + visibleCount + 2, items.length)
+      
+      const visibleItems = items.slice(startIndex, endIndex).map((item, index) => ({
+        ...item,
+        _index: startIndex + index,
+        _top: (startIndex + index) * itemHeight
+      }))
+      
+      this.setData({
+        visibleItems,
+        startIndex,
+        endIndex,
+        totalHeight: items.length * itemHeight
+      })
+    },
+    
+    onScroll(e) {
+      const scrollTop = e.detail.scrollTop
+      
+      this.setData({ scrollTop })
+      
+      // Throttle virtual list updates
+      if (!this.scrollTimer) {
+        this.scrollTimer = setTimeout(() => {
+          this.updateVirtualList()
+          this.scrollTimer = null
+        }, 16) // ~60fps
+      }
     }
   }
-});
+})
 ```
 
 ```html
-<!-- 使用自定义组件 -->
-<custom-list 
-  items="{{listData}}" 
-  bind:select="handleItemSelect"
-></custom-list>
+<!-- Virtual list template -->
+<scroll-view 
+  class="virtual-list"
+  scroll-y
+  scroll-top="{{scrollTop}}"
+  bindscroll="onScroll"
+  style="height: 500px;"
+>
+  <view class="virtual-container" style="height: {{totalHeight}}px;">
+    <view 
+      wx:for="{{visibleItems}}" 
+      wx:key="_index"
+      class="virtual-item"
+      style="position: absolute; top: {{item._top}}px; height: {{itemHeight}}px;"
+    >
+      <!-- Item content -->
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+</scroll-view>
 ```
 
-### 使用 behaviors 复用代码
+## Image Optimization
 
-behaviors 类似于 mixins，可以复用组件逻辑：
+### Lazy Loading Images
 
 ```javascript
-// 定义 behavior
-const listBehavior = Behavior({
+// Image lazy loading component
+Component({
+  properties: {
+    src: String,
+    placeholder: {
+      type: String,
+      value: '/images/placeholder.png'
+    },
+    threshold: {
+      type: Number,
+      value: 100
+    }
+  },
+  
   data: {
-    loading: false,
-    list: [],
-    page: 1,
-    hasMore: true
+    loaded: false,
+    currentSrc: ''
+  },
+  
+  lifetimes: {
+    attached() {
+      this.setData({
+        currentSrc: this.properties.placeholder
+      })
+      
+      this.createIntersectionObserver()
+    },
+    
+    detached() {
+      if (this.observer) {
+        this.observer.disconnect()
+      }
+    }
   },
   
   methods: {
-    loadMore() {
-      if (this.data.loading || !this.data.hasMore) return;
+    createIntersectionObserver() {
+      this.observer = this.createIntersectionObserver({
+        rootMargin: `${this.properties.threshold}px`
+      })
       
-      this.setData({ loading: true });
+      this.observer.relativeToViewport().observe('.lazy-image', (res) => {
+        if (res.intersectionRatio > 0 && !this.data.loaded) {
+          this.loadImage()
+        }
+      })
+    },
+    
+    loadImage() {
+      const { src } = this.properties
       
-      // 加载数据的逻辑
-      this.fetchData(this.data.page).then(res => {
-        const newList = [...this.data.list, ...res.data];
-        this.setData({
-          list: newList,
-          page: this.data.page + 1,
-          hasMore: res.hasMore,
-          loading: false
-        });
-      });
+      if (!src) return
+      
+      wx.getImageInfo({
+        src,
+        success: () => {
+          this.setData({
+            currentSrc: src,
+            loaded: true
+          })
+          
+          // Disconnect observer after loading
+          if (this.observer) {
+            this.observer.disconnect()
+          }
+        },
+        fail: (error) => {
+          console.error('Failed to load image:', error)
+        }
+      })
+    },
+    
+    onImageLoad() {
+      this.triggerEvent('load')
+    },
+    
+    onImageError() {
+      this.triggerEvent('error')
     }
   }
-});
+})
+```
 
-// 在组件中使用 behavior
+```html
+<!-- Lazy image template -->
+<image 
+  class="lazy-image"
+  src="{{currentSrc}}"
+  mode="aspectFill"
+  lazy-load
+  bindload="onImageLoad"
+  binderror="onImageError"
+/>
+```
+
+### Image Compression and Caching
+
+```javascript
+// Image optimization utility
+class ImageOptimizer {
+  constructor() {
+    this.cache = new Map()
+    this.maxCacheSize = 50
+  }
+  
+  async optimizeImage(src, options = {}) {
+    const {
+      quality = 80,
+      width,
+      height,
+      format = 'jpg'
+    } = options
+    
+    const cacheKey = `${src}_${quality}_${width}_${height}_${format}`
+    
+    // Check cache first
+    if (this.cache.has(cacheKey)) {
+      return this.cache.get(cacheKey)
+    }
+    
+    try {
+      // Get image info
+      const imageInfo = await this.getImageInfo(src)
+      
+      // Calculate optimal dimensions
+      const optimizedDimensions = this.calculateOptimalDimensions(
+        imageInfo.width,
+        imageInfo.height,
+        width,
+        height
+      )
+      
+      // Compress if needed
+      let optimizedSrc = src
+      if (this.shouldCompress(imageInfo, optimizedDimensions, quality)) {
+        optimizedSrc = await this.compressImage(src, {
+          ...optimizedDimensions,
+          quality,
+          format
+        })
+      }
+      
+      // Cache result
+      this.addToCache(cacheKey, optimizedSrc)
+      
+      return optimizedSrc
+      
+    } catch (error) {
+      console.error('Image optimization failed:', error)
+      return src // Return original on error
+    }
+  }
+  
+  getImageInfo(src) {
+    return new Promise((resolve, reject) => {
+      wx.getImageInfo({
+        src,
+        success: resolve,
+        fail: reject
+      })
+    })
+  }
+  
+  calculateOptimalDimensions(originalWidth, originalHeight, targetWidth, targetHeight) {
+    if (!targetWidth && !targetHeight) {
+      return { width: originalWidth, height: originalHeight }
+    }
+    
+    const aspectRatio = originalWidth / originalHeight
+    
+    if (targetWidth && !targetHeight) {
+      return {
+        width: targetWidth,
+        height: Math.round(targetWidth / aspectRatio)
+      }
+    }
+    
+    if (!targetWidth && targetHeight) {
+      return {
+        width: Math.round(targetHeight * aspectRatio),
+        height: targetHeight
+      }
+    }
+    
+    return { width: targetWidth, height: targetHeight }
+  }
+  
+  shouldCompress(imageInfo, targetDimensions, quality) {
+    const { width: originalWidth, height: originalHeight } = imageInfo
+    const { width: targetWidth, height: targetHeight } = targetDimensions
+    
+    // Compress if dimensions are significantly different or quality is low
+    return (
+      originalWidth > targetWidth * 1.5 ||
+      originalHeight > targetHeight * 1.5 ||
+      quality < 90
+    )
+  }
+  
+  async compressImage(src, options) {
+    return new Promise((resolve, reject) => {
+      const canvas = wx.createCanvasContext('imageCanvas')
+      
+      // This is a simplified example
+      // In practice, you might use a third-party service or native compression
+      wx.compressImage({
+        src,
+        quality: options.quality,
+        success: (res) => resolve(res.tempFilePath),
+        fail: reject
+      })
+    })
+  }
+  
+  addToCache(key, value) {
+    if (this.cache.size >= this.maxCacheSize) {
+      // Remove oldest entry
+      const firstKey = this.cache.keys().next().value
+      this.cache.delete(firstKey)
+    }
+    
+    this.cache.set(key, value)
+  }
+  
+  clearCache() {
+    this.cache.clear()
+  }
+}
+
+const imageOptimizer = new ImageOptimizer()
+
+// Usage
+Page({
+  async loadOptimizedImage(src) {
+    try {
+      const optimizedSrc = await imageOptimizer.optimizeImage(src, {
+        width: 300,
+        height: 200,
+        quality: 80
+      })
+      
+      this.setData({
+        imageSrc: optimizedSrc
+      })
+    } catch (error) {
+      console.error('Failed to optimize image:', error)
+    }
+  }
+})
+```
+
+## Memory Management
+
+### Component Lifecycle Optimization
+
+```javascript
+// Optimized component with proper cleanup
 Component({
-  behaviors: [listBehavior],
+  data: {
+    timer: null,
+    observers: [],
+    eventListeners: []
+  },
+  
+  lifetimes: {
+    attached() {
+      this.initComponent()
+    },
+    
+    detached() {
+      this.cleanup()
+    }
+  },
+  
+  pageLifetimes: {
+    show() {
+      this.onPageShow()
+    },
+    
+    hide() {
+      this.onPageHide()
+    }
+  },
   
   methods: {
-    fetchData(page) {
-      // 实现具体的数据获取逻辑
-      return new Promise(resolve => {
-        wx.request({
-          url: `https://api.example.com/list?page=${page}`,
-          success: res => resolve(res.data)
-        });
-      });
+    initComponent() {
+      // Set up timers
+      this.setupTimer()
+      
+      // Set up observers
+      this.setupObservers()
+      
+      // Set up event listeners
+      this.setupEventListeners()
+    },
+    
+    setupTimer() {
+      this.data.timer = setInterval(() => {
+        this.updateData()
+      }, 5000)
+    },
+    
+    setupObservers() {
+      // Intersection observer
+      const intersectionObserver = this.createIntersectionObserver()
+      intersectionObserver.relativeToViewport().observe('.target', (res) => {
+        // Handle intersection
+      })
+      
+      this.data.observers.push(intersectionObserver)
+    },
+    
+    setupEventListeners() {
+      // Global event listeners
+      const networkListener = (res) => {
+        this.handleNetworkChange(res)
+      }
+      
+      wx.onNetworkStatusChange(networkListener)
+      this.data.eventListeners.push({
+        type: 'network',
+        listener: networkListener,
+        off: wx.offNetworkStatusChange
+      })
+    },
+    
+    onPageShow() {
+      // Resume timers and observers when page is visible
+      if (!this.data.timer) {
+        this.setupTimer()
+      }
+    },
+    
+    onPageHide() {
+      // Pause timers when page is hidden
+      if (this.data.timer) {
+        clearInterval(this.data.timer)
+        this.data.timer = null
+      }
+    },
+    
+    cleanup() {
+      // Clear timers
+      if (this.data.timer) {
+        clearInterval(this.data.timer)
+        this.data.timer = null
+      }
+      
+      // Disconnect observers
+      this.data.observers.forEach(observer => {
+        observer.disconnect()
+      })
+      this.data.observers = []
+      
+      // Remove event listeners
+      this.data.eventListeners.forEach(({ listener, off }) => {
+        off(listener)
+      })
+      this.data.eventListeners = []
     }
   }
-});
+})
 ```
 
-## 工具和监控
-
-### 性能监控
-
-1. **小程序性能监控 API**
-   - 使用 Performance API 监控关键性能指标
+### Memory Leak Prevention
 
 ```javascript
-const performance = wx.getPerformance();
-const observer = performance.createObserver((entryList) => {
-  const entries = entryList.getEntries();
-  entries.forEach((entry) => {
-    console.log('性能指标:', entry.name, entry.duration);
-  });
-});
+// Memory leak prevention utilities
+class MemoryManager {
+  constructor() {
+    this.refs = new WeakMap()
+    this.timers = new Set()
+    this.observers = new Set()
+  }
+  
+  // Safe timer management
+  setTimeout(callback, delay) {
+    const timer = setTimeout(() => {
+      callback()
+      this.timers.delete(timer)
+    }, delay)
+    
+    this.timers.add(timer)
+    return timer
+  }
+  
+  setInterval(callback, interval) {
+    const timer = setInterval(callback, interval)
+    this.timers.add(timer)
+    return timer
+  }
+  
+  clearTimer(timer) {
+    clearTimeout(timer)
+    clearInterval(timer)
+    this.timers.delete(timer)
+  }
+  
+  // Safe observer management
+  createIntersectionObserver(component, options) {
+    const observer = component.createIntersectionObserver(options)
+    this.observers.add(observer)
+    return observer
+  }
+  
+  disconnectObserver(observer) {
+    observer.disconnect()
+    this.observers.delete(observer)
+  }
+  
+  // Cleanup all resources
+  cleanup() {
+    // Clear all timers
+    this.timers.forEach(timer => {
+      clearTimeout(timer)
+      clearInterval(timer)
+    })
+    this.timers.clear()
+    
+    // Disconnect all observers
+    this.observers.forEach(observer => {
+      observer.disconnect()
+    })
+    this.observers.clear()
+  }
+}
 
-// 监听页面性能
-observer.observe({ entryTypes: ['navigation', 'render', 'script'] });
+// Usage in components
+Component({
+  lifetimes: {
+    attached() {
+      this.memoryManager = new MemoryManager()
+      this.initComponent()
+    },
+    
+    detached() {
+      if (this.memoryManager) {
+        this.memoryManager.cleanup()
+      }
+    }
+  },
+  
+  methods: {
+    initComponent() {
+      // Use memory manager for timers
+      this.updateTimer = this.memoryManager.setInterval(() => {
+        this.updateData()
+      }, 1000)
+      
+      // Use memory manager for observers
+      this.intersectionObserver = this.memoryManager.createIntersectionObserver(this)
+    }
+  }
+})
 ```
 
-2. **自定义性能打点**
-   - 在关键流程添加性能打点
+## Network Optimization
+
+### Request Optimization
 
 ```javascript
-const performanceData = {};
-
-// 开始计时
-function startMeasure(name) {
-  performanceData[name] = Date.now();
+// Optimized request manager
+class RequestOptimizer {
+  constructor() {
+    this.cache = new Map()
+    this.pendingRequests = new Map()
+    this.requestQueue = []
+    this.maxConcurrent = 6
+    this.activeRequests = 0
+  }
+  
+  async request(url, options = {}) {
+    const cacheKey = this.generateCacheKey(url, options)
+    
+    // Check cache first
+    if (options.useCache !== false) {
+      const cached = this.getFromCache(cacheKey)
+      if (cached) {
+        return cached
+      }
+    }
+    
+    // Check for duplicate requests
+    if (this.pendingRequests.has(cacheKey)) {
+      return this.pendingRequests.get(cacheKey)
+    }
+    
+    // Create request promise
+    const requestPromise = this.executeRequest(url, options)
+    this.pendingRequests.set(cacheKey, requestPromise)
+    
+    try {
+      const result = await requestPromise
+      
+      // Cache successful results
+      if (options.useCache !== false) {
+        this.addToCache(cacheKey, result)
+      }
+      
+      return result
+    } finally {
+      this.pendingRequests.delete(cacheKey)
+    }
+  }
+  
+  async executeRequest(url, options) {
+    // Queue request if too many concurrent requests
+    if (this.activeRequests >= this.maxConcurrent) {
+      await this.waitForSlot()
+    }
+    
+    this.activeRequests++
+    
+    try {
+      return await this.makeRequest(url, options)
+    } finally {
+      this.activeRequests--
+      this.processQueue()
+    }
+  }
+  
+  makeRequest(url, options) {
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url,
+        ...options,
+        success: (res) => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            resolve(res.data)
+          } else {
+            reject(new Error(`Request failed: ${res.statusCode}`))
+          }
+        },
+        fail: reject
+      })
+    })
+  }
+  
+  waitForSlot() {
+    return new Promise(resolve => {
+      this.requestQueue.push(resolve)
+    })
+  }
+  
+  processQueue() {
+    if (this.requestQueue.length > 0 && this.activeRequests < this.maxConcurrent) {
+      const resolve = this.requestQueue.shift()
+      resolve()
+    }
+  }
+  
+  generateCacheKey(url, options) {
+    const { data, method = 'GET' } = options
+    return `${method}:${url}:${JSON.stringify(data || {})}`
+  }
+  
+  getFromCache(key) {
+    const cached = this.cache.get(key)
+    if (cached && Date.now() - cached.timestamp < 300000) { // 5 minutes
+      return cached.data
+    }
+    return null
+  }
+  
+  addToCache(key, data) {
+    this.cache.set(key, {
+      data,
+      timestamp: Date.now()
+    })
+    
+    // Limit cache size
+    if (this.cache.size > 100) {
+      const firstKey = this.cache.keys().next().value
+      this.cache.delete(firstKey)
+    }
+  }
 }
 
-// 结束计时并记录
-function endMeasure(name) {
-  if (!performanceData[name]) return;
+const requestOptimizer = new RequestOptimizer()
+
+// Usage
+Page({
+  async loadData() {
+    try {
+      const [users, posts] = await Promise.all([
+        requestOptimizer.request('/api/users'),
+        requestOptimizer.request('/api/posts')
+      ])
+      
+      this.setData({ users, posts })
+    } catch (error) {
+      console.error('Failed to load data:', error)
+    }
+  }
+})
+```
+
+## Performance Monitoring
+
+### Performance Metrics Collection
+
+```javascript
+// Performance monitor
+class PerformanceMonitor {
+  constructor() {
+    this.metrics = []
+    this.observers = []
+    this.startTime = Date.now()
+  }
   
-  const duration = Date.now() - performanceData[name];
-  console.log(`${name} 耗时: ${duration}ms`);
+  // Measure page load time
+  measurePageLoad(pageName) {
+    const loadTime = Date.now() - this.startTime
+    
+    this.recordMetric({
+      type: 'page_load',
+      page: pageName,
+      duration: loadTime,
+      timestamp: Date.now()
+    })
+    
+    console.log(`Page ${pageName} loaded in ${loadTime}ms`)
+  }
   
-  // 可以上报到服务器
-  reportPerformance(name, duration);
+  // Measure function execution time
+  measureFunction(name, fn) {
+    return async (...args) => {
+      const startTime = Date.now()
+      
+      try {
+        const result = await fn(...args)
+        const duration = Date.now() - startTime
+        
+        this.recordMetric({
+          type: 'function_execution',
+          name,
+          duration,
+          success: true,
+          timestamp: Date.now()
+        })
+        
+        return result
+      } catch (error) {
+        const duration = Date.now() - startTime
+        
+        this.recordMetric({
+          type: 'function_execution',
+          name,
+          duration,
+          success: false,
+          error: error.message,
+          timestamp: Date.now()
+        })
+        
+        throw error
+      }
+    }
+  }
   
-  delete performanceData[name];
+  // Monitor memory usage
+  monitorMemory() {
+    if (wx.getPerformance) {
+      const performance = wx.getPerformance()
+      
+      this.recordMetric({
+        type: 'memory_usage',
+        usedJSHeapSize: performance.usedJSHeapSize,
+        totalJSHeapSize: performance.totalJSHeapSize,
+        timestamp: Date.now()
+      })
+    }
+  }
+  
+  // Monitor network requests
+  monitorRequest(url, startTime, endTime, success, size) {
+    this.recordMetric({
+      type: 'network_request',
+      url,
+      duration: endTime - startTime,
+      success,
+      size,
+      timestamp: endTime
+    })
+  }
+  
+  recordMetric(metric) {
+    this.metrics.push(metric)
+    
+    // Keep only recent metrics
+    if (this.metrics.length > 1000) {
+      this.metrics = this.metrics.slice(-500)
+    }
+    
+    // Report critical performance issues
+    this.checkPerformanceThresholds(metric)
+  }
+  
+  checkPerformanceThresholds(metric) {
+    const thresholds = {
+      page_load: 3000,
+      function_execution: 1000,
+      network_request: 5000
+    }
+    
+    const threshold = thresholds[metric.type]
+    if (threshold && metric.duration > threshold) {
+      console.warn(`Performance warning: ${metric.type} took ${metric.duration}ms`, metric)
+      
+      // Report to analytics service
+      this.reportPerformanceIssue(metric)
+    }
+  }
+  
+  reportPerformanceIssue(metric) {
+    // Send to analytics service
+    wx.request({
+      url: 'https://analytics.example.com/performance',
+      method: 'POST',
+      data: {
+        ...metric,
+        userAgent: wx.getSystemInfoSync(),
+        appVersion: getApp().globalData.version
+      }
+    })
+  }
+  
+  getMetrics() {
+    return this.metrics
+  }
+  
+  getAverageMetric(type) {
+    const typeMetrics = this.metrics.filter(m => m.type === type)
+    if (typeMetrics.length === 0) return 0
+    
+    const total = typeMetrics.reduce((sum, m) => sum + m.duration, 0)
+    return total / typeMetrics.length
+  }
 }
 
-// 使用示例
+const performanceMonitor = new PerformanceMonitor()
+
+// Usage
 Page({
   onLoad() {
-    startMeasure('pageLoad');
+    const startTime = Date.now()
     
-    // 加载数据
-    startMeasure('fetchData');
-    this.fetchData().then(() => {
-      endMeasure('fetchData');
-      endMeasure('pageLoad');
-    });
+    // Measure page load
+    this.loadData().then(() => {
+      performanceMonitor.measurePageLoad('home')
+    })
+  },
+  
+  // Wrap functions for performance monitoring
+  loadData: performanceMonitor.measureFunction('loadData', async function() {
+    // Your data loading logic
+    const data = await api.getData()
+    this.setData({ data })
+  }),
+  
+  onShow() {
+    // Monitor memory usage periodically
+    this.memoryTimer = setInterval(() => {
+      performanceMonitor.monitorMemory()
+    }, 10000)
+  },
+  
+  onHide() {
+    if (this.memoryTimer) {
+      clearInterval(this.memoryTimer)
+    }
   }
-});
+})
 ```
 
-### 使用开发者工具分析性能
-
-1. **Audits 面板**
-   - 使用微信开发者工具的 Audits 面板分析性能问题
-   - 根据建议优化代码
-
-2. **Memory 面板**
-   - 监控内存使用情况
-   - 排查内存泄漏问题
-
-3. **Performance 面板**
-   - 分析渲染性能
-   - 识别性能瓶颈
-
-## 最佳实践总结
-
-1. **启动优化**
-   - 减小代码包体积
-   - 使用分包加载
-   - 优化启动流程
-
-2. **渲染优化**
-   - 合理使用 setData
-   - 优化长列表渲染
-   - 减少页面重绘和回流
-
-3. **网络优化**
-   - 合并和优化请求
-   - 实施数据缓存策略
-   - 使用预加载和预请求
-
-4. **图片优化**
-   - 实现图片懒加载
-   - 压缩和优化图片资源
-   - 使用合适的图片格式
-
-5. **存储优化**
-   - 合理使用本地存储
-   - 定期清理过期数据
-   - 监控存储使用情况
-
-6. **框架优化**
-   - 使用 WXS 提升性能
-   - 组件化开发
-   - 使用 behaviors 复用代码
-
-7. **持续监控**
-   - 实施性能监控
-   - 定期分析性能数据
-   - 持续优化改进
-
-## 下一步
-
-现在你已经了解了小程序性能优化的关键策略，可以继续学习：
-
-- [调试技巧](./debugging-tips.md)
-- [最佳实践](./best-practices.md)
-- [发布部署](./deployment.md)
+Performance optimization is an ongoing process. Regular monitoring, profiling, and optimization based on real user data will help maintain smooth and responsive mini programs.

@@ -68,70 +68,100 @@ export default config[process.env.NODE_ENV || 'development']
     "navigationBarBackgroundColor": "#ffffff",
     "backgroundColor": "#ffffff"
   },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_active.png",
+        "text": "Home"
+      }
+    ]
+  },
   "networkTimeout": {
-    "request": 10000,
-    "downloadFile": 10000
+    "request": 10000
   },
   "debug": false
 }
 ```
 
-### 2. Upload Code
-
-1. **Open WeChat Developer Tools**
-2. **Click "Upload"** in the toolbar
-3. **Fill in version information**:
-   - Version number (e.g., 1.0.0)
-   - Version description
-4. **Click "Upload"**
-
-### 3. Submit for Review
-
-1. **Login to WeChat Mini Program Admin Panel**
-2. **Go to "Development" → "Version Management"**
-3. **Click "Submit for Review"** on your uploaded version
-4. **Fill in review information**:
-   - Category selection
-   - Feature description
-   - Test account (if needed)
-   - Screenshots
-
-### 4. Release
-
-After approval:
-1. **Go to "Version Management"**
-2. **Click "Release"** on the approved version
-3. **Confirm release**
-
-## Alipay Mini Program Deployment
-
-### 1. Build for Production
+### 2. Upload Process
 
 ```bash
-# If using a framework
-npm run build:alipay
+# Using WeChat Developer Tools
+# 1. Open project in WeChat DevTools
+# 2. Click "Upload" button
+# 3. Enter version and description
+# 4. Confirm upload
 
-# Or build manually
-my build
+# Using CLI (miniprogram-ci)
+npm install -g miniprogram-ci
+
+# Upload command
+miniprogram-ci upload \
+  --pp ./dist \
+  --pkp ./private.key \
+  --appid your-app-id \
+  --uv 1.0.0 \
+  --ud "Version description"
 ```
 
-### 2. Upload via IDE
+### 3. Review Submission
 
-1. **Open Alipay Mini Program Studio**
-2. **Click "Upload"**
-3. **Enter version information**
-4. **Upload code**
+```javascript
+// WeChat Mini Program Console (mp.weixin.qq.com)
+// 1. Go to Development > Development Management
+// 2. Click "Submit for Review"
+// 3. Fill required information:
+//    - Version description
+//    - Test account (if needed)
+//    - Category selection
+//    - Screenshots
+```
 
-### 3. Submit for Review
+## Alipay Mini Program
 
-1. **Login to Alipay Open Platform**
-2. **Go to your mini program**
-3. **Click "Version Management"**
-4. **Submit for review**
+### Configuration
+
+```json
+// app.json
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "defaultTitle": "Your App",
+    "titleBarColor": "#ffffff"
+  },
+  "tabBar": {
+    "textColor": "#dddddd",
+    "selectedColor": "#49a9ee",
+    "items": [
+      {
+        "pagePath": "pages/index/index",
+        "name": "Home"
+      }
+    ]
+  }
+}
+```
+
+### Upload Process
+
+```bash
+# Using Alipay Mini Program Studio
+# 1. Open project in Alipay DevTools
+# 2. Click "Upload" button
+# 3. Enter version information
+# 4. Submit for review
+```
 
 ## Multi-Platform Deployment
 
-### Using Taro Framework
+### Using Taro
 
 ```bash
 # Build for different platforms
@@ -139,18 +169,40 @@ npm run build:weapp    # WeChat
 npm run build:alipay   # Alipay
 npm run build:swan     # Baidu
 npm run build:tt       # ByteDance
-npm run build:qq       # QQ
 ```
 
-### Using uni-app Framework
+```javascript
+// config/index.js
+const config = {
+  projectName: 'your-app',
+  sourceRoot: 'src',
+  outputRoot: 'dist',
+  framework: 'react',
+  mini: {
+    postcss: {
+      pxtransform: {
+        enable: true,
+        config: {}
+      }
+    }
+  }
+}
+
+module.exports = function (merge) {
+  if (process.env.NODE_ENV === 'development') {
+    return merge({}, config, require('./dev'))
+  }
+  return merge({}, config, require('./prod'))
+}
+```
+
+### Using uni-app
 
 ```bash
-# Build for different platforms
-npm run build:mp-weixin   # WeChat
-npm run build:mp-alipay   # Alipay
-npm run build:mp-baidu    # Baidu
-npm run build:mp-toutiao  # ByteDance
-npm run build:mp-qq       # QQ
+# Build commands
+npm run build:mp-weixin    # WeChat
+npm run build:mp-alipay    # Alipay
+npm run build:mp-baidu     # Baidu
 ```
 
 ## Automated Deployment
@@ -163,42 +215,34 @@ name: Deploy Mini Program
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     
     - name: Setup Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '18'
         cache: 'npm'
     
-    - name: Install dependencies
-      run: npm ci
+    - name: Install and build
+      run: |
+        npm ci
+        npm test
+        npm run build
     
-    - name: Run tests
-      run: npm test
-    
-    - name: Build for production
-      run: npm run build:prod
-    
-    - name: Upload to WeChat
+    - name: Deploy to WeChat
       run: |
         npm install -g miniprogram-ci
         miniprogram-ci upload \
           --pp ./dist \
           --pkp ./private.key \
           --appid ${{ secrets.WECHAT_APPID }} \
-          --uv ${{ github.ref_name }} \
-          --ud "Automated deployment from ${{ github.ref_name }}"
-      env:
-        WECHAT_APPID: ${{ secrets.WECHAT_APPID }}
+          --uv 1.0.${{ github.run_number }}
 ```
 
 ### Deployment Script
@@ -208,34 +252,28 @@ jobs:
 const ci = require('miniprogram-ci')
 const path = require('path')
 
-async function deploy() {
-  const project = new ci.Project({
-    appid: process.env.WECHAT_APPID,
-    type: 'miniProgram',
-    projectPath: path.resolve(__dirname, '../dist'),
-    privateKeyPath: path.resolve(__dirname, '../private.key'),
-    ignores: ['node_modules/**/*']
-  })
+const project = new ci.Project({
+  appid: process.env.WECHAT_APPID,
+  type: 'miniProgram',
+  projectPath: path.resolve(__dirname, '../dist'),
+  privateKeyPath: path.resolve(__dirname, '../private.key')
+})
 
+async function deploy() {
   try {
-    const uploadResult = await ci.upload({
+    const result = await ci.upload({
       project,
       version: process.env.VERSION || '1.0.0',
-      desc: process.env.DESC || 'Automated upload',
+      desc: process.env.DESC || 'Automated deployment',
       setting: {
         es6: true,
-        es7: true,
-        minifyJS: true,
-        minifyWXML: true,
-        minifyWXSS: true,
-        autoPrefixWXSS: true
-      },
-      onProgressUpdate: console.log
+        minify: true,
+        codeProtect: true
+      }
     })
-    
-    console.log('Upload successful:', uploadResult)
+    console.log('Deployment successful:', result)
   } catch (error) {
-    console.error('Upload failed:', error)
+    console.error('Deployment failed:', error)
     process.exit(1)
   }
 }
@@ -243,91 +281,48 @@ async function deploy() {
 deploy()
 ```
 
-## Environment Management
-
-### Environment Configuration
-
-```javascript
-// utils/config.js
-const configs = {
-  development: {
-    apiBaseUrl: 'https://dev-api.example.com',
-    enableLogging: true,
-    enableDebug: true
-  },
-  staging: {
-    apiBaseUrl: 'https://staging-api.example.com',
-    enableLogging: true,
-    enableDebug: false
-  },
-  production: {
-    apiBaseUrl: 'https://api.example.com',
-    enableLogging: false,
-    enableDebug: false
-  }
-}
-
-const env = process.env.NODE_ENV || 'development'
-export default configs[env]
-```
-
-### Build Scripts
-
-```json
-{
-  "scripts": {
-    "dev": "NODE_ENV=development npm run build:watch",
-    "build:staging": "NODE_ENV=staging npm run build",
-    "build:prod": "NODE_ENV=production npm run build",
-    "deploy:staging": "npm run build:staging && npm run upload:staging",
-    "deploy:prod": "npm run build:prod && npm run upload:prod"
-  }
-}
-```
-
 ## Version Management
 
 ### Semantic Versioning
 
-```bash
-# Patch version (bug fixes)
-npm version patch
+```javascript
+// package.json
+{
+  "version": "1.0.0", // MAJOR.MINOR.PATCH
+  "scripts": {
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major"
+  }
+}
 
-# Minor version (new features)
-npm version minor
-
-# Major version (breaking changes)
-npm version major
+// Version info in app
+export const VERSION_INFO = {
+  version: '1.0.0',
+  buildTime: new Date().toISOString(),
+  environment: process.env.NODE_ENV
+}
 ```
 
-### Release Notes
+### Environment Management
 
-```markdown
-# Release Notes
+```javascript
+// config/env.js
+const environments = {
+  development: {
+    apiUrl: 'https://dev-api.example.com',
+    debug: true
+  },
+  production: {
+    apiUrl: 'https://api.example.com',
+    debug: false
+  }
+}
 
-## v1.2.0 (2024-01-15)
-
-### New Features
-- Added user profile management
-- Implemented dark mode support
-- Added offline data synchronization
-
-### Bug Fixes
-- Fixed login issue on iOS devices
-- Resolved image loading problems
-- Fixed navigation bar styling
-
-### Performance Improvements
-- Reduced app startup time by 30%
-- Optimized image loading
-- Improved memory usage
-
-### Breaking Changes
-- Updated API endpoints
-- Changed data storage format
+export default environments[process.env.NODE_ENV || 'development']
 ```
 
-## Monitoring and Analytics
+## Monitoring & Analytics
 
 ### Error Tracking
 
@@ -335,14 +330,8 @@ npm version major
 // utils/errorTracker.js
 class ErrorTracker {
   static init() {
-    // Global error handler
     wx.onError((error) => {
       this.logError('Global Error', error)
-    })
-    
-    // Unhandled promise rejection
-    wx.onUnhandledRejection((error) => {
-      this.logError('Unhandled Rejection', error)
     })
   }
   
@@ -350,13 +339,11 @@ class ErrorTracker {
     const errorInfo = {
       type,
       message: error.message || error,
-      stack: error.stack,
       timestamp: new Date().toISOString(),
-      userAgent: wx.getSystemInfoSync(),
-      version: getApp().globalData.version
+      version: VERSION_INFO.version
     }
     
-    // Send to error tracking service
+    // Send to analytics service
     wx.request({
       url: 'https://api.example.com/errors',
       method: 'POST',
@@ -365,12 +352,7 @@ class ErrorTracker {
   }
 }
 
-// Initialize in app.js
-App({
-  onLaunch() {
-    ErrorTracker.init()
-  }
-})
+ErrorTracker.init()
 ```
 
 ### Performance Monitoring
@@ -384,327 +366,117 @@ class PerformanceMonitor {
     return {
       end: () => {
         const loadTime = Date.now() - startTime
-        this.sendMetric('page_load_time', loadTime, { page: pageName })
-      }
-    }
-  }
-  
-  static trackApiCall(apiName) {
-    const startTime = Date.now()
-    
-    return {
-      success: () => {
-        const duration = Date.now() - startTime
-        this.sendMetric('api_call_success', duration, { api: apiName })
-      },
-      error: (error) => {
-        const duration = Date.now() - startTime
-        this.sendMetric('api_call_error', duration, { 
-          api: apiName, 
-          error: error.message 
+        this.sendMetric('page_load', {
+          page: pageName,
+          loadTime
         })
       }
     }
   }
   
-  static sendMetric(name, value, tags = {}) {
+  static sendMetric(type, data) {
     wx.request({
       url: 'https://api.example.com/metrics',
       method: 'POST',
-      data: {
-        name,
-        value,
-        tags,
-        timestamp: Date.now()
-      }
+      data: { type, ...data }
     })
   }
 }
 
-// Usage in pages
+// Usage
 Page({
   onLoad() {
-    const tracker = PerformanceMonitor.trackPageLoad('home')
-    
-    // Your page loading logic
-    this.loadData().then(() => {
-      tracker.end()
-    })
+    const tracker = PerformanceMonitor.trackPageLoad('index')
+    // Page load logic
+    tracker.end()
   }
 })
 ```
 
-## Rollback Strategy
-
-### Quick Rollback
-
-```javascript
-// scripts/rollback.js
-const ci = require('miniprogram-ci')
-
-async function rollback(version) {
-  try {
-    // Get previous version from version control
-    const previousVersion = await getPreviousVersion(version)
-    
-    // Build previous version
-    await buildVersion(previousVersion)
-    
-    // Upload previous version
-    const project = new ci.Project({
-      appid: process.env.WECHAT_APPID,
-      type: 'miniProgram',
-      projectPath: './dist',
-      privateKeyPath: './private.key'
-    })
-    
-    await ci.upload({
-      project,
-      version: `${previousVersion}-rollback`,
-      desc: `Rollback to version ${previousVersion}`
-    })
-    
-    console.log(`Rollback to version ${previousVersion} successful`)
-  } catch (error) {
-    console.error('Rollback failed:', error)
-  }
-}
-
-// Usage: node scripts/rollback.js 1.1.0
-rollback(process.argv[2])
-```
-
-### Feature Flags
-
-```javascript
-// utils/featureFlags.js
-class FeatureFlags {
-  constructor() {
-    this.flags = {}
-    this.loadFlags()
-  }
-  
-  async loadFlags() {
-    try {
-      const response = await wx.request({
-        url: 'https://api.example.com/feature-flags'
-      })
-      this.flags = response.data
-    } catch (error) {
-      console.error('Failed to load feature flags:', error)
-      // Use default flags
-      this.flags = {
-        newUserInterface: false,
-        advancedFeatures: false,
-        betaFeatures: false
-      }
-    }
-  }
-  
-  isEnabled(flagName) {
-    return this.flags[flagName] || false
-  }
-}
-
-const featureFlags = new FeatureFlags()
-
-// Usage in components
-if (featureFlags.isEnabled('newUserInterface')) {
-  // Show new UI
-} else {
-  // Show old UI
-}
-```
-
-## Security Considerations
-
-### Code Obfuscation
-
-```javascript
-// webpack.config.js
-const TerserPlugin = require('terser-webpack-plugin')
-
-module.exports = {
-  optimization: {
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          mangle: true,
-          compress: {
-            drop_console: true,
-            drop_debugger: true
-          }
-        }
-      })
-    ]
-  }
-}
-```
-
-### API Security
-
-```javascript
-// utils/apiSecurity.js
-class ApiSecurity {
-  static generateSignature(params, secret) {
-    const sortedParams = Object.keys(params)
-      .sort()
-      .map(key => `${key}=${params[key]}`)
-      .join('&')
-    
-    return this.hash(sortedParams + secret)
-  }
-  
-  static hash(str) {
-    // Use a proper hashing library in production
-    return btoa(str)
-  }
-  
-  static secureRequest(url, data) {
-    const timestamp = Date.now()
-    const nonce = Math.random().toString(36)
-    
-    const params = {
-      ...data,
-      timestamp,
-      nonce
-    }
-    
-    const signature = this.generateSignature(params, 'your-secret-key')
-    
-    return wx.request({
-      url,
-      method: 'POST',
-      data: params,
-      header: {
-        'X-Signature': signature,
-        'Content-Type': 'application/json'
-      }
-    })
-  }
-}
-```
-
 ## Best Practices
 
-### 1. Deployment Checklist
+### Deployment Checklist
 
-- [ ] Code review completed
+- [ ] Code quality checks passed
 - [ ] All tests passing
-- [ ] Performance benchmarks met
-- [ ] Security scan completed
-- [ ] Documentation updated
-- [ ] Release notes prepared
+- [ ] Performance optimized
+- [ ] Environment configs verified
+- [ ] Version numbers updated
+- [ ] Error tracking enabled
 - [ ] Rollback plan ready
-- [ ] Monitoring configured
 
-### 2. Release Strategy
+### Security Considerations
 
 ```javascript
-// Gradual rollout strategy
-const rolloutStrategy = {
-  canary: {
-    percentage: 5,
-    duration: '2 hours',
-    criteria: 'error_rate < 0.1%'
-  },
-  beta: {
-    percentage: 25,
-    duration: '24 hours',
-    criteria: 'error_rate < 0.05%'
-  },
-  production: {
-    percentage: 100,
-    criteria: 'manual_approval'
-  }
+// Enable code protection
+const uploadSettings = {
+  es6: true,
+  minify: true,
+  codeProtect: true, // Protect source code
+  minifyJS: true
+}
+
+// API security
+function secureRequest(url, data) {
+  const timestamp = Date.now()
+  const signature = generateSignature(data, timestamp)
+  
+  return wx.request({
+    url,
+    method: 'POST',
+    data,
+    header: {
+      'X-Timestamp': timestamp,
+      'X-Signature': signature
+    }
+  })
 }
 ```
 
-### 3. Monitoring Alerts
+### Rollback Strategy
 
 ```javascript
-// Alert configuration
-const alerts = {
-  errorRate: {
-    threshold: '> 1%',
-    action: 'auto_rollback'
-  },
-  responseTime: {
-    threshold: '> 3s',
-    action: 'notify_team'
-  },
-  crashRate: {
-    threshold: '> 0.1%',
-    action: 'emergency_rollback'
+// Feature flags for safe rollbacks
+class FeatureFlags {
+  static isEnabled(flagName) {
+    const flags = wx.getStorageSync('featureFlags') || {}
+    return flags[flagName] || false
   }
+}
+
+// Conditional feature rendering
+if (FeatureFlags.isEnabled('newFeature')) {
+  // Show new feature
+} else {
+  // Show stable version
 }
 ```
 
 ## Troubleshooting
 
-### Common Deployment Issues
+### Common Issues
 
-1. **Upload Failed**
-   - Check network connection
-   - Verify app ID and credentials
-   - Ensure code size is within limits
+1. **Upload Failed**: Check network, AppID, and private key
+2. **Review Rejected**: Ensure compliance with platform guidelines
+3. **Performance Issues**: Optimize images and reduce bundle size
+4. **API Errors**: Verify domain whitelist and HTTPS usage
 
-2. **Review Rejected**
-   - Review platform guidelines
-   - Check for prohibited content
-   - Ensure proper permissions
-
-3. **Performance Issues**
-   - Optimize bundle size
-   - Implement code splitting
-   - Use lazy loading
-
-### Debug Production Issues
+### Debug Tools
 
 ```javascript
-// Remote debugging
-class RemoteDebugger {
-  static log(level, message, data = {}) {
-    if (this.shouldLog(level)) {
-      wx.request({
-        url: 'https://api.example.com/logs',
-        method: 'POST',
-        data: {
-          level,
-          message,
-          data,
-          timestamp: Date.now(),
-          version: getApp().globalData.version,
-          userId: getApp().globalData.userId
-        }
-      })
-    }
-  }
-  
-  static shouldLog(level) {
-    const logLevels = ['error', 'warn', 'info', 'debug']
-    const currentLevel = getApp().globalData.logLevel || 'error'
-    return logLevels.indexOf(level) <= logLevels.indexOf(currentLevel)
-  }
+// Debug mode configuration
+if (process.env.NODE_ENV === 'development') {
+  wx.setEnableDebug({
+    enableDebug: true
+  })
 }
 
-// Usage
-RemoteDebugger.log('error', 'API call failed', { url: '/api/users', error })
+// Console logging
+console.log('Debug info:', {
+  version: VERSION_INFO.version,
+  environment: process.env.NODE_ENV,
+  timestamp: new Date().toISOString()
+})
 ```
 
-## Next Steps
-
-After successful deployment:
-
-1. **Monitor Performance**: Track key metrics and user behavior
-2. **Collect Feedback**: Gather user feedback and reviews
-3. **Plan Updates**: Schedule regular updates and improvements
-4. **Scale Infrastructure**: Prepare for increased traffic
-5. **Optimize Continuously**: Use data to drive improvements
-
-For more information, explore:
-
-- [Performance Optimization](./performance-optimization.md) for improving app performance
-- [Security Best Practices](./security.md) for protecting your app
-- [Monitoring and Analytics](./monitoring.md) for tracking app health
-- [Maintenance and Updates](./maintenance.md) for ongoing app management
+For detailed security practices, see our [Security Guide](./security.md). For monitoring strategies, check our [Monitoring Guide](./monitoring.md). For maintenance procedures, refer to our [Maintenance Guide](./maintenance.md).
