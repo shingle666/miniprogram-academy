@@ -5,7 +5,7 @@
         <notification-center />
       </template>
       
-      <template #nav-bar-content-after>
+      <!-- <template #nav-bar-content-after>
         <div class="theme-toggle">
           <el-switch
             v-model="isDarkMode"
@@ -15,7 +15,7 @@
             @change="toggleTheme"
           />
         </div>
-      </template>
+      </template> -->
       
       <template #doc-before>
         <enhanced-search v-if="showSearch" />

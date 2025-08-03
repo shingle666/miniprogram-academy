@@ -1,431 +1,301 @@
-# WeChat Mini-Program Platform
+# WeChat Mini Program
 
-WeChat Mini-Program is a lightweight application platform developed by Tencent, allowing users to access applications without downloading and installing them. It provides a rich ecosystem for developers to create engaging user experiences within the WeChat ecosystem.
+## Introduction
 
-## Platform Overview
+WeChat Mini Programs are applications that can be used without downloading and installing. They implement the concept of "use and go", where users can open the application by scanning a code or searching. After the application is fully open for registration, developers with entity types such as enterprises, governments, media, other organizations, or individuals can apply to register WeChat Mini Programs.
 
-### What is WeChat Mini-Program?
+## Features
 
-WeChat Mini-Program is a sub-application that runs within the WeChat app. It provides native-like performance and user experience while being instantly accessible through WeChat's interface.
+- **No Installation Required**: Users don't need to download and install, they can use it by scanning a code or searching
+- **Quick Access**: Small size, fast loading, good user experience
+- **Powerful Capabilities**: Provides rich native capabilities and WeChat ecosystem capabilities
+- **Efficient Development**: Provides comprehensive development tools and documentation
+- **Massive User Base**: Can reach WeChat's massive user base
 
-### Key Features
+## Setting Up the Development Environment
 
-- **Instant Access**: No download or installation required
-- **Native Performance**: Near-native app performance
-- **Rich APIs**: Comprehensive set of APIs for various functionalities
-- **Social Integration**: Deep integration with WeChat's social features
-- **Payment Integration**: Built-in WeChat Pay support
-- **Offline Capability**: Support for offline functionality
-- **Cross-Platform**: Runs on iOS and Android devices
+### 1. Register a Mini Program Account
 
-## Development Environment
+Before starting to develop a WeChat Mini Program, you need to register a Mini Program account:
 
-### Developer Tools
+1. Visit the [WeChat Official Accounts Platform](https://mp.weixin.qq.com/)
+2. Click "Register Now" in the upper right corner
+3. Select "Mini Program"
+4. Follow the instructions to fill in the information and complete the registration
 
-**WeChat Developer Tools** is the official IDE for mini-program development:
+### 2. Install Developer Tools
 
-- **Code Editor**: Syntax highlighting and auto-completion
-- **Simulator**: Real-time preview and debugging
-- **Debugger**: Comprehensive debugging tools
-- **Performance Monitor**: Performance analysis and optimization
-- **Cloud Development**: Integrated cloud services
+WeChat officially provides dedicated developer tools for developing and debugging Mini Programs:
 
-### System Requirements
+1. Visit the [WeChat Developer Tools download page](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
+2. Download the version corresponding to your operating system
+3. Install and launch the developer tools
+4. Log in by scanning the QR code with WeChat
 
-- **Operating System**: Windows 7+, macOS 10.10+, or Linux
-- **WeChat Version**: Latest version recommended
-- **Developer Account**: WeChat Mini-Program developer account required
+## Project Structure
 
-## Getting Started
-
-### Registration Process
-
-1. **Create Developer Account**
-   - Visit [WeChat Mini-Program Platform](https://mp.weixin.qq.com/)
-   - Register with email or phone number
-   - Complete identity verification
-
-2. **Create Mini-Program**
-   - Login to admin console
-   - Create new mini-program project
-   - Configure basic information
-   - Get AppID for development
-
-### Development Setup
-
-```bash
-# Download WeChat Developer Tools
-# Visit: https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
-
-# Create new project in Developer Tools
-# Enter AppID and project information
-# Choose template or start from scratch
-```
-
-### Project Structure
+A basic WeChat Mini Program project structure is as follows:
 
 ```
-mini-program/
-├── pages/              # Page files
-│   ├── index/
-│   │   ├── index.js    # Page logic
-│   │   ├── index.json  # Page configuration
-│   │   ├── index.wxml  # Page structure
-│   │   └── index.wxss  # Page styles
-├── utils/              # Utility functions
-├── components/         # Custom components
-├── app.js             # App logic
-├── app.json           # App configuration
-├── app.wxss           # Global styles
-└── project.config.json # Project configuration
+project/
+├── app.js        // Mini Program logic
+├── app.json      // Mini Program common configuration
+├── app.wxss      // Mini Program common style sheet
+├── project.config.json // Project configuration file
+├── sitemap.json  // Mini Program search optimization
+├── pages/        // Pages folder
+│   └── index/    // Home page
+│       ├── index.js    // Page logic
+│       ├── index.wxml  // Page structure
+│       ├── index.wxss  // Page style sheet
+│       └── index.json  // Page configuration
+└── components/   // Custom components
+    └── custom/   // Custom component example
+        ├── custom.js    // Component logic
+        ├── custom.wxml  // Component structure
+        ├── custom.wxss  // Component style sheet
+        └── custom.json  // Component configuration
 ```
 
-## Core Technologies
+## Core File Explanation
 
-### WXML (WeChat Markup Language)
+### app.js
 
-WXML is WeChat's markup language for building user interfaces:
-
-```xml
-<!-- Basic structure -->
-<view class="container">
-  <text class="title">{{title}}</text>
-  <button bindtap="handleClick">Click Me</button>
-</view>
-
-<!-- Conditional rendering -->
-<view wx:if="{{condition}}">
-  <text>Condition is true</text>
-</view>
-
-<!-- List rendering -->
-<view wx:for="{{items}}" wx:key="id">
-  <text>{{item.name}}</text>
-</view>
-
-<!-- Template usage -->
-<template name="item-template">
-  <view class="item">
-    <text>{{name}}</text>
-  </view>
-</template>
-
-<template is="item-template" data="{{name: 'Item 1'}}"/>
-```
-
-### WXSS (WeChat Style Sheets)
-
-WXSS is WeChat's styling language, similar to CSS with additional features:
-
-```css
-/* Global styles */
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20rpx;
-}
-
-/* Responsive units */
-.title {
-  font-size: 32rpx;  /* rpx: responsive pixel */
-  color: #333;
-  margin-bottom: 20rpx;
-}
-
-/* Import styles */
-@import "common.wxss";
-
-/* Media queries */
-@media (max-width: 600px) {
-  .container {
-    padding: 10rpx;
-  }
-}
-```
-
-### JavaScript Logic
+The global logic file of the Mini Program, used to handle global lifecycle functions and global data.
 
 ```javascript
-// app.js - Application logic
+// app.js
 App({
-  onLaunch: function() {
-    console.log('App launched')
-    // Initialize app
+  onLaunch() {
+    // Triggered when the Mini Program initialization is complete, triggered only once globally
+    console.log('Mini Program initialization complete')
   },
-  
-  onShow: function() {
-    console.log('App shown')
+  onShow(options) {
+    // Triggered when the Mini Program starts, or when it enters the foreground from the background
+    console.log('Mini Program displayed')
   },
-  
-  onHide: function() {
-    console.log('App hidden')
+  onHide() {
+    // Triggered when the Mini Program enters the background from the foreground
+    console.log('Mini Program hidden')
   },
-  
   globalData: {
+    // Global data
     userInfo: null
   }
 })
+```
 
-// page.js - Page logic
+### app.json
+
+The global configuration file of the Mini Program, used to configure the Mini Program's window, page paths, navigation bar, tab bar, etc.
+
+```json
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat Mini Program Example",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "Home",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_selected.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "Logs",
+        "iconPath": "images/logs.png",
+        "selectedIconPath": "images/logs_selected.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
+```
+
+### app.wxss
+
+The global style file of the Mini Program, used to set global style rules.
+
+```css
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+```
+
+## Page Development
+
+### Page Structure (WXML)
+
+WXML (WeiXin Markup Language) is the markup language of WeChat Mini Programs, used to build the page structure of Mini Programs.
+
+```html
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">Get Avatar and Nickname</button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>
+```
+
+### Page Style (WXSS)
+
+WXSS (WeiXin Style Sheets) is the style language of WeChat Mini Programs, used to describe the component styles of WXML.
+
+```css
+/**pages/index/index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+```
+
+### Page Logic (JS)
+
+The page logic file is used to handle page lifecycle functions, event handling functions, etc.
+
+```javascript
+// pages/index/index.js
+const app = getApp()
+
 Page({
   data: {
-    title: 'Hello WeChat',
-    items: []
+    motto: 'Hello World',
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  
-  onLoad: function(options) {
-    console.log('Page loaded', options)
-    this.loadData()
-  },
-  
-  onShow: function() {
-    console.log('Page shown')
-  },
-  
-  loadData: function() {
-    wx.request({
-      url: 'https://api.example.com/data',
-      success: (res) => {
+  onLoad() {
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } else if (this.data.canIUse) {
+      // Since getUserInfo is a network request, it may return after Page.onLoad
+      // So add a callback here to prevent this situation
+      app.userInfoReadyCallback = res => {
         this.setData({
-          items: res.data
+          userInfo: res.userInfo,
+          hasUserInfo: true
         })
       }
-    })
-  },
-  
-  handleClick: function(e) {
-    console.log('Button clicked', e)
-    wx.showToast({
-      title: 'Success!',
-      icon: 'success'
-    })
-  }
-})
-```
-
-## API Categories
-
-### Basic APIs
-
-#### Interface APIs
-```javascript
-// Show toast
-wx.showToast({
-  title: 'Success',
-  icon: 'success',
-  duration: 2000
-})
-
-// Show modal
-wx.showModal({
-  title: 'Confirm',
-  content: 'Are you sure?',
-  success: (res) => {
-    if (res.confirm) {
-      console.log('User confirmed')
     }
-  }
-})
-
-// Show loading
-wx.showLoading({
-  title: 'Loading...'
-})
-
-wx.hideLoading()
-```
-
-#### Navigation APIs
-```javascript
-// Navigate to page
-wx.navigateTo({
-  url: '/pages/detail/detail?id=123'
-})
-
-// Redirect to page
-wx.redirectTo({
-  url: '/pages/login/login'
-})
-
-// Switch tab
-wx.switchTab({
-  url: '/pages/home/home'
-})
-
-// Go back
-wx.navigateBack({
-  delta: 1
-})
-```
-
-### Network APIs
-
-```javascript
-// HTTP request
-wx.request({
-  url: 'https://api.example.com/users',
-  method: 'GET',
-  data: {
-    page: 1,
-    limit: 10
   },
-  header: {
-    'Content-Type': 'application/json'
-  },
-  success: (res) => {
-    console.log('Request success', res.data)
-  },
-  fail: (err) => {
-    console.error('Request failed', err)
-  }
-})
-
-// Upload file
-wx.uploadFile({
-  url: 'https://api.example.com/upload',
-  filePath: tempFilePath,
-  name: 'file',
-  formData: {
-    user: 'test'
-  },
-  success: (res) => {
-    console.log('Upload success', res)
-  }
-})
-
-// Download file
-wx.downloadFile({
-  url: 'https://example.com/file.pdf',
-  success: (res) => {
-    const filePath = res.tempFilePath
-    // Handle downloaded file
+  getUserInfo(e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
   }
 })
 ```
 
-### Storage APIs
+### Page Configuration (JSON)
 
-```javascript
-// Synchronous storage
-wx.setStorageSync('key', 'value')
-const value = wx.getStorageSync('key')
-wx.removeStorageSync('key')
-wx.clearStorageSync()
+The page configuration file is used to set the window appearance of the current page.
 
-// Asynchronous storage
-wx.setStorage({
-  key: 'userInfo',
-  data: {
-    name: 'John',
-    age: 25
-  },
-  success: () => {
-    console.log('Storage set successfully')
-  }
-})
-
-wx.getStorage({
-  key: 'userInfo',
-  success: (res) => {
-    console.log('User info:', res.data)
-  }
-})
-```
-
-### Device APIs
-
-```javascript
-// Get system info
-wx.getSystemInfo({
-  success: (res) => {
-    console.log('System info:', res)
-    console.log('Platform:', res.platform)
-    console.log('Screen size:', res.screenWidth, res.screenHeight)
-  }
-})
-
-// Get location
-wx.getLocation({
-  type: 'gcj02',
-  success: (res) => {
-    const latitude = res.latitude
-    const longitude = res.longitude
-    console.log('Location:', latitude, longitude)
-  }
-})
-
-// Vibrate
-wx.vibrateShort()
-wx.vibrateLong()
-
-// Set clipboard
-wx.setClipboardData({
-  data: 'Hello WeChat',
-  success: () => {
-    console.log('Copied to clipboard')
-  }
-})
+```json
+{
+  "navigationBarTitleText": "Home",
+  "usingComponents": {}
+}
 ```
 
 ## Component Development
 
-### Custom Components
+WeChat Mini Programs support custom components, which can split complex pages into multiple low-coupling modules, helping with code reuse and maintenance.
+
+### Component Definition
 
 ```javascript
-// components/my-component/my-component.js
+// components/custom/custom.js
 Component({
   properties: {
+    // External properties of the component
     title: {
       type: String,
       value: 'Default Title'
-    },
-    items: {
-      type: Array,
-      value: []
     }
   },
-  
   data: {
-    count: 0
+    // Internal data of the component
+    innerText: 'Internal Data'
   },
-  
   methods: {
-    handleTap: function() {
-      this.setData({
-        count: this.data.count + 1
-      })
-      
-      // Trigger custom event
-      this.triggerEvent('customEvent', {
-        count: this.data.count
-      })
-    }
-  },
-  
-  lifetimes: {
-    attached: function() {
-      console.log('Component attached')
-    },
-    
-    detached: function() {
-      console.log('Component detached')
+    // List of component methods
+    onTap() {
+      const myEventDetail = {} // detail object, provided to the event listener function
+      const myEventOption = {} // options for triggering the event
+      this.triggerEvent('myevent', myEventDetail, myEventOption)
     }
   }
 })
 ```
 
-```xml
-<!-- components/my-component/my-component.wxml -->
-<view class="my-component">
-  <text class="title">{{title}}</text>
-  <view class="content">
-    <text>Count: {{count}}</text>
-    <button bindtap="handleTap">Increment</button>
-  </view>
-  <slot></slot>
+### Component Template
+
+```html
+<!-- components/custom/custom.wxml -->
+<view class="custom-component" bindtap="onTap">
+  <text>{{title}}</text>
+  <text>{{innerText}}</text>
 </view>
 ```
+
+### Component Style
+
+```css
+/* components/custom/custom.wxss */
+.custom-component {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+```
+
+### Component Configuration
 
 ```json
 {
@@ -434,289 +304,178 @@ Component({
 }
 ```
 
-### Using Custom Components
+### Using Components
+
+Declare the components to be used in the page's JSON file:
 
 ```json
 {
   "usingComponents": {
-    "my-component": "/components/my-component/my-component"
+    "custom": "/components/custom/custom"
   }
 }
 ```
 
-```xml
-<my-component 
-  title="Custom Title" 
-  items="{{itemList}}"
-  bind:customEvent="handleCustomEvent">
-  <text>Slot content</text>
-</my-component>
+Use the component in the page's WXML:
+
+```html
+<custom title="Custom Title" bindmyevent="onMyEvent"></custom>
 ```
 
-## Advanced Features
+## API Usage
 
-### Cloud Development
+WeChat Mini Programs provide rich APIs that can call capabilities provided by WeChat, such as getting user information, WeChat Pay, maps, Bluetooth, etc.
 
-WeChat provides integrated cloud services:
+### Making Network Requests
 
 ```javascript
-// Initialize cloud
-wx.cloud.init({
-  env: 'your-env-id'
-})
-
-// Cloud functions
-wx.cloud.callFunction({
-  name: 'getUserInfo',
+wx.request({
+  url: 'https://example.com/api',
   data: {
-    userId: 'user123'
+    x: 1,
+    y: 2
   },
-  success: (res) => {
-    console.log('Cloud function result:', res.result)
-  }
-})
-
-// Cloud database
-const db = wx.cloud.database()
-
-// Add data
-db.collection('users').add({
-  data: {
-    name: 'John',
-    age: 25
+  header: {
+    'content-type': 'application/json'
   },
-  success: (res) => {
-    console.log('Data added:', res._id)
-  }
-})
-
-// Query data
-db.collection('users').where({
-  age: db.command.gt(18)
-}).get({
-  success: (res) => {
-    console.log('Query result:', res.data)
-  }
-})
-
-// Cloud storage
-wx.cloud.uploadFile({
-  cloudPath: 'images/photo.jpg',
-  filePath: tempFilePath,
-  success: (res) => {
-    console.log('File uploaded:', res.fileID)
+  success(res) {
+    console.log(res.data)
+  },
+  fail(err) {
+    console.error(err)
   }
 })
 ```
 
-### WeChat Pay Integration
+### Getting Location Information
 
 ```javascript
-// Request payment
+wx.getLocation({
+  type: 'wgs84',
+  success(res) {
+    const latitude = res.latitude
+    const longitude = res.longitude
+    console.log(`Current location: ${latitude}, ${longitude}`)
+  }
+})
+```
+
+### WeChat Pay
+
+```javascript
 wx.requestPayment({
   timeStamp: '',
   nonceStr: '',
   package: '',
   signType: 'MD5',
   paySign: '',
-  success: (res) => {
-    console.log('Payment success')
+  success(res) {
+    console.log('Payment successful')
   },
-  fail: (res) => {
-    console.log('Payment failed')
+  fail(err) {
+    console.error('Payment failed', err)
   }
 })
 ```
 
-### Social Features
+## Publishing and Review
+
+After development is complete, the Mini Program needs to be submitted for review and published:
+
+1. Click the "Upload" button in the developer tools
+2. Fill in the version number and project notes
+3. Upload the code
+4. Log in to the [WeChat Official Accounts Platform](https://mp.weixin.qq.com/)
+5. Go to "Management" > "Version Management"
+6. Select the version to be published, click "Submit for Review"
+7. Fill in the relevant information and submit
+8. After the review is passed, click the "Publish" button to publish the Mini Program online
+
+## Best Practices
+
+1. **Performance Optimization**:
+   - Reasonable use of subpackage loading
+   - Avoid frequent setData
+   - Use wx:if instead of hidden for conditional rendering
+   - Reasonable use of caching
+
+2. **Code Standards**:
+   - Follow naming conventions
+   - Modular development
+   - Clear comments
+
+3. **Security**:
+   - Front-end and back-end data validation
+   - Encryption of sensitive information
+   - Use HTTPS requests
+
+4. **User Experience**:
+   - Provide loading prompts
+   - Reasonable error handling
+   - Adapt to different screen sizes
+
+## Related Resources
+
+- [WeChat Mini Program Official Documentation](https://developers.weixin.qq.com/miniprogram/dev/framework/)
+- [WeChat Mini Program Design Guide](https://developers.weixin.qq.com/miniprogram/design/)
+- [WeChat Developer Community](https://developers.weixin.qq.com/community/develop/mixflow)
+
+## Common Questions
+
+### 1. How to solve the problem of Mini Program login state expiration?
+
+Use wx.checkSession to check if the login state has expired, if it has expired, call wx.login again to get a new login credential.
 
 ```javascript
-// Share to friends
-wx.showShareMenu({
-  withShareTicket: true
+wx.checkSession({
+  success() {
+    // Login state has not expired
+    console.log('Login state has not expired')
+  },
+  fail() {
+    // Login state has expired, need to log in again
+    wx.login({
+      success(res) {
+        if (res.code) {
+          // Send res.code to the backend to exchange for openId, sessionKey, unionId
+        } else {
+          console.log('Login failed!' + res.errMsg)
+        }
+      }
+    })
+  }
 })
+```
 
-// Get share info
-wx.getShareInfo({
-  shareTicket: 'ticket',
-  success: (res) => {
-    console.log('Share info:', res)
+### 2. What is the size limit for Mini Programs?
+
+The total size limit for Mini Programs is 20MB, with the main package not exceeding 2MB, and each subpackage not exceeding 2MB.
+
+### 3. How to implement data caching in Mini Programs?
+
+Use wx.setStorage/wx.setStorageSync and wx.getStorage/wx.getStorageSync for data caching operations.
+
+```javascript
+// Store data
+wx.setStorage({
+  key: 'key',
+  data: 'value',
+  success() {
+    console.log('Storage successful')
   }
 })
 
-// Open group chat
-wx.openGroupProfile({
-  openGId: 'groupId'
-})
-```
+// Synchronously store data
+wx.setStorageSync('key', 'value')
 
-## Performance Optimization
-
-### Best Practices
-
-1. **Data Binding Optimization**
-   - Use specific data paths in setData
-   - Avoid frequent setData calls
-   - Minimize data transfer
-
-```javascript
-// Good
-this.setData({
-  'user.name': 'John'
+// Get data
+wx.getStorage({
+  key: 'key',
+  success(res) {
+    console.log(res.data)
+  }
 })
 
-// Avoid
-this.setData({
-  user: this.data.user
-})
-```
-
-2. **Image Optimization**
-   - Use appropriate image formats
-   - Implement lazy loading
-   - Compress images
-
-3. **Code Splitting**
-   - Use subpackages for large apps
-   - Implement on-demand loading
-
-```json
-{
-  "pages": [...],
-  "subpackages": [
-    {
-      "root": "pages/sub",
-      "pages": [
-        "detail/detail"
-      ]
-    }
-  ]
-}
-```
-
-### Performance Monitoring
-
-```javascript
-// Performance tracking
-const performanceObserver = wx.getPerformance().createObserver((entryList) => {
-  console.log('Performance entries:', entryList.getEntries())
-})
-
-performanceObserver.observe({
-  entryTypes: ['render', 'script']
-})
-```
-
-## Testing and Debugging
-
-### Debugging Tools
-
-1. **Console Debugging**
-   - Use console.log for basic debugging
-   - Inspect network requests
-   - Monitor performance
-
-2. **Remote Debugging**
-   - Enable remote debugging in Developer Tools
-   - Debug on real devices
-   - Test different WeChat versions
-
-### Testing Strategies
-
-```javascript
-// Unit testing example
-const assert = require('assert')
-
-function add(a, b) {
-  return a + b
-}
-
-// Test
-assert.equal(add(2, 3), 5)
-console.log('Test passed')
-```
-
-## Deployment and Publishing
-
-### Preparation
-
-1. **Code Review**
-   - Check code quality
-   - Optimize performance
-   - Test on different devices
-
-2. **Configuration**
-   - Set production environment
-   - Configure domain whitelist
-   - Update version information
-
-### Publishing Process
-
-1. **Upload Code**
-   - Use Developer Tools to upload
-   - Set version number and description
-   - Submit for review
-
-2. **Review Process**
-   - WeChat team reviews the submission
-   - Address any feedback or issues
-   - Wait for approval
-
-3. **Release**
-   - Publish approved version
-   - Monitor user feedback
-   - Plan updates and improvements
-
-## Platform Guidelines
-
-### Design Guidelines
-
-1. **User Interface**
-   - Follow WeChat design principles
-   - Maintain consistency with WeChat UI
-   - Use appropriate colors and fonts
-
-2. **User Experience**
-   - Optimize loading times
-   - Provide clear navigation
-   - Handle errors gracefully
-
-### Content Guidelines
-
-1. **Content Policy**
-   - Follow WeChat content guidelines
-   - Avoid prohibited content
-   - Respect user privacy
-
-2. **Functionality**
-   - Provide clear value to users
-   - Avoid duplicate functionality
-   - Ensure stable performance
-
-## Resources and Support
-
-### Official Resources
-
-- [WeChat Mini-Program Documentation](https://developers.weixin.qq.com/miniprogram/dev/framework/)
-- [API Reference](https://developers.weixin.qq.com/miniprogram/dev/api/)
-- [Component Library](https://developers.weixin.qq.com/miniprogram/dev/component/)
-- [Developer Tools](https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html)
-
-### Community Resources
-
-- [WeChat Developer Community](https://developers.weixin.qq.com/community/minihome)
-- [GitHub Examples](https://github.com/wechat-miniprogram)
-- [Third-party Libraries](https://github.com/justjavac/awesome-wechat-weapp)
-
-### Learning Materials
-
-- Official tutorials and guides
-- Video courses and workshops
-- Books and documentation
-- Community blog posts
-
-## Conclusion
-
-WeChat Mini-Program platform offers a powerful ecosystem for creating lightweight, instantly accessible applications. With its rich API set, integrated cloud services, and massive user base, it provides excellent opportunities for developers to create engaging user experiences.
-
-The platform's continuous evolution and strong community support make it an attractive choice for businesses and developers looking to reach Chinese users effectively. By following best practices and leveraging the platform's unique features, developers can create successful mini-programs that provide real value to users.
+// Synchronously get data
+const value = wx.getStorageSync('key')
+console.log(value)

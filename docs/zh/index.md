@@ -1,86 +1,41 @@
-# 开发文档
-
-欢迎来到小程序研究院开发文档！这里提供了从入门到进阶的完整小程序开发指南。
-
-## 📖 文档导航
-
-### 🚀 快速开始
-新手开发者的入门指南，帮助你快速上手小程序开发。
-
-- **[环境搭建](./getting-started.md)** - 配置开发环境和工具
-- **[第一个小程序](./first-app.md)** - 创建并运行你的第一个小程序
-- **[基础概念](./basic-concepts.md)** - 理解小程序的核心概念
-
-### 🏗️ 基础开发
-掌握小程序开发的基础知识和核心技能。
-
-- **[项目结构](./project-structure.md)** - 了解小程序项目的目录结构
-- **[配置文件](./configuration.md)** - 掌握各种配置文件的使用
-- **[页面开发](./page-development.md)** - 学习页面的创建和管理
-- **[组件开发](./component-development.md)** - 构建可复用的自定义组件
-
-### ⚡ 进阶功能
-深入学习小程序的高级特性和最佳实践。
-
-- **[API调用](./api-usage.md)** - 掌握小程序API的使用方法
-- **[数据存储](./data-storage.md)** - 本地存储和云存储解决方案
-- **[网络请求](./network-request.md)** - HTTP请求和数据交互
-- **[性能优化](./performance.md)** - 提升小程序性能的技巧
-
-### 🚀 发布部署
-了解小程序的发布流程和版本管理。
-
-- **[代码审核](./code-review.md)** - 代码质量检查和规范
-- **[版本管理](./version-control.md)** - 版本控制和发布策略
-- **[发布流程](./deployment.md)** - 小程序上线发布流程
-
-## 🎯 学习路径
-
-### 初级开发者 (0-3个月)
-1. 环境搭建和工具使用
-2. 基础语法和框架理解
-3. 简单页面和组件开发
-4. 基础API使用
-
-### 中级开发者 (3-12个月)
-1. 复杂业务逻辑实现
-2. 数据管理和状态处理
-3. 网络请求和数据交互
-4. 性能优化基础
-
-### 高级开发者 (1年以上)
-1. 架构设计和模块化
-2. 深度性能优化
-3. 自定义组件库开发
-4. 团队协作和代码规范
-
-## 🔧 开发工具推荐
-
-### 必备工具
-- **微信开发者工具** - 官方IDE
-- **VS Code** - 代码编辑器
-- **Git** - 版本控制
-
-### 推荐插件
-- **小程序开发助手** - VS Code插件
-- **微信小程序API提示** - 智能提示
-- **代码格式化工具** - 保持代码风格一致
-
-## 📚 相关资源
-
-- [微信官方文档](https://developers.weixin.qq.com/miniprogram/dev/framework/)
-- [小程序案例展示](./showcase/)
-- [开发工具集合](./tools/)
-- [社区论坛](./community/)
-
-## 💡 贡献指南
-
-我们欢迎社区贡献！如果你发现文档中的错误或想要添加新内容，请：
-
-1. 在GitHub上提交Issue
-2. 提交Pull Request
-3. 参与社区讨论
-
 ---
+layout: home
+title: 首页
+hero:
+  name: 小程序研究院
+  text: 专业的小程序开发研究与资源平台
+  tagline: 连接多端，赋能创新
+  image:
+    src: /logo.svg
+    alt: 小程序研究院
+  actions:
+    - theme: brand
+      text: 快速开始
+      link: /zh/guide/getting-started
+    - theme: alt
+      text: 平台对比
+      link: /zh/platforms/wechat
+    - theme: alt
+      text: 框架分析
+      link: /zh/frameworks/taro
 
-*最后更新：2025年*
+features:
+  - icon: 📱
+    title: 全平台覆盖
+    details: 微信、支付宝、百度、字节跳动、QQ、快手等各大小程序平台的全面分析与对比
+  - icon: 🛠️
+    title: 框架深度解析
+    details: Taro、uni-app、Remax、Chameleon等主流跨平台框架的优劣势分析与最佳实践
+  - icon: 🚀
+    title: 实战案例
+    details: 丰富的小程序开发案例，从零基础到商业级应用的全流程指导
+  - icon: 📚
+    title: 系统教程
+    details: 从入门到精通的小程序开发教程，帮助开发者快速掌握小程序开发技能
+  - icon: 🔍
+    title: 技术前沿
+    details: 持续追踪小程序技术发展动态，分享最新的开发趋势与创新实践
+  - icon: 🌐
+    title: 社区支持
+    details: 活跃的开发者社区，提供问题解答、经验分享和技术交流的平台
+---

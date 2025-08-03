@@ -60,7 +60,18 @@ export default defineConfig({
           { text: 'Chameleon', link: '/zh/frameworks/chameleon' }
         ]
       },
-      { text: '案例展示', link: '/zh/showcase/' },
+      { 
+        text: '案例展示', 
+        items: [
+          { text: '概览', link: '/zh/showcase/' },
+          { text: '电商类', link: '/zh/showcase/ecommerce/ecommerce-platform' },
+          { text: '工具类', link: '/zh/showcase/tools/life-services' },
+          { text: '教育类', link: '/zh/showcase/education/online-learning' },
+          { text: '生活类', link: '/zh/showcase/lifestyle/food-service' },
+          { text: '游戏类', link: '/zh/showcase/games/casual-games' },
+          { text: '商务类', link: '/zh/showcase/business/company-profile' }
+        ]
+      },
       { 
         text: '语言', 
         items: [
@@ -134,6 +145,62 @@ export default defineConfig({
           ]
         }
       ],
+      '/zh/showcase/': [
+        {
+          text: '案例展示',
+          items: [
+            { text: '概览', link: '/zh/showcase/' },
+          ]
+        },
+        {
+          text: '电商类',
+          items: [
+            { text: '电商平台', link: '/zh/showcase/ecommerce/ecommerce-platform' },
+            { text: '社交电商', link: '/zh/showcase/ecommerce/social-commerce' },
+            { text: '线下门店', link: '/zh/showcase/ecommerce/offline-store' },
+          ]
+        },
+        {
+          text: '工具类',
+          items: [
+            { text: '生活服务', link: '/zh/showcase/tools/life-services' },
+            { text: '日程管理', link: '/zh/showcase/tools/schedule-management' },
+            { text: '文件转换', link: '/zh/showcase/tools/file-converter' },
+          ]
+        },
+        {
+          text: '教育类',
+          items: [
+            { text: '在线学习', link: '/zh/showcase/education/online-learning' },
+            { text: '语言学习', link: '/zh/showcase/education/language-learning' },
+            { text: '考试培训', link: '/zh/showcase/education/exam-training' },
+          ]
+        },
+        {
+          text: '生活类',
+          items: [
+            { text: '餐饮服务', link: '/zh/showcase/lifestyle/food-service' },
+            { text: '旅行服务', link: '/zh/showcase/lifestyle/travel-service' },
+            { text: '健康管理', link: '/zh/showcase/lifestyle/health-management' },
+          ]
+        },
+        {
+          text: '游戏类',
+          items: [
+            { text: '休闲游戏', link: '/zh/showcase/games/casual-games' },
+            { text: '社交游戏', link: '/zh/showcase/games/social-games' },
+            { text: '教育游戏', link: '/zh/showcase/games/educational-games' },
+          ]
+        },
+        {
+          text: '商务类',
+          items: [
+            { text: '企业简介', link: '/zh/showcase/business/company-profile' },
+            { text: '预约系统', link: '/zh/showcase/business/appointment-system' },
+            { text: '客户管理', link: '/zh/showcase/business/crm-system' },
+          ]
+        }
+      ],
       '/en/guide/': [
         {
           text: 'Getting Started',
@@ -193,6 +260,62 @@ export default defineConfig({
             { text: 'uni-app', link: '/en/frameworks/uni-app' },
             { text: 'Remax', link: '/en/frameworks/remax' },
             { text: 'Chameleon', link: '/en/frameworks/chameleon' }
+          ]
+        }
+      ],
+      '/en/showcase/': [
+        {
+          text: 'Showcase',
+          items: [
+            { text: 'Overview', link: '/en/showcase/' },
+          ]
+        },
+        {
+          text: 'E-commerce',
+          items: [
+            { text: 'E-commerce Platform', link: '/en/showcase/ecommerce/ecommerce-platform' },
+            { text: 'Social Commerce', link: '/en/showcase/ecommerce/social-commerce' },
+            { text: 'Offline Store', link: '/en/showcase/ecommerce/offline-store' },
+          ]
+        },
+        {
+          text: 'Tools',
+          items: [
+            { text: 'Life Services', link: '/en/showcase/tools/life-services' },
+            { text: 'Schedule Management', link: '/en/showcase/tools/schedule-management' },
+            { text: 'File Converter', link: '/en/showcase/tools/file-converter' },
+          ]
+        },
+        {
+          text: 'Education',
+          items: [
+            { text: 'Online Learning', link: '/en/showcase/education/online-learning' },
+            { text: 'Language Learning', link: '/en/showcase/education/language-learning' },
+            { text: 'Exam Training', link: '/en/showcase/education/exam-training' },
+          ]
+        },
+        {
+          text: 'Lifestyle',
+          items: [
+            { text: 'Food Service', link: '/en/showcase/lifestyle/food-service' },
+            { text: 'Travel Service', link: '/en/showcase/lifestyle/travel-service' },
+            { text: 'Health Management', link: '/en/showcase/lifestyle/health-management' },
+          ]
+        },
+        {
+          text: 'Games',
+          items: [
+            { text: 'Casual Games', link: '/en/showcase/games/casual-games' },
+            { text: 'Social Games', link: '/en/showcase/games/social-games' },
+            { text: 'Educational Games', link: '/en/showcase/games/educational-games' },
+          ]
+        },
+        {
+          text: 'Business',
+          items: [
+            { text: 'Company Profile', link: '/en/showcase/business/company-profile' },
+            { text: 'Appointment System', link: '/en/showcase/business/appointment-system' },
+            { text: 'CRM System', link: '/en/showcase/business/crm-system' },
           ]
         }
       ]
@@ -279,6 +402,7 @@ export default defineConfig({
       dark: 'github-dark'
     },
     lineNumbers: true,
+    // 移除 languages 配置，使用默认支持的语言
     config: (md) => {
       // 可以在这里添加markdown插件
     }
