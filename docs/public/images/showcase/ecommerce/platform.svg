@@ -1,0 +1,64 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DC2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B91C1C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">电商平台</text>
+  
+  <!-- Search bar -->
+  <rect x="80" y="110" width="240" height="25" fill="#FEF2F2" rx="12" stroke="#DC2626" stroke-width="1"/>
+  <text x="90" y="125" font-family="Arial, sans-serif" font-size="10" fill="#9CA3AF">🔍 搜索商品</text>
+  
+  <!-- Category tabs -->
+  <rect x="80" y="145" width="50" height="20" fill="#DC2626" rx="10"/>
+  <text x="105" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">热销</text>
+  
+  <rect x="140" y="145" width="50" height="20" fill="#F3F4F6" rx="10"/>
+  <text x="165" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">数码</text>
+  
+  <rect x="200" y="145" width="50" height="20" fill="#F3F4F6" rx="10"/>
+  <text x="225" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">服装</text>
+  
+  <rect x="260" y="145" width="50" height="20" fill="#F3F4F6" rx="10"/>
+  <text x="285" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">家居</text>
+  
+  <!-- Product grid -->
+  <!-- Product 1 -->
+  <rect x="80" y="175" width="110" height="60" fill="white" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  <rect x="85" y="180" width="40" height="30" fill="#F3F4F6" rx="4"/>
+  <text x="105" y="198" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#6B7280">📱</text>
+  <text x="135" y="188" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">iPhone 15</text>
+  <text x="135" y="198" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">128GB 黑色</text>
+  <text x="135" y="208" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#DC2626">¥5,999</text>
+  <text x="135" y="218" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">已售1.2万</text>
+  <text x="135" y="228" font-family="Arial, sans-serif" font-size="7" fill="#059669">包邮</text>
+  
+  <!-- Product 2 -->
+  <rect x="200" y="175" width="110" height="60" fill="white" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  <rect x="205" y="180" width="40" height="30" fill="#F3F4F6" rx="4"/>
+  <text x="225" y="198" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#6B7280">👕</text>
+  <text x="255" y="188" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">休闲T恤</text>
+  <text x="255" y="198" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">纯棉 多色可选</text>
+  <text x="255" y="208" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#DC2626">¥89</text>
+  <text x="255" y="218" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">已售3.5万</text>
+  <text x="255" y="228" font-family="Arial, sans-serif" font-size="7" fill="#F59E0B">限时特价</text>
+  
+  <!-- Bottom navigation -->
+  <rect x="70" y="245" width="260" height="20" fill="#F9FAFB" rx="10"/>
+  
+  <text x="100" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">🏠 首页</text>
+  <text x="150" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">🔍 搜索</text>
+  <text x="200" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">🛒 购物车</text>
+  <text x="250" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">👤 我的</text>
+</svg>

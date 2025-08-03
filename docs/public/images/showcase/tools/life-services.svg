@@ -1,0 +1,49 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">生活服务</text>
+  
+  <!-- Service icons grid -->
+  <!-- Weather -->
+  <circle cx="120" cy="140" r="20" fill="#FEF3C7"/>
+  <text x="120" y="146" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#F59E0B">☀</text>
+  <text x="120" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">天气</text>
+  
+  <!-- Transportation -->
+  <circle cx="200" cy="140" r="20" fill="#DBEAFE"/>
+  <text x="200" y="146" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#3B82F6">🚌</text>
+  <text x="200" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">交通</text>
+  
+  <!-- Food delivery -->
+  <circle cx="280" cy="140" r="20" fill="#FEE2E2"/>
+  <text x="280" y="146" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#EF4444">🍔</text>
+  <text x="280" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">外卖</text>
+  
+  <!-- Utility bills -->
+  <circle cx="120" cy="200" r="20" fill="#D1FAE5"/>
+  <text x="120" y="206" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#10B981">💡</text>
+  <text x="120" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">缴费</text>
+  
+  <!-- Shopping -->
+  <circle cx="200" cy="200" r="20" fill="#F3E8FF"/>
+  <text x="200" y="206" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8B5CF6">🛒</text>
+  <text x="200" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">购物</text>
+  
+  <!-- More services -->
+  <circle cx="280" cy="200" r="20" fill="#FEF3C7"/>
+  <text x="280" y="206" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#F59E0B">⋯</text>
+  <text x="280" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">更多</text>
+</svg>

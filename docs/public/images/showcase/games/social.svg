@@ -1,0 +1,72 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EC4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#BE185D;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">社交游戏</text>
+  
+  <!-- Game room info -->
+  <rect x="80" y="110" width="240" height="30" fill="#FDF2F8" rx="8"/>
+  <text x="200" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">房间号: 888888</text>
+  <text x="200" y="133" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#EC4899">狼人杀 - 9人局</text>
+  
+  <!-- Player avatars -->
+  <g transform="translate(90, 150)">
+    <!-- Player 1 -->
+    <circle cx="30" cy="20" r="15" fill="#DBEAFE"/>
+    <text x="30" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3B82F6">👤</text>
+    <text x="30" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#374151">玩家1</text>
+    <rect x="20" y="5" width="20" height="8" fill="#10B981" rx="4"/>
+    <text x="30" y="10" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="white">在线</text>
+    
+    <!-- Player 2 -->
+    <circle cx="80" cy="20" r="15" fill="#FEE2E2"/>
+    <text x="80" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#EF4444">👤</text>
+    <text x="80" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#374151">玩家2</text>
+    <rect x="70" y="5" width="20" height="8" fill="#10B981" rx="4"/>
+    <text x="80" y="10" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="white">在线</text>
+    
+    <!-- Player 3 -->
+    <circle cx="130" cy="20" r="15" fill="#FEF3C7"/>
+    <text x="130" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#F59E0B">👤</text>
+    <text x="130" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#374151">玩家3</text>
+    <rect x="120" y="5" width="20" height="8" fill="#6B7280" rx="4"/>
+    <text x="130" y="10" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="white">等待</text>
+    
+    <!-- Player 4 -->
+    <circle cx="180" cy="20" r="15" fill="#F3E8FF"/>
+    <text x="180" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#8B5CF6">👤</text>
+    <text x="180" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#374151">玩家4</text>
+    <rect x="170" y="5" width="20" height="8" fill="#10B981" rx="4"/>
+    <text x="180" y="10" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="white">在线</text>
+  </g>
+  
+  <!-- Chat area -->
+  <rect x="80" y="200" width="240" height="35" fill="#F9FAFB" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Chat messages -->
+  <text x="90" y="212" font-family="Arial, sans-serif" font-size="8" fill="#3B82F6">玩家1: 大家好！</text>
+  <text x="90" y="222" font-family="Arial, sans-serif" font-size="8" fill="#EF4444">玩家2: 开始游戏吧</text>
+  <text x="90" y="232" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">系统: 等待更多玩家加入...</text>
+  
+  <!-- Action buttons -->
+  <rect x="80" y="245" width="70" height="20" fill="#EC4899" rx="10"/>
+  <text x="115" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">开始游戏</text>
+  
+  <rect x="160" y="245" width="70" height="20" fill="#6B7280" rx="10"/>
+  <text x="195" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">邀请好友</text>
+  
+  <rect x="240" y="245" width="70" height="20" fill="#F59E0B" rx="10"/>
+  <text x="275" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">语音聊天</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">教育游戏</text>
+  
+  <!-- Question area -->
+  <rect x="80" y="110" width="240" height="40" fill="#ECFDF5" rx="8"/>
+  <text x="200" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">数学挑战 - 第5题</text>
+  <text x="200" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#059669">25 + 17 = ?</text>
+  
+  <!-- Answer options -->
+  <g transform="translate(80, 160)">
+    <!-- Option A -->
+    <rect x="0" y="0" width="110" height="30" fill="#F0FDF4" rx="8" stroke="#059669" stroke-width="1"/>
+    <text x="15" y="15" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#059669">A</text>
+    <text x="55" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#374151">42</text>
+    
+    <!-- Option B -->
+    <rect x="130" y="0" width="110" height="30" fill="#F9FAFB" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="145" y="15" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#6B7280">B</text>
+    <text x="185" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#374151">41</text>
+    
+    <!-- Option C -->
+    <rect x="0" y="40" width="110" height="30" fill="#F9FAFB" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="15" y="55" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#6B7280">C</text>
+    <text x="55" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#374151">43</text>
+    
+    <!-- Option D -->
+    <rect x="130" y="40" width="110" height="30" fill="#F9FAFB" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="145" y="55" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#6B7280">D</text>
+    <text x="185" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#374151">40</text>
+  </g>
+  
+  <!-- Progress bar -->
+  <rect x="80" y="240" width="240" height="8" fill="#F3F4F6" rx="4"/>
+  <rect x="80" y="240" width="96" height="8" fill="#059669" rx="4"/>
+  <text x="200" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">进度: 5/12</text>
+  
+  <!-- Score and timer -->
+  <rect x="80" y="255" width="70" height="20" fill="#FEF3C7" rx="8"/>
+  <text x="90" y="263" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">得分</text>
+  <text x="90" y="272" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#F59E0B">480</text>
+  
+  <rect x="170" y="255" width="70" height="20" fill="#DBEAFE" rx="8"/>
+  <text x="180" y="263" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">时间</text>
+  <text x="180" y="272" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#3B82F6">02:15</text>
+  
+  <rect x="260" y="255" width="60" height="20" fill="#FEE2E2" rx="8"/>
+  <text x="270" y="263" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">生命</text>
+  <text x="270" y="272" font-family="Arial, sans-serif" font-size="10" fill="#EF4444">❤️❤️❤️</text>
+</svg>

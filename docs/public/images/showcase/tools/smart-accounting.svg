@@ -1,0 +1,57 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">智能记账</text>
+  
+  <!-- Balance display -->
+  <rect x="80" y="110" width="240" height="40" fill="#ECFDF5" rx="8"/>
+  <text x="200" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">本月余额</text>
+  <text x="200" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#059669">¥ 8,520.00</text>
+  
+  <!-- Chart area -->
+  <rect x="80" y="160" width="240" height="60" fill="#F9FAFB" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Simple bar chart -->
+  <rect x="90" y="200" width="15" height="15" fill="#10B981"/>
+  <rect x="110" y="190" width="15" height="25" fill="#059669"/>
+  <rect x="130" y="195" width="15" height="20" fill="#10B981"/>
+  <rect x="150" y="185" width="15" height="30" fill="#059669"/>
+  <rect x="170" y="200" width="15" height="15" fill="#10B981"/>
+  <rect x="190" y="180" width="15" height="35" fill="#059669"/>
+  <rect x="210" y="195" width="15" height="20" fill="#10B981"/>
+  
+  <!-- Chart labels -->
+  <text x="200" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">收支趋势</text>
+  
+  <!-- Transaction list -->
+  <rect x="80" y="230" width="240" height="25" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Income transaction -->
+  <circle cx="95" cy="242" r="4" fill="#10B981"/>
+  <text x="105" y="240" font-family="Arial, sans-serif" font-size="8" fill="#374151">工资收入</text>
+  <text x="105" y="248" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">01-15</text>
+  <text x="300" y="244" text-anchor="end" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#10B981">+5,000</text>
+  
+  <!-- Quick action buttons -->
+  <rect x="90" y="265" width="50" height="20" fill="#10B981" rx="10"/>
+  <text x="115" y="277" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">收入</text>
+  
+  <rect x="150" y="265" width="50" height="20" fill="#EF4444" rx="10"/>
+  <text x="175" y="277" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">支出</text>
+  
+  <rect x="210" y="265" width="50" height="20" fill="#6B7280" rx="10"/>
+  <text x="235" y="277" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">报表</text>
+</svg>

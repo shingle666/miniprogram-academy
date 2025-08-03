@@ -1,0 +1,83 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">客户管理</text>
+  
+  <!-- Search bar -->
+  <rect x="80" y="110" width="240" height="20" fill="#FEF2F2" rx="10" stroke="#8B5CF6" stroke-width="1"/>
+  <text x="90" y="122" font-family="Arial, sans-serif" font-size="9" fill="#9CA3AF">🔍 搜索客户姓名、电话</text>
+  
+  <!-- Customer list -->
+  <rect x="80" y="140" width="240" height="80" fill="white" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Customer 1 -->
+  <circle cx="95" cy="155" r="8" fill="#8B5CF6"/>
+  <text x="95" y="159" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">张</text>
+  
+  <text x="110" y="152" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">张先生</text>
+  <text x="110" y="162" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">📞 138****8888</text>
+  
+  <text x="200" y="152" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">最近联系: 2天前</text>
+  <text x="200" y="162" font-family="Arial, sans-serif" font-size="8" fill="#059669">状态: 意向客户</text>
+  
+  <rect x="280" y="150" width="30" height="12" fill="#8B5CF6" rx="6"/>
+  <text x="295" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">跟进</text>
+  
+  <!-- Customer 2 -->
+  <circle cx="95" cy="180" r="8" fill="#10B981"/>
+  <text x="95" y="184" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">李</text>
+  
+  <text x="110" y="177" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">李女士</text>
+  <text x="110" y="187" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">📞 159****6666</text>
+  
+  <text x="200" y="177" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">最近联系: 1周前</text>
+  <text x="200" y="187" font-family="Arial, sans-serif" font-size="8" fill="#10B981">状态: 已成交</text>
+  
+  <rect x="280" y="175" width="30" height="12" fill="#10B981" rx="6"/>
+  <text x="295" y="182" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">维护</text>
+  
+  <!-- Customer 3 -->
+  <circle cx="95" cy="205" r="8" fill="#F59E0B"/>
+  <text x="95" y="209" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">王</text>
+  
+  <text x="110" y="202" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">王总</text>
+  <text x="110" y="212" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">📞 186****9999</text>
+  
+  <text x="200" y="202" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">最近联系: 3天前</text>
+  <text x="200" y="212" font-family="Arial, sans-serif" font-size="8" fill="#F59E0B">状态: 待报价</text>
+  
+  <rect x="280" y="200" width="30" height="12" fill="#F59E0B" rx="6"/>
+  <text x="295" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">报价</text>
+  
+  <!-- Quick actions -->
+  <rect x="80" y="230" width="240" height="25" fill="#F9FAFB" rx="8"/>
+  
+  <!-- Action buttons -->
+  <rect x="90" y="240" width="35" height="12" fill="#8B5CF6" rx="6"/>
+  <text x="107" y="247" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">新增</text>
+  
+  <rect x="135" y="240" width="35" height="12" fill="#059669" rx="6"/>
+  <text x="152" y="247" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">导入</text>
+  
+  <rect x="180" y="240" width="35" height="12" fill="#3B82F6" rx="6"/>
+  <text x="197" y="247" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">统计</text>
+  
+  <rect x="225" y="240" width="35" height="12" fill="#F59E0B" rx="6"/>
+  <text x="242" y="247" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">提醒</text>
+  
+  <rect x="270" y="240" width="35" height="12" fill="#EF4444" rx="6"/>
+  <text x="287" y="247" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">导出</text>
+</svg>

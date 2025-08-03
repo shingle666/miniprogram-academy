@@ -1,0 +1,60 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">线下门店</text>
+  
+  <!-- Store location -->
+  <rect x="80" y="110" width="240" height="30" fill="#ECFDF5" rx="8" stroke="#059669" stroke-width="1"/>
+  <text x="90" y="125" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#059669">📍 星巴克咖啡（中关村店）</text>
+  <text x="90" y="135" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">距离您 200米 · 营业中</text>
+  
+  <!-- QR code section -->
+  <rect x="80" y="150" width="110" height="60" fill="white" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="135" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">扫码点餐</text>
+  
+  <!-- QR code placeholder -->
+  <rect x="110" y="170" width="50" height="30" fill="#F3F4F6" rx="4"/>
+  <text x="135" y="188" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#6B7280">⬜</text>
+  
+  <!-- Menu preview -->
+  <rect x="200" y="150" width="120" height="60" fill="white" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="210" y="165" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">今日推荐</text>
+  
+  <text x="210" y="175" font-family="Arial, sans-serif" font-size="8" fill="#374151">☕ 美式咖啡</text>
+  <text x="280" y="175" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#059669">¥28</text>
+  
+  <text x="210" y="185" font-family="Arial, sans-serif" font-size="8" fill="#374151">🥪 三明治套餐</text>
+  <text x="280" y="185" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#059669">¥45</text>
+  
+  <text x="210" y="195" font-family="Arial, sans-serif" font-size="8" fill="#374151">🍰 芝士蛋糕</text>
+  <text x="280" y="195" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#059669">¥32</text>
+  
+  <text x="210" y="205" font-family="Arial, sans-serif" font-size="7" fill="#F59E0B">会员9折优惠</text>
+  
+  <!-- Store services -->
+  <rect x="80" y="220" width="240" height="30" fill="#F9FAFB" rx="8"/>
+  
+  <!-- Service icons -->
+  <text x="100" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">📱 扫码支付</text>
+  <text x="160" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">🎁 会员积分</text>
+  <text x="220" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">🚗 外卖配送</text>
+  <text x="280" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">📞 预约取餐</text>
+  
+  <text x="100" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#059669">免排队</text>
+  <text x="160" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#059669">享优惠</text>
+  <text x="220" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#059669">送到家</text>
+  <text x="280" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#059669">不等待</text>
+</svg>

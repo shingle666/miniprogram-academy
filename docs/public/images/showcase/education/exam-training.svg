@@ -1,0 +1,59 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">考试培训</text>
+  
+  <!-- Exam info -->
+  <rect x="80" y="110" width="240" height="35" fill="#FEF3C7" rx="8"/>
+  <text x="200" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">英语四级模拟考试</text>
+  <text x="200" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#F59E0B">第2套 · 阅读理解</text>
+  
+  <!-- Question area -->
+  <rect x="80" y="155" width="240" height="50" fill="#F9FAFB" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Question text -->
+  <text x="90" y="168" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">Question 15: According to the passage, what is the main</text>
+  <text x="90" y="178" font-family="Arial, sans-serif" font-size="9" fill="#374151">reason for the decline in bee populations?</text>
+  
+  <!-- Answer options -->
+  <text x="90" y="190" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">A) Climate change effects</text>
+  <text x="90" y="200" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">B) Pesticide usage ✓</text>
+  
+  <!-- Timer and progress -->
+  <rect x="80" y="215" width="240" height="25" fill="#FEF2F2" rx="8"/>
+  
+  <!-- Timer -->
+  <text x="90" y="225" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">剩余时间</text>
+  <text x="90" y="235" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#EF4444">25:30</text>
+  
+  <!-- Question progress -->
+  <text x="200" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">题目进度</text>
+  <text x="200" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#374151">15/30</text>
+  
+  <!-- Score -->
+  <text x="290" y="225" text-anchor="end" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">当前得分</text>
+  <text x="290" y="235" text-anchor="end" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#059669">78分</text>
+  
+  <!-- Action buttons -->
+  <rect x="80" y="250" width="70" height="20" fill="#F59E0B" rx="10"/>
+  <text x="115" y="262" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">下一题</text>
+  
+  <rect x="160" y="250" width="70" height="20" fill="#6B7280" rx="10"/>
+  <text x="195" y="262" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">标记题目</text>
+  
+  <rect x="240" y="250" width="70" height="20" fill="#EF4444" rx="10"/>
+  <text x="275" y="262" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">交卷</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">健康管理</text>
+  
+  <!-- Today's summary -->
+  <rect x="80" y="110" width="240" height="30" fill="#ECFDF5" rx="8"/>
+  <text x="200" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">今日健康概览</text>
+  <text x="200" y="133" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#059669">健康状态良好 💚</text>
+  
+  <!-- Health metrics grid -->
+  <!-- Steps -->
+  <rect x="80" y="150" width="70" height="40" fill="#F0FDF4" rx="8" stroke="#10B981" stroke-width="1"/>
+  <text x="115" y="162" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">步数</text>
+  <text x="115" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#059669">8,520</text>
+  <text x="115" y="184" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">目标: 10,000</text>
+  
+  <!-- Heart rate -->
+  <rect x="165" y="150" width="70" height="40" fill="#FEF2F2" rx="8" stroke="#EF4444" stroke-width="1"/>
+  <text x="200" y="162" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">心率</text>
+  <text x="200" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#EF4444">72</text>
+  <text x="200" y="184" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">bpm</text>
+  
+  <!-- Sleep -->
+  <rect x="250" y="150" width="70" height="40" fill="#F0F9FF" rx="8" stroke="#3B82F6" stroke-width="1"/>
+  <text x="285" y="162" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">睡眠</text>
+  <text x="285" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#3B82F6">7.5h</text>
+  <text x="285" y="184" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">深度睡眠</text>
+  
+  <!-- Activity chart -->
+  <rect x="80" y="200" width="240" height="35" fill="#F9FAFB" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="200" y="212" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">本周活动趋势</text>
+  
+  <!-- Simple activity bars -->
+  <rect x="90" y="220" width="8" height="10" fill="#10B981"/>
+  <rect x="105" y="218" width="8" height="12" fill="#059669"/>
+  <rect x="120" y="215" width="8" height="15" fill="#10B981"/>
+  <rect x="135" y="217" width="8" height="13" fill="#059669"/>
+  <rect x="150" y="220" width="8" height="10" fill="#10B981"/>
+  <rect x="165" y="214" width="8" height="16" fill="#059669"/>
+  <rect x="180" y="219" width="8" height="11" fill="#10B981"/>
+  
+  <!-- Week labels -->
+  <text x="94" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#9CA3AF">一</text>
+  <text x="109" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#9CA3AF">二</text>
+  <text x="124" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#9CA3AF">三</text>
+  <text x="139" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#9CA3AF">四</text>
+  <text x="154" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#9CA3AF">五</text>
+  <text x="169" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#9CA3AF">六</text>
+  <text x="184" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#9CA3AF">日</text>
+  
+  <!-- Quick actions -->
+  <rect x="220" y="215" width="40" height="15" fill="#10B981" rx="7"/>
+  <text x="240" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">记录运动</text>
+  
+  <rect x="270" y="215" width="40" height="15" fill="#6B7280" rx="7"/>
+  <text x="290" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">健康报告</text>
+  
+  <!-- Health tip -->
+  <rect x="80" y="245" width="240" height="12" fill="#FEF3C7" rx="6"/>
+  <text x="200" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#92400E">💡 建议：今天还需要1,480步达到目标</text>
+</svg>

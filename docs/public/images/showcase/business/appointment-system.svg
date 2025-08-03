@@ -1,0 +1,76 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0EA5E9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284C7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">预约系统</text>
+  
+  <!-- Calendar view -->
+  <rect x="80" y="110" width="240" height="80" fill="white" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Calendar header -->
+  <rect x="85" y="115" width="230" height="20" fill="#EFF6FF" rx="4"/>
+  <text x="200" y="127" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#0284C7">2024年1月</text>
+  
+  <!-- Calendar grid -->
+  <text x="100" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">一</text>
+  <text x="125" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">二</text>
+  <text x="150" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">三</text>
+  <text x="175" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">四</text>
+  <text x="200" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">五</text>
+  <text x="225" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">六</text>
+  <text x="250" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">日</text>
+  
+  <!-- Date cells -->
+  <text x="100" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#9CA3AF">29</text>
+  <text x="125" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#9CA3AF">30</text>
+  <text x="150" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#9CA3AF">31</text>
+  <text x="175" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#374151">1</text>
+  <text x="200" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#374151">2</text>
+  <text x="225" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#374151">3</text>
+  <text x="250" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#374151">4</text>
+  
+  <!-- Selected date -->
+  <circle cx="200" cy="175" r="10" fill="#0284C7"/>
+  <text x="200" y="179" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">15</text>
+  
+  <text x="225" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#374151">16</text>
+  <text x="250" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#374151">17</text>
+  
+  <!-- Available time slots -->
+  <rect x="80" y="200" width="240" height="35" fill="#F0F9FF" rx="8"/>
+  <text x="90" y="215" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#0284C7">1月15日 可预约时间</text>
+  
+  <!-- Time slots -->
+  <rect x="90" y="220" width="35" height="12" fill="#10B981" rx="6"/>
+  <text x="107" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">09:00</text>
+  
+  <rect x="135" y="220" width="35" height="12" fill="#10B981" rx="6"/>
+  <text x="152" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">10:30</text>
+  
+  <rect x="180" y="220" width="35" height="12" fill="#6B7280" rx="6"/>
+  <text x="197" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">14:00</text>
+  
+  <rect x="225" y="220" width="35" height="12" fill="#10B981" rx="6"/>
+  <text x="242" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">16:00</text>
+  
+  <rect x="270" y="220" width="35" height="12" fill="#10B981" rx="6"/>
+  <text x="287" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">17:30</text>
+  
+  <!-- Booking info -->
+  <rect x="80" y="245" width="240" height="20" fill="#F9FAFB" rx="8"/>
+  <text x="90" y="255" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">服务类型: 商务咨询</text>
+  <text x="180" y="255" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">预计时长: 60分钟</text>
+  <text x="270" y="255" font-family="Arial, sans-serif" font-size="8" fill="#059669">免费</text>
+</svg>

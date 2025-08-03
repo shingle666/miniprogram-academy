@@ -1,0 +1,48 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">在线学习</text>
+  
+  <!-- Course video area -->
+  <rect x="80" y="110" width="240" height="80" fill="#1F2937" rx="8"/>
+  
+  <!-- Video player controls -->
+  <circle cx="200" cy="150" r="20" fill="rgba(255,255,255,0.8)"/>
+  <polygon points="195,145 195,155 205,150" fill="#1F2937"/>
+  
+  <!-- Progress bar -->
+  <rect x="90" y="175" width="220" height="4" fill="rgba(255,255,255,0.3)" rx="2"/>
+  <rect x="90" y="175" width="88" height="4" fill="#3B82F6" rx="2"/>
+  
+  <!-- Time display -->
+  <text x="95" y="187" font-family="Arial, sans-serif" font-size="8" fill="white">12:30 / 31:45</text>
+  
+  <!-- Course info -->
+  <rect x="80" y="200" width="240" height="35" fill="#F0F9FF" rx="8"/>
+  <text x="90" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#1D4ED8">第3章：JavaScript基础语法</text>
+  <text x="90" y="222" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">讲师：张老师 · 已学习 40% · 剩余时间 19分钟</text>
+  <text x="90" y="230" font-family="Arial, sans-serif" font-size="8" fill="#059669">✓ 已完成：变量声明、数据类型</text>
+  
+  <!-- Action buttons -->
+  <rect x="80" y="245" width="70" height="20" fill="#3B82F6" rx="10"/>
+  <text x="115" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">继续学习</text>
+  
+  <rect x="160" y="245" width="70" height="20" fill="#F3F4F6" rx="10"/>
+  <text x="195" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">课程笔记</text>
+  
+  <rect x="240" y="245" width="70" height="20" fill="#FEF3C7" rx="10"/>
+  <text x="275" y="257" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#F59E0B">课后练习</text>
+</svg>

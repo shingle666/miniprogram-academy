@@ -1,0 +1,68 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">生鲜配送</text>
+  
+  <!-- Delivery info -->
+  <rect x="80" y="110" width="240" height="25" fill="#ECFDF5" rx="8" stroke="#10B981" stroke-width="1"/>
+  <text x="90" y="125" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#10B981">🚚 30分钟极速配送</text>
+  <text x="250" y="125" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">满39免配送费</text>
+  
+  <!-- Product categories -->
+  <rect x="80" y="145" width="240" height="20" fill="#F0FDF4" rx="8"/>
+  
+  <rect x="90" y="150" width="35" height="12" fill="#10B981" rx="6"/>
+  <text x="107" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">蔬菜</text>
+  
+  <rect x="135" y="150" width="35" height="12" fill="#F3F4F6" rx="6"/>
+  <text x="152" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">水果</text>
+  
+  <rect x="180" y="150" width="35" height="12" fill="#F3F4F6" rx="6"/>
+  <text x="197" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">肉类</text>
+  
+  <rect x="225" y="150" width="35" height="12" fill="#F3F4F6" rx="6"/>
+  <text x="242" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">海鲜</text>
+  
+  <rect x="270" y="150" width="35" height="12" fill="#F3F4F6" rx="6"/>
+  <text x="287" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">乳品</text>
+  
+  <!-- Fresh products -->
+  <!-- Product 1 -->
+  <rect x="80" y="175" width="110" height="50" fill="white" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  <rect x="85" y="180" width="30" height="25" fill="#F0FDF4" rx="4"/>
+  <text x="100" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#10B981">🥬</text>
+  <text x="125" y="185" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">有机白菜</text>
+  <text x="125" y="195" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">500g/份</text>
+  <text x="125" y="205" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#10B981">¥8.9</text>
+  <text x="125" y="215" font-family="Arial, sans-serif" font-size="7" fill="#F59E0B">今日特价</text>
+  
+  <!-- Product 2 -->
+  <rect x="200" y="175" width="110" height="50" fill="white" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  <rect x="205" y="180" width="30" height="25" fill="#FEF2F2" rx="4"/>
+  <text x="220" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#EF4444">🍎</text>
+  <text x="245" y="185" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">红富士苹果</text>
+  <text x="245" y="195" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">1kg装</text>
+  <text x="245" y="205" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#10B981">¥15.8</text>
+  <text x="245" y="215" font-family="Arial, sans-serif" font-size="7" fill="#10B981">新鲜直达</text>
+  
+  <!-- Quality guarantee -->
+  <rect x="80" y="235" width="240" height="20" fill="#F9FAFB" rx="8"/>
+  
+  <text x="100" y="247" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">✅ 品质保证</text>
+  <text x="160" y="247" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">❄️ 冷链配送</text>
+  <text x="220" y="247" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">🔄 不满意退款</text>
+  <text x="280" y="247" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">⏰ 准时送达</text>
+</svg>

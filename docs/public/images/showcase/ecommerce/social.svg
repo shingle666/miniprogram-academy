@@ -1,0 +1,60 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6D28D9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">社交电商</text>
+  
+  <!-- Live streaming section -->
+  <rect x="80" y="110" width="240" height="50" fill="#FEF2F2" rx="8" stroke="#7C3AED" stroke-width="1"/>
+  <text x="90" y="125" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#7C3AED">🔴 直播中</text>
+  <text x="90" y="135" font-family="Arial, sans-serif" font-size="9" fill="#374151">美妆达人小雅的护肤分享</text>
+  <text x="90" y="145" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">👥 1.2万人观看</text>
+  <text x="90" y="155" font-family="Arial, sans-serif" font-size="8" fill="#059669">💰 限时优惠 8折起</text>
+  
+  <!-- Product recommendations -->
+  <rect x="80" y="170" width="240" height="45" fill="#F0F9FF" rx="8"/>
+  <text x="90" y="185" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#0284C7">好友推荐</text>
+  
+  <!-- Friend recommendation 1 -->
+  <circle cx="95" cy="195" r="8" fill="#7C3AED"/>
+  <text x="95" y="199" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">A</text>
+  <text x="110" y="195" font-family="Arial, sans-serif" font-size="8" fill="#374151">小美推荐了</text>
+  <text x="110" y="205" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#7C3AED">兰蔻小黑瓶精华</text>
+  
+  <!-- Friend recommendation 2 -->
+  <circle cx="200" cy="195" r="8" fill="#059669"/>
+  <text x="200" y="199" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">B</text>
+  <text x="215" y="195" font-family="Arial, sans-serif" font-size="8" fill="#374151">小李分享了</text>
+  <text x="215" y="205" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#059669">Nike运动鞋</text>
+  
+  <!-- Social features -->
+  <rect x="80" y="225" width="240" height="25" fill="#F9FAFB" rx="8"/>
+  
+  <!-- Action buttons -->
+  <rect x="90" y="235" width="35" height="12" fill="#7C3AED" rx="6"/>
+  <text x="107" y="242" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">分享</text>
+  
+  <rect x="135" y="235" width="35" height="12" fill="#F59E0B" rx="6"/>
+  <text x="152" y="242" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">拼团</text>
+  
+  <rect x="180" y="235" width="35" height="12" fill="#10B981" rx="6"/>
+  <text x="197" y="242" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">砍价</text>
+  
+  <rect x="225" y="235" width="35" height="12" fill="#EF4444" rx="6"/>
+  <text x="242" y="242" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">秒杀</text>
+  
+  <rect x="270" y="235" width="35" height="12" fill="#8B5CF6" rx="6"/>
+  <text x="287" y="242" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="white">返利</text>
+</svg>

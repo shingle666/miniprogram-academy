@@ -1,0 +1,71 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0EA5E9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284C7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">旅行服务</text>
+  
+  <!-- Destination search -->
+  <rect x="80" y="110" width="240" height="25" fill="#F0F9FF" rx="12" stroke="#0EA5E9" stroke-width="1"/>
+  <text x="90" y="125" font-family="Arial, sans-serif" font-size="10" fill="#0284C7">📍 目的地：北京 → 上海</text>
+  
+  <!-- Service tabs -->
+  <rect x="80" y="145" width="55" height="20" fill="#0EA5E9" rx="10"/>
+  <text x="107" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">机票</text>
+  
+  <rect x="145" y="145" width="55" height="20" fill="#F3F4F6" rx="10"/>
+  <text x="172" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">酒店</text>
+  
+  <rect x="210" y="145" width="55" height="20" fill="#F3F4F6" rx="10"/>
+  <text x="237" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">景点</text>
+  
+  <rect x="275" y="145" width="35" height="20" fill="#F3F4F6" rx="10"/>
+  <text x="292" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">攻略</text>
+  
+  <!-- Flight option 1 -->
+  <rect x="80" y="175" width="240" height="35" fill="white" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Airline logo placeholder -->
+  <circle cx="100" cy="192" r="8" fill="#DBEAFE"/>
+  <text x="100" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#3B82F6">✈️</text>
+  
+  <!-- Flight info -->
+  <text x="120" y="185" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">东方航空 MU5137</text>
+  <text x="120" y="195" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">08:30 - 10:45 · 直飞</text>
+  <text x="120" y="203" font-family="Arial, sans-serif" font-size="8" fill="#059669">经济舱 · 2小时15分</text>
+  
+  <!-- Price -->
+  <text x="290" y="190" text-anchor="end" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#DC2626">¥580</text>
+  <text x="290" y="200" text-anchor="end" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">起</text>
+  
+  <!-- Flight option 2 -->
+  <rect x="80" y="220" width="240" height="35" fill="white" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Airline logo placeholder -->
+  <circle cx="100" cy="237" r="8" fill="#FEE2E2"/>
+  <text x="100" y="241" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#DC2626">✈️</text>
+  
+  <!-- Flight info -->
+  <text x="120" y="230" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">南方航空 CZ3572</text>
+  <text x="120" y="240" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">14:20 - 16:30 · 直飞</text>
+  <text x="120" y="248" font-family="Arial, sans-serif" font-size="8" fill="#059669">经济舱 · 2小时10分</text>
+  
+  <!-- Price -->
+  <text x="290" y="235" text-anchor="end" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#DC2626">¥650</text>
+  <text x="290" y="245" text-anchor="end" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">起</text>
+  
+  <!-- Promotion tag -->
+  <rect x="250" y="225" width="30" height="12" fill="#FEF3C7" rx="6"/>
+  <text x="265" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#F59E0B">特价</text>
+</svg>

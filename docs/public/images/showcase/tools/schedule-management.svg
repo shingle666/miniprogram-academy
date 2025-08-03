@@ -1,0 +1,70 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D9488;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">日程管理</text>
+  
+  <!-- Calendar header -->
+  <text x="200" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#059669">2024年1月</text>
+  
+  <!-- Calendar grid -->
+  <g stroke="#E5E7EB" stroke-width="1" fill="none">
+    <!-- Week days header -->
+    <rect x="80" y="130" width="240" height="20" fill="#F9FAFB"/>
+    
+    <!-- Calendar cells -->
+    <rect x="80" y="130" width="240" height="100"/>
+    
+    <!-- Vertical lines -->
+    <line x1="114" y1="130" x2="114" y2="230"/>
+    <line x1="148" y1="130" x2="148" y2="230"/>
+    <line x1="182" y1="130" x2="182" y2="230"/>
+    <line x1="216" y1="130" x2="216" y2="230"/>
+    <line x1="250" y1="130" x2="250" y2="230"/>
+    <line x1="284" y1="130" x2="284" y2="230"/>
+    
+    <!-- Horizontal lines -->
+    <line x1="80" y1="150" x2="320" y2="150"/>
+    <line x1="80" y1="170" x2="320" y2="170"/>
+    <line x1="80" y1="190" x2="320" y2="190"/>
+    <line x1="80" y1="210" x2="320" y2="210"/>
+  </g>
+  
+  <!-- Week days -->
+  <text x="97" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">日</text>
+  <text x="131" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">一</text>
+  <text x="165" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">二</text>
+  <text x="199" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">三</text>
+  <text x="233" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">四</text>
+  <text x="267" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">五</text>
+  <text x="301" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">六</text>
+  
+  <!-- Sample dates -->
+  <text x="97" y="164" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#374151">1</text>
+  <text x="131" y="164" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#374151">2</text>
+  <text x="165" y="164" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#374151">3</text>
+  
+  <!-- Highlighted date -->
+  <circle cx="199" cy="160" r="8" fill="#059669"/>
+  <text x="199" y="164" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">4</text>
+  
+  <!-- Event indicators -->
+  <circle cx="233" cy="164" r="2" fill="#EF4444"/>
+  <text x="233" y="164" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#374151">5</text>
+  
+  <!-- Task list -->
+  <rect x="80" y="240" width="240" height="15" fill="#F0FDF4" rx="4"/>
+  <text x="85" y="250" font-family="Arial, sans-serif" font-size="8" fill="#059669">📅 今日任务: 会议 (14:00)</text>
+</svg>

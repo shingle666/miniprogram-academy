@@ -1,0 +1,57 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">语言学习</text>
+  
+  <!-- Word card -->
+  <rect x="80" y="110" width="240" height="60" fill="#ECFDF5" rx="12" stroke="#10B981" stroke-width="2"/>
+  
+  <!-- Word display -->
+  <text x="200" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#059669">Apple</text>
+  <text x="200" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">/ˈæpəl/</text>
+  <text x="200" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#374151">苹果</text>
+  
+  <!-- Audio button -->
+  <circle cx="290" cy="140" r="12" fill="#10B981"/>
+  <text x="290" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">🔊</text>
+  
+  <!-- Learning options -->
+  <rect x="80" y="180" width="240" height="40" fill="#F9FAFB" rx="8"/>
+  
+  <!-- Option buttons -->
+  <rect x="90" y="190" width="50" height="20" fill="#10B981" rx="10"/>
+  <text x="115" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">认识</text>
+  
+  <rect x="150" y="190" width="50" height="20" fill="#EF4444" rx="10"/>
+  <text x="175" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">不认识</text>
+  
+  <rect x="210" y="190" width="50" height="20" fill="#F59E0B" rx="10"/>
+  <text x="235" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">模糊</text>
+  
+  <rect x="270" y="190" width="40" height="20" fill="#6B7280" rx="10"/>
+  <text x="290" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">跳过</text>
+  
+  <!-- Progress info -->
+  <rect x="80" y="230" width="240" height="30" fill="#F0FDF4" rx="8"/>
+  
+  <!-- Progress bar -->
+  <rect x="90" y="240" width="180" height="6" fill="#D1FAE5" rx="3"/>
+  <rect x="90" y="240" width="108" height="6" fill="#10B981" rx="3"/>
+  
+  <!-- Progress text -->
+  <text x="90" y="255" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">今日进度: 15/25 词汇</text>
+  <text x="280" y="255" text-anchor="end" font-family="Arial, sans-serif" font-size="8" fill="#059669">连续学习 7 天</text>
+</svg>

@@ -1,0 +1,49 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A855F7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">办公套件</text>
+  
+  <!-- Tool grid -->
+  <!-- Document editor -->
+  <rect x="90" y="120" width="60" height="50" fill="#DBEAFE" rx="8"/>
+  <text x="120" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#3B82F6">📝</text>
+  <text x="120" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#374151">文档编辑</text>
+  
+  <!-- Spreadsheet -->
+  <rect x="170" y="120" width="60" height="50" fill="#D1FAE5" rx="8"/>
+  <text x="200" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#059669">📊</text>
+  <text x="200" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#374151">电子表格</text>
+  
+  <!-- Presentation -->
+  <rect x="250" y="120" width="60" height="50" fill="#FEE2E2" rx="8"/>
+  <text x="280" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#DC2626">🎯</text>
+  <text x="280" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#374151">演示文稿</text>
+  
+  <!-- Note taking -->
+  <rect x="90" y="190" width="60" height="50" fill="#FEF3C7" rx="8"/>
+  <text x="120" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#F59E0B">📋</text>
+  <text x="120" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#374151">笔记记录</text>
+  
+  <!-- Cloud sync -->
+  <rect x="170" y="190" width="60" height="50" fill="#F3E8FF" rx="8"/>
+  <text x="200" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#7C3AED">☁️</text>
+  <text x="200" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#374151">云端同步</text>
+  
+  <!-- Collaboration -->
+  <rect x="250" y="190" width="60" height="50" fill="#ECFDF5" rx="8"/>
+  <text x="280" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#10B981">👥</text>
+  <text x="280" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#374151">协作共享</text>
+</svg>

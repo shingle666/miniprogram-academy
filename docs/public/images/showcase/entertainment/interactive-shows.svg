@@ -1,0 +1,222 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="showGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="liveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fa709a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fee140;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="interactiveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="#0f0f23"/>
+  
+  <!-- Phone Frame -->
+  <rect x="50" y="20" width="300" height="260" rx="25" ry="25" fill="#1a202c" stroke="#2d3748" stroke-width="2"/>
+  <rect x="60" y="40" width="280" height="220" rx="15" ry="15" fill="#000000"/>
+  
+  <!-- Header -->
+  <rect x="60" y="40" width="280" height="45" rx="15" ry="15" fill="url(#showGradient)"/>
+  <text x="200" y="67" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">LiveShow+</text>
+  
+  <!-- Live Indicator -->
+  <circle cx="120" cy="62" r="6" fill="#f56565">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  <text x="135" y="66" font-family="Arial, sans-serif" font-size="10" fill="#ffffff">LIVE</text>
+  
+  <!-- Viewer Count -->
+  <text x="280" y="66" font-family="Arial, sans-serif" font-size="10" fill="#ffffff">👥 15.2k</text>
+  
+  <!-- Main Stage Area -->
+  <rect x="70" y="95" width="260" height="140" rx="8" ry="8" fill="#1a1a1a" stroke="#333333" stroke-width="1"/>
+  
+  <!-- Stage Background -->
+  <rect x="75" y="100" width="250" height="130" rx="5" ry="5" fill="url(#liveGradient)"/>
+  
+  <!-- Spotlight Effects -->
+  <circle cx="150" cy="130" r="30" fill="#ffffff" opacity="0.1">
+    <animate attributeName="opacity" values="0.1;0.3;0.1" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="250" cy="150" r="25" fill="#ffffff" opacity="0.1">
+    <animate attributeName="opacity" values="0.1;0.3;0.1" dur="2s" begin="1s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Host Avatar -->
+  <circle cx="200" cy="165" r="25" fill="#ffffff" stroke="#fa709a" stroke-width="3"/>
+  <text x="200" y="172" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#fa709a">🎤</text>
+  
+  <!-- Host Name -->
+  <rect x="170" y="195" width="60" height="15" rx="7" ry="7" fill="#000000" opacity="0.7"/>
+  <text x="200" y="205" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#ffffff">Sarah Chen</text>
+  
+  <!-- Interactive Elements -->
+  <!-- Poll Question -->
+  <rect x="80" y="105" width="120" height="40" rx="5" ry="5" fill="#000000" opacity="0.8"/>
+  <text x="140" y="118" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#ffffff">🗳️ What's your favorite genre?</text>
+  <rect x="85" y="125" width="25" height="8" rx="4" ry="4" fill="#4facfe"/>
+  <text x="97" y="131" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">Pop 45%</text>
+  <rect x="115" y="125" width="20" height="8" rx="4" ry="4" fill="#fa709a"/>
+  <text x="125" y="131" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">Rock 35%</text>
+  <rect x="140" y="125" width="15" height="8" rx="4" ry="4" fill="#48bb78"/>
+  <text x="147" y="131" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">Jazz 20%</text>
+  
+  <!-- Gift Animation -->
+  <g transform="translate(280, 110)">
+    <circle cx="0" cy="0" r="8" fill="#fee140" opacity="0.9">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -10,-20; -20,-40" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.5;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="0" y="3" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#744210">🎁</text>
+  </g>
+  
+  <!-- Reaction Bubbles -->
+  <g transform="translate(90, 180)">
+    <circle cx="0" cy="0" r="6" fill="#f56565" opacity="0.8">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 5,-15; 10,-30" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.4;0" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <text x="0" y="2" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#ffffff">❤️</text>
+  </g>
+  
+  <g transform="translate(120, 185)">
+    <circle cx="0" cy="0" r="6" fill="#4facfe" opacity="0.8">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -5,-15; -10,-30" dur="1.8s" begin="0.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.4;0" dur="1.8s" begin="0.5s" repeatCount="indefinite"/>
+    </circle>
+    <text x="0" y="2" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#ffffff">👏</text>
+  </g>
+  
+  <!-- Chat Messages Overlay -->
+  <g transform="translate(240, 120)">
+    <rect x="0" y="0" width="80" height="60" rx="5" ry="5" fill="#000000" opacity="0.7"/>
+    
+    <!-- Message 1 -->
+    <circle cx="8" cy="10" r="4" fill="#4facfe"/>
+    <text x="16" y="13" font-family="Arial, sans-serif" font-size="7" fill="#ffffff">Amazing show! 🔥</text>
+    
+    <!-- Message 2 -->
+    <circle cx="8" cy="25" r="4" fill="#48bb78"/>
+    <text x="16" y="28" font-family="Arial, sans-serif" font-size="7" fill="#ffffff">Love this song!</text>
+    
+    <!-- Message 3 -->
+    <circle cx="8" cy="40" r="4" fill="#fa709a"/>
+    <text x="16" y="43" font-family="Arial, sans-serif" font-size="7" fill="#ffffff">More rock please 🎸</text>
+    
+    <!-- Typing indicator -->
+    <circle cx="8" cy="55" r="4" fill="#e2e8f0"/>
+    <circle cx="20" cy="55" r="1" fill="#4facfe">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="25" cy="55" r="1" fill="#4facfe">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" begin="0.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="30" cy="55" r="1" fill="#4facfe">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" begin="0.4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Interactive Controls -->
+  <g transform="translate(70, 245)">
+    <!-- Chat Input -->
+    <rect x="0" y="0" width="150" height="15" rx="7" ry="7" fill="#1a1a1a" stroke="#333333" stroke-width="1"/>
+    <text x="8" y="10" font-family="Arial, sans-serif" font-size="8" fill="#a0aec0">Type a message...</text>
+    
+    <!-- Send Button -->
+    <circle cx="165" cy="7" r="7" fill="url(#interactiveGradient)"/>
+    <path d="M161 7 L165 4 L169 7 L165 10 Z" fill="#ffffff"/>
+    
+    <!-- Reaction Buttons -->
+    <circle cx="185" cy="7" r="7" fill="#f56565"/>
+    <text x="185" y="10" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">❤️</text>
+    
+    <circle cx="205" cy="7" r="7" fill="#4facfe"/>
+    <text x="205" y="10" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">👏</text>
+    
+    <circle cx="225" cy="7" r="7" fill="#48bb78"/>
+    <text x="225" y="10" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">🔥</text>
+    
+    <!-- Gift Button -->
+    <circle cx="245" cy="7" r="7" fill="#fee140"/>
+    <text x="245" y="10" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#744210">🎁</text>
+  </g>
+  
+  <!-- Audience Participation Panel -->
+  <g transform="translate(350, 95)">
+    <rect x="0" y="0" width="45" height="140" rx="5" ry="5" fill="#1a1a1a" stroke="#333333" stroke-width="1"/>
+    <text x="22" y="15" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#ffffff">Audience</text>
+    
+    <!-- Participant 1 -->
+    <circle cx="12" cy="25" r="6" fill="#4facfe"/>
+    <text x="12" y="28" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">A</text>
+    <circle cx="33" cy="25" r="6" fill="#fa709a"/>
+    <text x="33" y="28" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">B</text>
+    
+    <!-- Participant 2 -->
+    <circle cx="12" cy="40" r="6" fill="#48bb78"/>
+    <text x="12" y="43" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">C</text>
+    <circle cx="33" cy="40" r="6" fill="#fee140"/>
+    <text x="33" y="43" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#744210">D</text>
+    
+    <!-- Join Stage Button -->
+    <rect x="8" y="55" width="30" height="12" rx="6" ry="6" fill="url(#interactiveGradient)"/>
+    <text x="23" y="63" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">Join Stage</text>
+    
+    <!-- Request Song -->
+    <rect x="8" y="75" width="30" height="12" rx="6" ry="6" fill="#9f7aea"/>
+    <text x="23" y="83" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">Request 🎵</text>
+    
+    <!-- Vote -->
+    <rect x="8" y="95" width="30" height="12" rx="6" ry="6" fill="#ed8936"/>
+    <text x="23" y="103" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">Vote 🗳️</text>
+    
+    <!-- Applause Meter -->
+    <text x="22" y="120" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#a0aec0">Applause</text>
+    <rect x="8" y="125" width="30" height="4" rx="2" ry="2" fill="#333333"/>
+    <rect x="8" y="125" width="22" height="4" rx="2" ry="2" fill="#48bb78">
+      <animate attributeName="width" values="15;25;20;22" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="22" y="135" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#48bb78">73%</text>
+  </g>
+  
+  <!-- Show Stats -->
+  <g transform="translate(320, 40)">
+    <!-- Duration -->
+    <rect x="0" y="0" width="25" height="10" rx="3" ry="3" fill="#000000" opacity="0.7"/>
+    <text x="12" y="7" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#ffffff">45:32</text>
+    
+    <!-- Engagement Score -->
+    <circle cx="12" cy="20" r="8" fill="none" stroke="#48bb78" stroke-width="2"/>
+    <circle cx="12" cy="20" r="8" fill="none" stroke="#48bb78" stroke-width="2" stroke-dasharray="35" stroke-dashoffset="10">
+      <animate attributeName="stroke-dashoffset" values="10;5;10" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <text x="12" y="24" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#48bb78">92%</text>
+  </g>
+  
+  <!-- Interactive Features Indicators -->
+  <g transform="translate(75, 85)">
+    <!-- Poll Active -->
+    <circle cx="0" cy="0" r="4" fill="#4facfe">
+      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="8" y="3" font-family="Arial, sans-serif" font-size="6" fill="#ffffff">Poll Active</text>
+    
+    <!-- Q&A Session -->
+    <circle cx="60" cy="0" r="4" fill="#fa709a">
+      <animate attributeName="opacity" values="1;0.5;1" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <text x="68" y="3" font-family="Arial, sans-serif" font-size="6" fill="#ffffff">Q&A Open</text>
+    
+    <!-- Karaoke Mode -->
+    <circle cx="130" cy="0" r="4" fill="#fee140">
+      <animate attributeName="opacity" values="1;0.5;1" dur="1s" repeatCount="indefinite"/>
+    </circle>
+    <text x="138" y="3" font-family="Arial, sans-serif" font-size="6" fill="#ffffff">Karaoke</text>
+  </g>
+</svg>

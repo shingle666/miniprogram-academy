@@ -1,0 +1,74 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0EA5E9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284C7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">天气助手</text>
+  
+  <!-- Location -->
+  <text x="200" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">📍 北京市</text>
+  
+  <!-- Current weather -->
+  <text x="200" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#F59E0B">☀️</text>
+  <text x="200" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#374151">22°C</text>
+  <text x="200" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">晴朗 · 空气质量良好</text>
+  
+  <!-- Weather details -->
+  <rect x="80" y="185" width="240" height="30" fill="#F0F9FF" rx="8"/>
+  
+  <!-- Detail items -->
+  <text x="100" y="198" font-family="Arial, sans-serif" font-size="8" fill="#0284C7">💨 风速</text>
+  <text x="100" y="208" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">3级</text>
+  
+  <text x="150" y="198" font-family="Arial, sans-serif" font-size="8" fill="#0284C7">💧 湿度</text>
+  <text x="150" y="208" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">65%</text>
+  
+  <text x="200" y="198" font-family="Arial, sans-serif" font-size="8" fill="#0284C7">👁️ 能见度</text>
+  <text x="200" y="208" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">10km</text>
+  
+  <text x="250" y="198" font-family="Arial, sans-serif" font-size="8" fill="#0284C7">🌡️ 体感</text>
+  <text x="250" y="208" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">24°C</text>
+  
+  <!-- 7-day forecast -->
+  <rect x="80" y="225" width="240" height="25" fill="#F9FAFB" rx="8"/>
+  
+  <!-- Forecast items -->
+  <text x="90" y="235" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">今天</text>
+  <text x="90" y="243" font-family="Arial, sans-serif" font-size="8" fill="#F59E0B">☀️</text>
+  <text x="90" y="250" font-family="Arial, sans-serif" font-size="6" fill="#374151">22°</text>
+  
+  <text x="125" y="235" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">明天</text>
+  <text x="125" y="243" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">⛅</text>
+  <text x="125" y="250" font-family="Arial, sans-serif" font-size="6" fill="#374151">19°</text>
+  
+  <text x="160" y="235" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">周三</text>
+  <text x="160" y="243" font-family="Arial, sans-serif" font-size="8" fill="#3B82F6">🌧️</text>
+  <text x="160" y="250" font-family="Arial, sans-serif" font-size="6" fill="#374151">16°</text>
+  
+  <text x="195" y="235" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">周四</text>
+  <text x="195" y="243" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">☁️</text>
+  <text x="195" y="250" font-family="Arial, sans-serif" font-size="6" fill="#374151">18°</text>
+  
+  <text x="230" y="235" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">周五</text>
+  <text x="230" y="243" font-family="Arial, sans-serif" font-size="8" fill="#F59E0B">☀️</text>
+  <text x="230" y="250" font-family="Arial, sans-serif" font-size="6" fill="#374151">21°</text>
+  
+  <text x="265" y="235" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">周六</text>
+  <text x="265" y="243" font-family="Arial, sans-serif" font-size="8" fill="#F59E0B">☀️</text>
+  <text x="265" y="250" font-family="Arial, sans-serif" font-size="6" fill="#374151">23°</text>
+  
+  <text x="300" y="235" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">周日</text>
+  <text x="300" y="243" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">⛅</text>
+  <text x="300" y="250" font-family="Arial, sans-serif" font-size="6" fill="#374151">20°</text>
+</svg>

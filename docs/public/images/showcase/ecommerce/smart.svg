@@ -1,0 +1,50 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  
+  <!-- Phone mockup -->
+  <rect x="50" y="40" width="300" height="220" fill="white" rx="20" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="70" y="60" width="260" height="40" fill="#F3F4F6" rx="8"/>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">智能购物助手</text>
+  
+  <!-- AI recommendation -->
+  <rect x="80" y="110" width="240" height="35" fill="#EFF6FF" rx="8" stroke="#3B82F6" stroke-width="1"/>
+  <text x="90" y="125" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#3B82F6">🤖 AI为您推荐</text>
+  <text x="90" y="135" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">基于您的购买历史和偏好</text>
+  <text x="90" y="142" font-family="Arial, sans-serif" font-size="7" fill="#059669">匹配度: 95%</text>
+  
+  <!-- Smart features -->
+  <rect x="80" y="155" width="240" height="60" fill="white" rx="8" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Price comparison -->
+  <text x="90" y="170" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">💰 价格对比</text>
+  <text x="90" y="180" font-family="Arial, sans-serif" font-size="8" fill="#6B7280">iPhone 15 Pro 256GB</text>
+  <text x="90" y="190" font-family="Arial, sans-serif" font-size="8" fill="#374151">京东: ¥8,999</text>
+  <text x="160" y="190" font-family="Arial, sans-serif" font-size="8" fill="#374151">天猫: ¥9,199</text>
+  <text x="230" y="190" font-family="Arial, sans-serif" font-size="8" fill="#10B981">拼多多: ¥8,799 ✨</text>
+  
+  <!-- Smart alerts -->
+  <text x="90" y="205" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#374151">🔔 智能提醒</text>
+  <text x="90" y="212" font-family="Arial, sans-serif" font-size="7" fill="#F59E0B">• 您关注的商品降价了 -200元</text>
+  
+  <!-- Shopping list -->
+  <rect x="80" y="225" width="110" height="30" fill="#F0F9FF" rx="8"/>
+  <text x="90" y="235" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#0284C7">📝 智能清单</text>
+  <text x="90" y="243" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">• 牛奶 (即将用完)</text>
+  <text x="90" y="250" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">• 洗发水 (库存不足)</text>
+  
+  <!-- Voice search -->
+  <rect x="200" y="225" width="110" height="30" fill="#FEF2F2" rx="8"/>
+  <text x="210" y="235" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#EF4444">🎤 语音搜索</text>
+  <text x="210" y="243" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">"帮我找性价比高的</text>
+  <text x="210" y="250" font-family="Arial, sans-serif" font-size="7" fill="#6B7280">蓝牙耳机"</text>
+</svg>
